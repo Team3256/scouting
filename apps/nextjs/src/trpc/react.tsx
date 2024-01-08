@@ -23,8 +23,8 @@ export function TRPCReactProvider(props: {
         loggerLink({
           enabled: (op) =>
             process.env.NODE_ENV === "development" ||
-            (op.direction === "down" && op.result instanceof Error),
-        }),
+            (op.direction === "down" && op.result instanceof Error) || localStorage.getItem("team3256app:trpc:logAll") === "true",
+        }), 
         unstable_httpBatchStreamLink({
           url: getBaseUrl() + "/api/trpc",
           async headers() {
@@ -32,7 +32,7 @@ export function TRPCReactProvider(props: {
             headers.set("x-trpc-source", "nextjs-react");
             return Object.fromEntries(headers);
           },
-        }),
+        })
       ],
     }),
   );

@@ -53,6 +53,9 @@ export const postRouter = createTRPCRouter({
               name: getNameFromUser(),
               image: ctx.user.user_metadata.avatar_url as string | undefined,
               email: ctx.user.email,
+              isLead: false,
+              isMentor: false,
+              role: "default",
             })
             .returning();
 

@@ -18,8 +18,9 @@ export const supabase = createClient(
       storage: ExpoSecureStoreAdapter,
       autoRefreshToken: true,
       persistSession: true,
-      detectSessionInUrl: true,
-      flowType: "pkce",
+      // detectSessionInUrl: true,
+      detectSessionInUrl: false, // set to false bc https://supabase.com/blog/react-native-authentication#OAuth
+      // flowType: "pkce", // no. pita to implement
     },
   },
 );

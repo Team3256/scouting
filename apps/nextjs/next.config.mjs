@@ -1,5 +1,3 @@
-// Importing env files here to validate on build
-import "./src/env.mjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -9,7 +7,7 @@ const config = {
 
   // Allow optimizing avatar images from GitHub
   images: {
-    domains: ["avatars.githubusercontent.com"],
+  domains: ["avatars.githubusercontent.com", "*.googleusercontent.com", "lh3.googleusercontent.com"],
   },
 
   /** We already do linting and typechecking as separate tasks in CI */
