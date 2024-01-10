@@ -56,6 +56,100 @@ export const profile = pgTable("profile", {
     .notNull(),
 });
 
+export const allianceEnum = pgEnum("alliance", [
+  "default", // shouldn't ever be used
+  "red",
+  "blue",
+]);
+
+export const intakeEnum = pgEnum("intake", [
+  "default", // shouldn't be used
+  "none",
+  "ground",
+  "source",
+  "both",
+]);
+
+export const robotRoleEnum = pgEnum("robot_role", [
+  "default",
+  "defensive",
+  "offensive"
+]);
+
+export const quantitativeScouting = pgTable("quantitative_scouting", {
+  id: varchar("id", { length: 256 }).primaryKey(),
+  userId: varchar("user_id", {
+    length: 256
+  })
+    .notNull()
+    .references(() => profile.id),
+  alliance: allianceEnum("alliance").notNull(), // team and match information
+  teamNum: varchar("team_num", { length: 256 }).notNull(),
+  matchNum: varchar("match_num", { length: 256 }).notNull(),
+  numScoredAuto: varchar("num_scored_auto", { length: 256 }).notNull(), // auto information
+  didIntakeAuto: boolean("did_intake_auto").notNull(),
+  didLeave: boolean("did_leave").notNull(),
+  numIntakes: varchar("num_intakes", { length: 256 }).notNull(), // teleop info
+  numOuttakes: varchar("num_outtakes", { length: 256 }).notNull(),
+  numMissedOuttakes: varchar("num_missed_outtakes", { length: 256 }).notNull(),
+  cycleTime: varchar("cycle_time", { length: 256 }).notNull(),
+  intakeLocations: intakeEnum("intake_location").notNull(),
+  outtakeLocations: varchar("outtake_location").notNull(),
+  rankingPoints: varchar("ranking_points", { length: 256 }).notNull(),
+  didDC: boolean("did_dc").notNull(),
+  DCTime: varchar("dc_time", { length: 256 }), // optional (enabled on form if didDC == true)
+  didTip: boolean("did_tip").notNull(),
+  tipTime: varchar("tip_time"), // optional (enabled if didTip == true
+  createdAt: timestamp("created_at")
+    .default(sql `CURRENT_TIMESTAMP`)
+    .notNull(),
+});
+
+export const pitScouting = pgTable("pit_scouting", {
+  id: varchar("id", { length: 256 }).primaryKey(),
+  userId: varchar("user_id", {
+    length: 256
+  })
+    .references(() => profile.id)
+    .notNull(),
+  teamNum: varchar("team_num", { length: 256 }).notNull(),
+  length: varchar("length", { length: 256 }).notNull(), // length, width, and height
+  width: varchar("width", { length: 256 }).notNull(),
+  height: varchar("height", { length: 256 }).notNull(),
+  lengthWExt: varchar("length_w_ext", { length: 256 }).notNull(),
+  widthWExt: varchar("width_w_ext", { length: 256 }).notNull(),
+  heightWExt: varchar("height_w_ext", { length: 256 }).notNull(),
+  robotWeight: varchar("robot_weight", { length: 256 }).notNull(),
+  outtakePrefrence: varchar("outtake_prefrence", { length: 256 }), // should be a multiple answer on form
+  avgCycleTime: varchar("avg_cycle_time", { length: 256 }).notNull(),
+  avgNumCycles: varchar("avg_num_cycles", { length: 256 }).notNull(),
+  hasDC: boolean("has_dc").notNull(),
+  hasTipped: boolean("has_tipped").notNull(),
+  image: varchar("image", { length: 256 }).notNull(),
+  createdAt: timestamp("created_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+});
+
+export const qualitativeScouting = pgTable("qualitative_scouting", {
+  id: varchar("id", { length: 256 }).primaryKey(),
+  userId: varchar("user_id", {
+    length: 256
+  })
+    .references(() => profile.id)
+    .notNull(),
+  createdAt: timestamp("created_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  teamNum: varchar("team_num", { length: 256 }).notNull(),
+  alliance: allianceEnum("alliance").notNull(),
+  matchNum: varchar("match_num", { length: 256 }).notNull(),
+  eventNum: varchar("event_num", { length: 256 }).notNull(),
+  robotRole: robotRoleEnum("robot_role").notNull(),
+  fieldAwareness: varchar("field_awareness", { length: 256 }).notNull(),
+  driverAwareness: varchar("driver_awareness", { length: 256 }).notNull(),
+  driverAbility: varchar("driver_ability", { length: 256 }).notNull(),
+});
 export const profileRelations = relations(profile, ({ many }) => ({
   posts: many(post),
 }));
