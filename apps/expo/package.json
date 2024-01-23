@@ -8,6 +8,7 @@
     "dev": "pnpm with-env expo start --ios",
     "dev:android": "pnpm with-env expo start --android",
     "dev:ios": "pnpm with-env expo start --ios",
+    "dev:go": "pnpm with-env expo start --go",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit",
