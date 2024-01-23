@@ -78,6 +78,21 @@ export const robotRoleEnum = pgEnum("robot_role", [
   "offensive"
 ]);
 
+export const matches = pgTable("matches",{
+  id: varchar("id", { length: 256 }).primaryKey(),
+  matchNum: varchar("match_num", { length: 256 }).notNull(),
+  teamNum: varchar("team_num", { length: 256 }).notNull(),
+  alliance: allianceEnum("alliance").notNull(),
+  eventNum: varchar("event_num", { length: 256 }).notNull().references(() => events.eventNum),
+});
+
+export const events = pgTable("events",{
+  id: varchar("id", { length: 256 }).primaryKey(),
+  eventNum: varchar("event_num", { length: 256 }).notNull().primaryKey(),
+});
+
+
+
 export const quantitativeScouting = pgTable("quantitative_scouting", {
   id: varchar("id", { length: 256 }).primaryKey(),
   userId: varchar("user_id", {
@@ -87,7 +102,7 @@ export const quantitativeScouting = pgTable("quantitative_scouting", {
     .references(() => profile.id),
   alliance: allianceEnum("alliance").notNull(), // team and match information
   teamNum: varchar("team_num", { length: 256 }).notNull(),
-  matchNum: varchar("match_num", { length: 256 }).notNull(),
+  matchNum: varchar("match_num", { length: 256 }).notNull().references(() => matches.matchNum),
   numScoredAuto: integer("num_scored_auto").notNull(), // auto information
   didIntakeAuto: boolean("did_intake_auto").notNull(),
   didLeave: boolean("did_leave").notNull(),
@@ -145,8 +160,8 @@ export const qualitativeScouting = pgTable("qualitative_scouting", {
     .notNull(),
   teamNum: varchar("team_num", { length: 256 }).notNull(),
   alliance: allianceEnum("alliance").notNull(),
-  matchNum: varchar("match_num", { length: 256 }).notNull(),
-  eventNum: varchar("event_num", { length: 256 }).notNull(),
+  matchNum: varchar("match_num", { length: 256 }).notNull().references(() => matches.matchNum),
+  eventNum: varchar("event_num", { length: 256 }).notNull().references(() => matches.eventNum),
   robotRole: robotRoleEnum("robot_role").notNull(),
   fieldAwareness: varchar("field_awareness", { length: 256 }).notNull(),
   driverAwareness: varchar("driver_awareness", { length: 256 }).notNull(),
