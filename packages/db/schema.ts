@@ -79,9 +79,9 @@ export const matches = pgTable("matches", {
 	matchNum: varchar("match_num", { length: 256 }).notNull(),
 	teamNum: varchar("team_num", { length: 256 }).notNull(),
 	alliance: allianceEnum("alliance").notNull(),
-	eventNum: varchar("event_num", { length: 256 })
+	eventId: varchar("event_id", { length: 256 })
 		.notNull()
-		.references(() => events.eventNum),
+		.references(() => events.id),
 });
 
 export const events = pgTable("events", {
@@ -98,9 +98,9 @@ export const quantitativeScouting = pgTable("quantitative_scouting", {
 		.references(() => profile.id),
 	alliance: allianceEnum("alliance").notNull(), // team and match information
 	teamNum: varchar("team_num", { length: 256 }).notNull(),
-	matchNum: varchar("match_num", { length: 256 })
+	matchId: varchar("match_id", { length: 256 })
 		.notNull()
-		.references(() => matches.matchNum),
+		.references(() => matches.id),
 	numScoredAuto: integer("num_scored_auto").notNull(), // auto information
 	didIntakeAuto: boolean("did_intake_auto").notNull(),
 	didLeave: boolean("did_leave").notNull(),
@@ -152,12 +152,12 @@ export const qualitativeScouting = pgTable("qualitative_scouting", {
 	createdAt: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`).notNull(),
 	teamNum: varchar("team_num", { length: 256 }).notNull(),
 	alliance: allianceEnum("alliance").notNull(),
-	matchNum: varchar("match_num", { length: 256 })
+	matchId: varchar("match_id", { length: 256 })
 		.notNull()
-		.references(() => matches.matchNum),
-	eventNum: varchar("event_num", { length: 256 })
+		.references(() => matches.id),
+	eventId: varchar("event_id", { length: 256 })
 		.notNull()
-		.references(() => matches.eventNum),
+		.references(() => events.id),
 	robotRole: robotRoleEnum("robot_role").notNull(),
 	fieldAwareness: varchar("field_awareness", { length: 256 }).notNull(),
 	driverAwareness: varchar("driver_awareness", { length: 256 }).notNull(),
