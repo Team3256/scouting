@@ -191,166 +191,200 @@ function SelectDemoItem(props: SelectProps) {
     </Select>
   );
 }
-
-function PostCard(props: { post: RouterOutputs["post"]["all"][number] }) {
-  const { post } = props;
-
-  const utils = api.useUtils();
-
-  const { mutate: deletePost } = api.post.delete.useMutation({
-    onSettled: () => utils.post.all.invalidate(),
-    onError: (error) => {
-      if (error.data?.code === "UNAUTHORIZED")
-        Alert.alert("Error", "Only the author can delete their post");
-    },
-  });
-
-  return (
-    <View className="flex flex-row rounded-lg bg-white/10 p-4">
-      <View className="flex-grow">
-        <Link
-          asChild
-          href={{
-            pathname: "/post/[id]",
-            params: { id: props.post.id },
-          }}
-        >
-          <Pressable>
-            <Image
-              className="mr-2 h-10 w-10 self-center rounded-full"
-              source={post.author?.image ?? ""}
-            />
-            <View>
-              <Text className="text-xl font-semibold text-emerald-400">
-                {post.title}
-              </Text>
-              <Text className="mt-2 text-zinc-200">{post.content}</Text>
-            </View>
-          </Pressable>
-        </Link>
-      </View>
-      <Pressable onPress={() => deletePost(post.id)}>
-        <Text className="font-bold uppercase text-emerald-400">Delete</Text>
-      </Pressable>
-    </View>
-  );
+interface MatchScoutAssignment {
+	alliance: "red" | "blue";
+	team: number;
+	red: [number, number, number];
+	blue: [number, number, number];
 }
-
-function CreatePost() {
-  const utils = api.useUtils();
-
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
-
-  const { mutate: createPost, error } = api.post.create.useMutation({
-    onSuccess: async () => {
-      setTitle("");
-      setContent("");
-      Keyboard.dismiss();
-      await utils.post.all.invalidate();
-    },
-    onError: (error) => {
-      if (error.data?.code === "UNAUTHORIZED")
-        Alert.alert("Error", "You must be logged in to create a post");
-    },
-  });
-
-  return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={150}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss} className="flex-1">
-        <View className="mt-4 justify-around">
-          <TextInput
-            className="mb-2 rounded bg-white/10 p-2 text-zinc-200"
-            placeholderTextColor="#A1A1A9" // zinc-400
-            value={title}
-            onChangeText={setTitle}
-            placeholder="Title"
-          />
-          {error?.data?.zodError?.fieldErrors.title && (
-            <Text className="mb-2 text-red-500">
-              {error.data.zodError.fieldErrors.title}
-            </Text>
-          )}
-          <TextInput
-            className="mb-2 rounded bg-white/10 p-2 text-zinc-200"
-            placeholderTextColor="#A1A1A9" // zinc-400
-            value={content}
-            onChangeText={setContent}
-            placeholder="Content"
-          />
-          {error?.data?.zodError?.fieldErrors.content && (
-            <Text className="mb-2 text-red-500">
-              {error.data.zodError.fieldErrors.content}
-            </Text>
-          )}
-          <Pressable
-            className="rounded bg-emerald-400 p-2"
-            onPress={() => {
-              createPost({
-                title,
-                content,
-              });
-            }}
-          >
-            <Text className="font-semibold text-zinc-900">Publish post</Text>
-          </Pressable>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-  );
+function MatchScoutAssignment({
+	assignment,
+}: { assignment: MatchScoutAssignment }) {
+	return (
+		<View className="flex flex-row rounded-lg bg-white/10 p-4">
+			<View className="flex-grow">
+				<View className="flex flex-row justify-evenly">
+					<View>
+						<Text className="text-emerald-400">
+							Red: {assignment.red.join(", ")}
+						</Text>
+						<Text className="text-emerald-400">
+							Blue: {assignment.blue.join(", ")}
+						</Text>
+					</View>
+					<View>
+						<Text className="text-emerald-400">
+							Your team: {assignment.team}
+						</Text>
+						<Link href="/match" asChild={true}>
+							<Button>Start</Button>
+						</Link>
+					</View>
+				</View>
+			</View>
+		</View>
+	);
 }
+// function PostCard({ post }: { post: RouterOutputs["post"]["all"][number] }) {
+// 	const utils = api.useUtils();
+
+// 	const { mutate: deletePost } = api.post.delete.useMutation({
+// 		onSettled: () => utils.post.all.invalidate(),
+// 		onError: (error) => {
+// 			if (error.data?.code === "UNAUTHORIZED")
+// 				Alert.alert("Error", "Only the author can delete their post");
+// 		},
+// 	});
+
+// 	return (
+// 		<View className="flex flex-row rounded-lg bg-white/10 p-4">
+// 			<View className="flex-grow">
+// 				<Link
+// 					asChild
+// 					href={{
+// 						pathname: "/post/[id]",
+// 						params: { id: props.post.id },
+// 					}}
+// 				>
+// 					<Pressable>
+// 						<Image
+// 							className="mr-2 h-10 w-10 self-center rounded-full"
+// 							source={post.author?.image ?? ""}
+// 						/>
+// 						<View>
+// 							<Text className="text-xl font-semibold text-emerald-400">
+// 								{post.title}
+// 							</Text>
+// 							<Text className="mt-2 text-zinc-200">{post.content}</Text>
+// 						</View>
+// 					</Pressable>
+// 				</Link>
+// 			</View>
+// 			<Pressable onPress={() => deletePost(post.id)}>
+// 				<Text className="font-bold uppercase text-emerald-400">Delete</Text>
+// 			</Pressable>
+// 		</View>
+// 	);
+// }
+
+// function CreatePost() {
+// 	const utils = api.useUtils();
+
+// 	const [title, setTitle] = React.useState("");
+// 	const [content, setContent] = React.useState("");
+
+// 	const { mutate: createPost, error } = api.post.create.useMutation({
+// 		onSuccess: async () => {
+// 			setTitle("");
+// 			setContent("");
+// 			Keyboard.dismiss();
+// 			await utils.post.all.invalidate();
+// 		},
+// 		onError: (error) => {
+// 			if (error.data?.code === "UNAUTHORIZED")
+// 				Alert.alert("Error", "You must be logged in to create a post");
+// 		},
+// 	});
+
+// 	return (
+// 		<KeyboardAvoidingView
+// 			behavior={Platform.OS === "ios" ? "padding" : "height"}
+// 			keyboardVerticalOffset={150}
+// 		>
+// 			<TouchableWithoutFeedback onPress={Keyboard.dismiss} className="flex-1">
+// 				<View className="mt-4 justify-around">
+// 					<TextInput
+// 						className="mb-2 rounded bg-white/10 p-2 text-zinc-200"
+// 						placeholderTextColor="#A1A1A9" // zinc-400
+// 						value={title}
+// 						onChangeText={setTitle}
+// 						placeholder="Title"
+// 					/>
+// 					{error?.data?.zodError?.fieldErrors.title && (
+// 						<Text className="mb-2 text-red-500">
+// 							{error.data.zodError.fieldErrors.title}
+// 						</Text>
+// 					)}
+// 					<TextInput
+// 						className="mb-2 rounded bg-white/10 p-2 text-zinc-200"
+// 						placeholderTextColor="#A1A1A9" // zinc-400
+// 						value={content}
+// 						onChangeText={setContent}
+// 						placeholder="Content"
+// 					/>
+// 					{error?.data?.zodError?.fieldErrors.content && (
+// 						<Text className="mb-2 text-red-500">
+// 							{error.data.zodError.fieldErrors.content}
+// 						</Text>
+// 					)}
+// 					<Pressable
+// 						className="rounded bg-emerald-400 p-2"
+// 						onPress={() => {
+// 							createPost({
+// 								title,
+// 								content,
+// 							});
+// 						}}
+// 					>
+// 						<Text className="font-semibold text-zinc-900">Publish post</Text>
+// 					</Pressable>
+// 				</View>
+// 			</TouchableWithoutFeedback>
+// 		</KeyboardAvoidingView>
+// 	);
+// }
 
 export default function HomeScreen() {
   const utils = api.useUtils();
 
-  const { data: posts } = api.post.all.useQuery();
+	// const { data: posts } = api.post.all.useQuery();
+	const exampleMatchScoutAssignments: MatchScoutAssignment[] = [
+		{ alliance: "red", team: 5, red: [1, 2, 3], blue: [4, 5, 6] },
+	];
 
-  return (
-    <SafeAreaView className="bg-zinc-900">
-      <Stack.Screen
-        options={{
-          headerLeft: () => <AuthAvatar />,
-          headerTitle: () => (
-            <Text className="text-3xl font-bold text-zinc-200">
-              <Text className="text-fuchsia-500">T3</Text>
-              <Text> x </Text>
-              <Text className="text-emerald-400">Supabase</Text>
-            </Text>
-          ),
-        }}
-      />
-      <View className="h-full w-full p-4">
-        <XStack ai="center">
-          <Label f={1} fb={0} color="white">
-            Native
-          </Label>
+	return (
+		<SafeAreaView className="bg-zinc-900">
+			<Stack.Screen
+				options={{
+					headerLeft: () => <AuthAvatar />,
+					headerTitle: () => (
+						<Text className="text-3xl font-bold text-zinc-200">
+							<Text className="text-fuchsia-500">T3</Text>
+							<Text> x </Text>
+							<Text className="text-emerald-400">Supabase</Text>
+						</Text>
+					),
+				}}
+			/>
+			<View className="h-full w-full p-4">
+				{/* <XStack ai="center">
+					<Label f={1} fb={0} color="white">
+						Native
+					</Label>
 
-          <SelectDemoItem native />
-        </XStack>
-        <Pressable
-          className="my-4 rounded bg-emerald-400 p-2"
-          onPress={() => void utils.post.all.invalidate()}
-        >
-          <Text className="font-semibold text-zinc-900">Refresh posts</Text>
-        </Pressable>
-        <Link href="/match/">CLick here</Link>
-        <FlashList
-          data={posts}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => <PostCard post={p.item} />}
-        />
-        <Text>
-          {JSON.stringify(
-            Object.keys(quantitativeScouting).filter(
-              (x) => !(x.toLowerCase().endsWith("id") || x === "createdAt"),
-            ),
-          )}
-        </Text>
-        {/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
+					<SelectDemoItem native />
+				</XStack> */}
+				<Pressable
+					className="my-4 rounded bg-emerald-400 p-2"
+					onPress={() => void utils.post.all.invalidate()}
+				>
+					<Text className="font-semibold text-zinc-900">Refresh posts</Text>
+				</Pressable>
+
+				<FlashList
+					data={exampleMatchScoutAssignments}
+					estimatedItemSize={20}
+					ItemSeparatorComponent={() => <View className="h-2" />}
+					renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
+				/>
+				<Text>
+					{JSON.stringify(
+						Object.keys(quantitativeScouting).filter(
+							(x) => !(x.toLowerCase().endsWith("id") || x === "createdAt"),
+						),
+					)}
+				</Text>
+				{/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
 					<XStack alignItems="center">
 						<Input flex={1} size={"$2"} placeholder={`Size ${"$2"}...`} />
 						<Button size={"$2"}>Go</Button>
@@ -370,8 +404,8 @@ export default function HomeScreen() {
 					<TextArea placeholder="Enter your details..." />
 				</YStack> */}
 
-        <CreatePost />
-      </View>
-    </SafeAreaView>
-  );
+				{/* <CreatePost /> */}
+			</View>
+		</SafeAreaView>
+	);
 }
