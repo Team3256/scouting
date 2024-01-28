@@ -15,15 +15,14 @@ import { Image } from "expo-image";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
+import type { FontSizeTokens, SelectProps } from "tamagui";
 import {
   Adapt,
   Button,
-  FontSizeTokens,
   getFontSize,
   Input,
   Label,
   Select,
-  SelectProps,
   Sheet,
   SizeTokens,
   TextArea,
@@ -192,38 +191,40 @@ function SelectDemoItem(props: SelectProps) {
   );
 }
 interface MatchScoutAssignment {
-	alliance: "red" | "blue";
-	team: number;
-	red: [number, number, number];
-	blue: [number, number, number];
+  alliance: "red" | "blue";
+  team: number;
+  red: [number, number, number];
+  blue: [number, number, number];
 }
 function MatchScoutAssignment({
-	assignment,
-}: { assignment: MatchScoutAssignment }) {
-	return (
-		<View className="flex flex-row rounded-lg bg-white/10 p-4">
-			<View className="flex-grow">
-				<View className="flex flex-row justify-evenly">
-					<View>
-						<Text className="text-emerald-400">
-							Red: {assignment.red.join(", ")}
-						</Text>
-						<Text className="text-emerald-400">
-							Blue: {assignment.blue.join(", ")}
-						</Text>
-					</View>
-					<View>
-						<Text className="text-emerald-400">
-							Your team: {assignment.team}
-						</Text>
-						<Link href="/match" asChild={true}>
-							<Button>Start</Button>
-						</Link>
-					</View>
-				</View>
-			</View>
-		</View>
-	);
+  assignment,
+}: {
+  assignment: MatchScoutAssignment;
+}) {
+  return (
+    <View className="flex flex-row rounded-lg bg-white/10 p-4">
+      <View className="flex-grow">
+        <View className="flex flex-row justify-evenly">
+          <View>
+            <Text className="text-emerald-400">
+              Red: {assignment.red.join(", ")}
+            </Text>
+            <Text className="text-emerald-400">
+              Blue: {assignment.blue.join(", ")}
+            </Text>
+          </View>
+          <View>
+            <Text className="text-emerald-400">
+              Your team: {assignment.team}
+            </Text>
+            <Link href="/match" asChild={true}>
+              <Button>Start</Button>
+            </Link>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
 }
 // function PostCard({ post }: { post: RouterOutputs["post"]["all"][number] }) {
 // 	const utils = api.useUtils();
@@ -337,54 +338,54 @@ function MatchScoutAssignment({
 export default function HomeScreen() {
   const utils = api.useUtils();
 
-	// const { data: posts } = api.post.all.useQuery();
-	const exampleMatchScoutAssignments: MatchScoutAssignment[] = [
-		{ alliance: "red", team: 5, red: [1, 2, 3], blue: [4, 5, 6] },
-	];
+  // const { data: posts } = api.post.all.useQuery();
+  const exampleMatchScoutAssignments: MatchScoutAssignment[] = [
+    { alliance: "red", team: 5, red: [1, 2, 3], blue: [4, 5, 6] },
+  ];
 
-	return (
-		<SafeAreaView className="bg-zinc-900">
-			<Stack.Screen
-				options={{
-					headerLeft: () => <AuthAvatar />,
-					headerTitle: () => (
-						<Text className="text-3xl font-bold text-zinc-200">
-							<Text className="text-fuchsia-500">T3</Text>
-							<Text> x </Text>
-							<Text className="text-emerald-400">Supabase</Text>
-						</Text>
-					),
-				}}
-			/>
-			<View className="h-full w-full p-4">
-				{/* <XStack ai="center">
+  return (
+    <SafeAreaView className="bg-zinc-900">
+      <Stack.Screen
+        options={{
+          headerLeft: () => <AuthAvatar />,
+          headerTitle: () => (
+            <Text className="text-3xl font-bold text-zinc-200">
+              <Text className="text-fuchsia-500">T3</Text>
+              <Text> x </Text>
+              <Text className="text-emerald-400">Supabase</Text>
+            </Text>
+          ),
+        }}
+      />
+      <View className="h-full w-full p-4">
+        {/* <XStack ai="center">
 					<Label f={1} fb={0} color="white">
 						Native
 					</Label>
 
 					<SelectDemoItem native />
 				</XStack> */}
-				<Pressable
-					className="my-4 rounded bg-emerald-400 p-2"
-					onPress={() => void utils.post.all.invalidate()}
-				>
-					<Text className="font-semibold text-zinc-900">Refresh posts</Text>
-				</Pressable>
+        <Pressable
+          className="my-4 rounded bg-emerald-400 p-2"
+          onPress={() => void utils.post.all.invalidate()}
+        >
+          <Text className="font-semibold text-zinc-900">Refresh posts</Text>
+        </Pressable>
 
-				<FlashList
-					data={exampleMatchScoutAssignments}
-					estimatedItemSize={20}
-					ItemSeparatorComponent={() => <View className="h-2" />}
-					renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
-				/>
-				<Text>
-					{JSON.stringify(
-						Object.keys(quantitativeScouting).filter(
-							(x) => !(x.toLowerCase().endsWith("id") || x === "createdAt"),
-						),
-					)}
-				</Text>
-				{/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
+        <FlashList
+          data={exampleMatchScoutAssignments}
+          estimatedItemSize={20}
+          ItemSeparatorComponent={() => <View className="h-2" />}
+          renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
+        />
+        <Text>
+          {JSON.stringify(
+            Object.keys(quantitativeScouting).filter(
+              (x) => !(x.toLowerCase().endsWith("id") || x === "createdAt"),
+            ),
+          )}
+        </Text>
+        {/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
 					<XStack alignItems="center">
 						<Input flex={1} size={"$2"} placeholder={`Size ${"$2"}...`} />
 						<Button size={"$2"}>Go</Button>
@@ -404,8 +405,8 @@ export default function HomeScreen() {
 					<TextArea placeholder="Enter your details..." />
 				</YStack> */}
 
-				{/* <CreatePost /> */}
-			</View>
-		</SafeAreaView>
-	);
+        {/* <CreatePost /> */}
+      </View>
+    </SafeAreaView>
+  );
 }

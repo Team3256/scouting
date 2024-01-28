@@ -10,26 +10,38 @@ import {
   XStack,
   YStack,
 } from "tamagui";
+import Teleop from "./Teleop";
+import Auto from "./Auto";
+import Endgame from "./Endgame";
 
-export default function matchPage() {
+export default function Match() {
   return (
-    <Tabs>
-      <Tabs.List space>
-        <Tabs.Tab value="tab1">
-          <SizableText>Tab 1</SizableText>
-        </Tabs.Tab>
+    <View>
+      <Tabs flexDirection="column">
+        <Tabs.List gap>
+          <Tabs.Tab value="tab1">
+            <SizableText>Auto</SizableText>
+          </Tabs.Tab>
 
-        <Tabs.Tab value="tab2">
-          <SizableText>Tab 2</SizableText>
-        </Tabs.Tab>
-      </Tabs.List>
-      <Tabs.Content value="tab1">
-        <H5>Tab 1</H5>
-      </Tabs.Content>
+          <Tabs.Tab value="tab2">
+            <SizableText>Teleop</SizableText>
+          </Tabs.Tab>
+          <Tabs.Tab value="tab3">
+            <SizableText>Endgame</SizableText>
+          </Tabs.Tab>
+        </Tabs.List>
 
-      <Tabs.Content value="tab2">
-        <H5>Tab 2</H5>
-      </Tabs.Content>
-    </Tabs>
+        <Tabs.Content value="tab1">
+          <Auto />
+        </Tabs.Content>
+
+        <Tabs.Content value="tab2">
+          <Teleop />
+        </Tabs.Content>
+        <Tabs.Content value="tab3">
+          <Endgame />
+        </Tabs.Content>
+      </Tabs>
+    </View>
   );
 }
