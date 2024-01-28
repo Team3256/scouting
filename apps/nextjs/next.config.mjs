@@ -1,4 +1,3 @@
-
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -7,7 +6,11 @@ const config = {
 
   // Allow optimizing avatar images from GitHub
   images: {
-  domains: ["avatars.githubusercontent.com", "*.googleusercontent.com", "lh3.googleusercontent.com"],
+    domains: [
+      "avatars.githubusercontent.com",
+      "*.googleusercontent.com",
+      "lh3.googleusercontent.com",
+    ],
   },
 
   /** We already do linting and typechecking as separate tasks in CI */

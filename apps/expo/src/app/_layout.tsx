@@ -1,8 +1,9 @@
+import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useFonts } from "expo-font";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { TamaguiProvider } from "tamagui";
+
 import tamaguiConfig from "@acme/tamagui-config";
 
 import { HeaderBackButton, HeaderTitle } from "../components/header";
@@ -11,9 +12,9 @@ import { supabase } from "../utils/supabase";
 
 import "../styles.css";
 
+import { useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { cssInterop } from "nativewind";
-import { useEffect } from "react";
 
 cssInterop(SafeAreaView, { className: "style" });
 

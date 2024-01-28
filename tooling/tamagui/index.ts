@@ -2,9 +2,9 @@
 // for reanimated: @tamagui/config/v2-reanimated
 // for react-native only: @tamagui/config/v2-native
 import { config } from "@tamagui/config/v2";
-import { createTamagui, createTokens } from "tamagui"; // or '@tamagui/core'
 import { createInterFont } from "@tamagui/font-inter";
 import { color, radius, size, space, themes, zIndex } from "@tamagui/themes";
+import { createTamagui, createTokens } from "tamagui"; // or '@tamagui/core'
 
 const headingFont = createInterFont({
   size: {

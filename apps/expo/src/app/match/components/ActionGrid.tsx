@@ -1,11 +1,16 @@
-import { useState, useEffect, useCallback } from "react";
-import { TouchableOpacity, View, Text } from "react-native";
-import { Button } from "tamagui";
-import { Plus, ArrowLeftCircle } from "@tamagui/lucide-icons";
-import { Check as CheckIcon, Undo2 } from "@tamagui/lucide-icons";
 import type { CheckboxProps, SizeTokens } from "tamagui";
-import { Checkbox, Label, XStack, YStack } from "tamagui";
+import { useCallback, useEffect, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import {
+  ArrowLeftCircle,
+  Check as CheckIcon,
+  Plus,
+  Undo2,
+} from "@tamagui/lucide-icons";
+import { Button, Checkbox, Label, XStack, YStack } from "tamagui";
+
 import ActionButton from "./ActionButton";
+
 export type History = [string, number][];
 export default function ActionGrid({
   actions,

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Button } from "tamagui";
-import { Plus, ArrowLeftCircle } from "@tamagui/lucide-icons";
-import { Check as CheckIcon } from "@tamagui/lucide-icons";
 import type { CheckboxProps, SizeTokens } from "tamagui";
-import { Checkbox, Label, XStack, YStack } from "tamagui";
+import React, { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import {
+  ArrowLeftCircle,
+  Check as CheckIcon,
+  Plus,
+} from "@tamagui/lucide-icons";
+import { Button, Checkbox, Label, XStack, YStack } from "tamagui";
+
 import ActionButton from "./components/ActionButton";
 import ActionGrid from "./components/ActionGrid";
 import CheckboxWithLabel from "./components/CheckboxWithLabel";

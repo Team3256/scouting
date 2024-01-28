@@ -1,3 +1,4 @@
+import type { FontSizeTokens, SelectProps } from "tamagui";
 import React, { useMemo, useState } from "react";
 import {
   Alert,
@@ -15,7 +16,6 @@ import { Image } from "expo-image";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
-import type { FontSizeTokens, SelectProps } from "tamagui";
 import {
   Adapt,
   Button,

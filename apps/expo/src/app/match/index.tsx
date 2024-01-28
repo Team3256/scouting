@@ -10,9 +10,10 @@ import {
   XStack,
   YStack,
 } from "tamagui";
-import Teleop from "./Teleop";
+
 import Auto from "./Auto";
 import Endgame from "./Endgame";
+import Teleop from "./Teleop";
 
 export default function Match() {
   return (

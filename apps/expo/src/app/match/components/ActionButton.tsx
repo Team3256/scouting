@@ -1,7 +1,6 @@
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { Plus } from "@tamagui/lucide-icons";
-import { Button } from "tamagui";
-import { createTamagui, createTokens } from "tamagui";
+import { Button, createTamagui, createTokens } from "tamagui";
 
 export default function ActionButton({
   label,

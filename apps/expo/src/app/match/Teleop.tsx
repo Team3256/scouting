@@ -1,7 +1,9 @@
-import { View, Text } from "react-native";
-import ActionButton from "./components/ActionButton";
+import { Text, View } from "react-native";
 import { XStack } from "tamagui";
+
+import ActionButton from "./components/ActionButton";
 import ActionGrid from "./components/ActionGrid";
+
 export default function Teleop() {
   const intakeActions = [
     "Human",

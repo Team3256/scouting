@@ -51,14 +51,17 @@ export const signInWithGoogle = async () => {
 
   const res = await supabase.auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo: `${origin}/auth/callback`, queryParams: {
-      "hd": "warriorlife.net" // https://developers.google.com/identity/openid-connect/openid-connect#hd-param
-    } },
+    options: {
+      redirectTo: `${origin}/auth/callback`,
+      queryParams: {
+        hd: "warriorlife.net", // https://developers.google.com/identity/openid-connect/openid-connect#hd-param
+      },
+    },
   });
 
   if (res.data.url) redirect(res.data.url);
   throw res.error;
-}
+};
 
 export const signOut = async () => {
   const supabase = createServerActionClient({ cookies });
