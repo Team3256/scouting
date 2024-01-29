@@ -18,7 +18,7 @@ import Teleop from "./Teleop";
 export default function Match() {
   return (
     <View>
-      <Tabs flexDirection="column">
+      <Tabs defaultValue="tab1" flexDirection="column">
         <Tabs.List gap>
           <Tabs.Tab value="tab1">
             <SizableText>Auto</SizableText>
