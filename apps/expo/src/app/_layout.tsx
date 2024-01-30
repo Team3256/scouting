@@ -49,7 +49,11 @@ export default function RootLayout() {
               headerTitle: HeaderTitle,
               headerStyle: {
                 backgroundColor: "#18181A",
-                // backgroundColor: "FFFF00",
+                // backgroundColor: "#008000",
+                // backgroundColor: "#FFFF00",
+              },
+              contentStyle: {
+                // backgroundColor: "#334155",
               },
             }}
           >

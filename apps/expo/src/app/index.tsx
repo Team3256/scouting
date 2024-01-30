@@ -202,12 +202,18 @@ function MatchScoutAssignment({
   assignment: MatchScoutAssignment;
 }) {
   return (
-    <View className="flex flex-row rounded-lg bg-white/10 p-4">
-      <View className="flex-grow">
+    <View className="bg-blue/10 flex flex-row rounded-lg bg-white/10 p-4">
+      <View className="flex-grow flex-col">
         <View className="flex flex-row justify-evenly">
           <View>
             <Text className="text-emerald-400">
-              Red: {assignment.red.join(", ")}
+              <Text
+                style={{ padding: 20 }}
+                className="rounded-box bg-stone-500 text-cyan-300"
+              >
+                Red
+              </Text>
+              : {assignment.red.join(", ")}
             </Text>
             <Text className="text-emerald-400">
               Blue: {assignment.blue.join(", ")}
@@ -217,9 +223,11 @@ function MatchScoutAssignment({
             <Text className="text-emerald-400">
               Your team: {assignment.team}
             </Text>
-            <Link href="/match" asChild={true}>
-              <Button>Start</Button>
-            </Link>
+            <View className="bg-zinc-900">
+              <Link href="/match/" asChild={true}>
+                <Button>Start</Button>
+              </Link>
+            </View>
           </View>
         </View>
       </View>
@@ -371,7 +379,7 @@ export default function HomeScreen() {
         >
           <Text className="font-semibold text-zinc-900">Refresh posts</Text>
         </Pressable>
-
+        {/* <SelectDemoItem /> */}
         <FlashList
           data={exampleMatchScoutAssignments}
           estimatedItemSize={20}

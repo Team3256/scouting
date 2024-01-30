@@ -7,46 +7,24 @@ import {
   Plus,
 } from "@tamagui/lucide-icons";
 import { Button, Checkbox, Label, XStack, YStack } from "tamagui";
+import { Check } from "@tamagui/lucide-icons";
 
 export default function CheckboxWithLabel({
   size,
   label,
+  ...props
 }: CheckboxProps & { size: SizeTokens; label?: string }) {
   return (
-    <XStack width={300} alignItems="center" space="$4">
-      <Checkbox size={size}>
+    <XStack width={500} alignItems="center" space="$4">
+      <Checkbox size={size} {...props}>
         <Checkbox.Indicator>
           <CheckIcon />
         </Checkbox.Indicator>
       </Checkbox>
 
       <Label size={size}>
-        {/* <Text className="ml-2 p-2 text-lg font-bold text-red-400">Teesstt</Text> */}
+        <Text className="ml-2 p-2 text-lg font-bold text-red-400">{label}</Text>
       </Label>
     </XStack>
   );
 }
-
-/*
-export function CheckboxWithLabel({
-  size,
-  label = "Gained Mobility",
-  ...checkboxProps
-}: CheckboxProps & { size: SizeTokens; label?: string }) {
-  return (
-    <XStack width={300} alignItems="center" space="$4">
-      <Checkbox size={size} {...checkboxProps}>
-        <Checkbox.Indicator>
-          <CheckIcon />
-        </Checkbox.Indicator>
-      </Checkbox>
-
-      <Label size={size}>
-        <Text className="ml-2 p-2 text-lg font-bold text-blue-400">
-          {label}
-        </Text>
-      </Label>
-    </XStack>
-  );
-}
-*/

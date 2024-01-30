@@ -59,7 +59,6 @@ const tokens = createTokens({
 
 const appConfig = createTamagui({
   ...config,
-  // themes,
   tokens,
   fonts: {
     body: bodyFont,

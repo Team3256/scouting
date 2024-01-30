@@ -11,19 +11,19 @@ export default function ActionButton({
   action: () => void;
   theme?: string;
 }) {
-  const tokens = createTokens({
-    color: {
-      black: "#000",
+  // const tokens = createTokens({
+  //   color: {
+  //     black: "#000",
 
-      white: "#fff",
-    },
-  });
+  //     white: "#fff",
+  //   },
+  // });
 
-  const dark = {
-    background: tokens.color.black,
+  // const dark = {
+  //   background: tokens.color.black,
 
-    color: tokens.color.white,
-  };
+  //   color: tokens.color.white,
+  // };
 
   //https://tamagui.dev/docs/intro/themes
   return (
@@ -36,22 +36,8 @@ export default function ActionButton({
         paddingVertical: 10,
         flexDirection: "row",
         justifyContent: "start",
-        // height: "22%",
-        // flexWrap: "wrap",
-        // flexShrink: 1,
-        // flex: 1,
-        // overflow: hidden;
-        // "text-overflow": "ellipsis",
-        // "word-wrap": "break-word",
-        // display: "block",
-        // "line-height": "1em" /* a */,
-        // "max-height": "2em" /* a x number of line to show (ex : 2 line)  */,
+        // boxShadow: "inherit",
       }}
-      // alignSelf="center"
-      // cla
-      // noTextWrap={true}
-      // fontSize={"}
-      // theme=  "active"
     >
       {label}
     </Button>

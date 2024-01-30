@@ -14,10 +14,12 @@ import {
 import Auto from "./Auto";
 import Endgame from "./Endgame";
 import Teleop from "./Teleop";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Dangerous from "./components/Dangerous";
 
 export default function Match() {
   return (
-    <View>
+    <SafeAreaView className="h-full bg-slate-700">
       <Tabs defaultValue="tab1" flexDirection="column">
         <Tabs.List gap>
           <Tabs.Tab value="tab1">
@@ -32,17 +34,20 @@ export default function Match() {
           </Tabs.Tab>
         </Tabs.List>
 
-        <Tabs.Content value="tab1">
+        <Tabs.Content value="tab1" height={"100%"} paddingBottom="15%">
           <Auto />
+          <Dangerous />
         </Tabs.Content>
 
-        <Tabs.Content value="tab2">
+        <Tabs.Content value="tab2" height={"100%"} paddingBottom="15%">
           <Teleop />
+          <Dangerous />
         </Tabs.Content>
-        <Tabs.Content value="tab3">
+        <Tabs.Content value="tab3" height={"100%"} paddingBottom="15%">
           <Endgame />
+          <Dangerous />
         </Tabs.Content>
       </Tabs>
-    </View>
+    </SafeAreaView>
   );
 }
