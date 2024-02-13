@@ -4,6 +4,7 @@ import {
   doublePrecision,
   integer,
   json,
+  jsonb,
   pgEnum,
   pgTable,
   timestamp,
@@ -59,9 +60,12 @@ export const profile = pgTable("profile", {
 });
 
 export const allianceEnum = pgEnum("alliance", [
-  "default", // shouldn't ever be used
-  "red",
-  "blue",
+  "red1",
+  "red2",
+  "red3",
+  "blue1",
+  "blue2",
+  "blue3",
 ]);
 
 export const intakeEnum = pgEnum("intake", [
@@ -83,6 +87,7 @@ export const matches = pgTable("matches", {
   matchNum: varchar("match_num", { length: 256 }).notNull(),
   teamNum: varchar("team_num", { length: 256 }).notNull(),
   alliance: allianceEnum("alliance").notNull(),
+  eventLog: jsonb("eventLog"),
   eventId: varchar("event_id", { length: 256 })
     .notNull()
     .references(() => events.id),
