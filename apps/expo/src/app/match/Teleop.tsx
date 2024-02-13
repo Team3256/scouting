@@ -6,7 +6,11 @@ import ActionGrid, { History } from "./components/ActionGrid";
 import { useEffect, useState } from "react";
 import type { UltimateHistory } from "./types";
 
-export default function Teleop({ setUltimateHistory }: { setUltimateHistory: (history: UltimateHistory) => void }}) {
+export default function Teleop({
+  setUltimateHistory,
+}: {
+  setUltimateHistory: (history: UltimateHistory) => void;
+}) {
   const [history, setHistory] = useState<History>([]);
   const intakeActions = [
     "Human",
@@ -20,8 +24,8 @@ export default function Teleop({ setUltimateHistory }: { setUltimateHistory: (hi
   ];
   const shooterActions = ["Speaker", "Amp", "Miss S📢", "Miss Amp"];
   useEffect(() => {
-    setUltimateHistory({ log: history })
-  }, [history])
+    setUltimateHistory({ log: history });
+  }, [history]);
   return (
     <View className="mt-5">
       <Text className="pl-3 text-lg">Intake</Text>
