@@ -11,7 +11,11 @@ export async function GET(request: NextRequest) {
     const supabase = createRouteHandlerClient({ cookies });
     await supabase.auth.exchangeCodeForSession(code);
 
-    if ((await supabase.auth.getUser()).data.user?.email?.includes("robotics@warriorlife.net")){
+    if (
+      (await supabase.auth.getUser()).data.user?.email?.includes(
+        "robotics@warriorlife.net",
+      )
+    ) {
       console.log("Robotics user logged in");
     }
   }

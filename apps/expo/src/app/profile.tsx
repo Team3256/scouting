@@ -95,7 +95,7 @@ function SignedOutView() {
         </Text>
       </View>
       <Text
-        className="mb-2 mr-2  inline-flex w-full items-center justify-between rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50 dark:focus:ring-[#4285F4]/55"
+        className="dark:focus:ring-[#4285F4]/55 mb-2  mr-2 inline-flex w-full items-center justify-between rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50"
         onPress={signInWithGoogle}
       >
         <Text className="flex-1 text-center">Continue with Google</Text>

@@ -1,6 +1,8 @@
 import { relations, sql } from "drizzle-orm";
 import {
   boolean,
+  doublePrecision,
+  integer,
   json,
   pgEnum,
   pgTable,
@@ -73,20 +75,37 @@ export const intakeEnum = pgEnum("intake", [
 export const robotRoleEnum = pgEnum("robot_role", [
   "default",
   "defensive",
-  "offensive"
+  "offensive",
 ]);
+
+export const matches = pgTable("matches", {
+  id: varchar("id", { length: 256 }).primaryKey(),
+  matchNum: varchar("match_num", { length: 256 }).notNull(),
+  teamNum: varchar("team_num", { length: 256 }).notNull(),
+  alliance: allianceEnum("alliance").notNull(),
+  eventId: varchar("event_id", { length: 256 })
+    .notNull()
+    .references(() => events.id),
+});
+
+export const events = pgTable("events", {
+  id: varchar("id", { length: 256 }).primaryKey(),
+  eventNum: varchar("event_num", { length: 256 }).notNull(),
+});
 
 export const quantitativeScouting = pgTable("quantitative_scouting", {
   id: varchar("id", { length: 256 }).primaryKey(),
   userId: varchar("user_id", {
-    length: 256
+    length: 256,
   })
     .notNull()
     .references(() => profile.id),
   alliance: allianceEnum("alliance").notNull(), // team and match information
   teamNum: varchar("team_num", { length: 256 }).notNull(),
-  matchNum: varchar("match_num", { length: 256 }).notNull(),
-  numScoredAuto: varchar("num_scored_auto", { length: 256 }).notNull(), // auto information
+  matchId: varchar("match_id", { length: 256 })
+    .notNull()
+    .references(() => matches.id),
+  numScoredAuto: integer("num_scored_auto").notNull(), // auto information
   didIntakeAuto: boolean("did_intake_auto").notNull(),
   didLeave: boolean("did_leave").notNull(),
   numIntakes: varchar("num_intakes", { length: 256 }).notNull(), // teleop info
@@ -101,28 +120,28 @@ export const quantitativeScouting = pgTable("quantitative_scouting", {
   didTip: boolean("did_tip").notNull(),
   tipTime: varchar("tip_time"), // optional (enabled if didTip == true
   createdAt: timestamp("created_at")
-    .default(sql `CURRENT_TIMESTAMP`)
+    .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
 });
 
 export const pitScouting = pgTable("pit_scouting", {
   id: varchar("id", { length: 256 }).primaryKey(),
   userId: varchar("user_id", {
-    length: 256
+    length: 256,
   })
     .references(() => profile.id)
     .notNull(),
   teamNum: varchar("team_num", { length: 256 }).notNull(),
-  length: varchar("length", { length: 256 }).notNull(), // length, width, and height
-  width: varchar("width", { length: 256 }).notNull(),
-  height: varchar("height", { length: 256 }).notNull(),
-  lengthWExt: varchar("length_w_ext", { length: 256 }).notNull(),
-  widthWExt: varchar("width_w_ext", { length: 256 }).notNull(),
-  heightWExt: varchar("height_w_ext", { length: 256 }).notNull(),
+  length: doublePrecision("length").notNull(), // length, width, and height
+  width: doublePrecision("width").notNull(),
+  height: doublePrecision("height").notNull(),
+  lengthWExt: doublePrecision("length_w_ext").notNull(),
+  widthWExt: doublePrecision("width_w_ext").notNull(),
+  heightWExt: doublePrecision("height_w_ext").notNull(),
   robotWeight: varchar("robot_weight", { length: 256 }).notNull(),
-  outtakePrefrence: varchar("outtake_prefrence", { length: 256 }), // should be a multiple answer on form
-  avgCycleTime: varchar("avg_cycle_time", { length: 256 }).notNull(),
-  avgNumCycles: varchar("avg_num_cycles", { length: 256 }).notNull(),
+  outtakePreference: varchar("outtake_preference", { length: 256 }), // should be a multiple answer on form
+  avgCycleTime: doublePrecision("avg_cycle_time").notNull(),
+  avgNumCycles: doublePrecision("avg_num_cycles").notNull(),
   hasDC: boolean("has_dc").notNull(),
   hasTipped: boolean("has_tipped").notNull(),
   image: varchar("image", { length: 256 }).notNull(),
@@ -134,7 +153,7 @@ export const pitScouting = pgTable("pit_scouting", {
 export const qualitativeScouting = pgTable("qualitative_scouting", {
   id: varchar("id", { length: 256 }).primaryKey(),
   userId: varchar("user_id", {
-    length: 256
+    length: 256,
   })
     .references(() => profile.id)
     .notNull(),
@@ -143,8 +162,12 @@ export const qualitativeScouting = pgTable("qualitative_scouting", {
     .notNull(),
   teamNum: varchar("team_num", { length: 256 }).notNull(),
   alliance: allianceEnum("alliance").notNull(),
-  matchNum: varchar("match_num", { length: 256 }).notNull(),
-  eventNum: varchar("event_num", { length: 256 }).notNull(),
+  matchId: varchar("match_id", { length: 256 })
+    .notNull()
+    .references(() => matches.id),
+  eventId: varchar("event_id", { length: 256 })
+    .notNull()
+    .references(() => events.id),
   robotRole: robotRoleEnum("robot_role").notNull(),
   fieldAwareness: varchar("field_awareness", { length: 256 }).notNull(),
   driverAwareness: varchar("driver_awareness", { length: 256 }).notNull(),
@@ -161,8 +184,8 @@ export const location = pgTable("location", {
     length: 256,
   }).primaryKey(),
   name: varchar("name", { length: 256 }).notNull(),
-  latitude: varchar("latitude", { length: 256 }).notNull(),
-  longitude: varchar("longitude", { length: 256 }).notNull(),
+  latitude: doublePrecision("latitude").notNull(),
+  longitude: doublePrecision("longitude").notNull(),
   radius: varchar("radius", { length: 256 }).notNull(),
   createdAt: timestamp("created_at")
     .default(sql`CURRENT_TIMESTAMP`)
