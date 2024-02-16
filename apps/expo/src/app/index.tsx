@@ -191,6 +191,7 @@ function SelectDemoItem(props: SelectProps) {
   );
 }
 interface MatchScoutAssignment {
+  matchId: string;
   // alliance: "red" | "blue";
   team: number;
   red: [number, number, number];
@@ -224,7 +225,7 @@ function MatchScoutAssignment({
               Your team: {assignment.team}
             </Text>
             <View className="bg-zinc-900">
-              <Link href="/match/" asChild={true}>
+              <Link href={`/match/${assignment.matchId}`} asChild={true}>
                 <Button>Start</Button>
               </Link>
             </View>
