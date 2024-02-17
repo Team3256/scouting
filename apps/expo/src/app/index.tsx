@@ -1,15 +1,15 @@
 import type { FontSizeTokens, SelectProps } from "tamagui";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
-  Alert,
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  Text,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
+	Alert,
+	Keyboard,
+	KeyboardAvoidingView,
+	Platform,
+	Pressable,
+	Text,
+	TextInput,
+	TouchableWithoutFeedback,
+	View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
@@ -17,17 +17,17 @@ import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
 import {
-  Adapt,
-  Button,
-  getFontSize,
-  Input,
-  Label,
-  Select,
-  Sheet,
-  SizeTokens,
-  TextArea,
-  XStack,
-  YStack,
+	Adapt,
+	Button,
+	getFontSize,
+	Input,
+	Label,
+	Select,
+	Sheet,
+	SizeTokens,
+	TextArea,
+	XStack,
+	YStack,
 } from "tamagui";
 
 import type { RouterOutputs } from "../utils/api";
@@ -35,205 +35,193 @@ import { quantitativeScouting } from "../../../../packages/db/schema";
 import { AuthAvatar } from "../components/header";
 import { api } from "../utils/api";
 
-const items = [
-  { name: "Apple" },
-  { name: "Pear" },
-  { name: "Blackberry" },
-  { name: "Peach" },
-  { name: "Apricot" },
-  { name: "Melon" },
-  { name: "Honeydew" },
-  { name: "Starfruit" },
-  { name: "Blueberry" },
-  { name: "Raspberry" },
-  { name: "Strawberry" },
-  { name: "Mango" },
-  { name: "Pineapple" },
-  { name: "Lime" },
-  { name: "Lemon" },
-  { name: "Coconut" },
-  { name: "Guava" },
-  { name: "Papaya" },
-  { name: "Orange" },
-  { name: "Grape" },
-  { name: "Jackfruit" },
-  { name: "Durian" },
-];
-function SelectDemoItem(props: SelectProps) {
-  const [val, setVal] = useState("apple");
+function NativeSelect(
+	props: {
+		items: string[];
+		val: string;
+		setVal: React.Dispatch<React.SetStateAction<string>>;
+	} & SelectProps,
+) {
+	return (
+		<Select
+			id="food"
+			value={props.val}
+			onValueChange={props.setVal}
+			disablePreventBodyScroll
+			{...props}
+		>
+			<Select.Trigger width={220} iconAfter={ChevronDown}>
+				<Select.Value placeholder={props.val} />
+			</Select.Trigger>
 
-  return (
-    <Select
-      id="food"
-      value={val}
-      onValueChange={setVal}
-      disablePreventBodyScroll
-      {...props}
-    >
-      <Select.Trigger width={220} iconAfter={ChevronDown}>
-        <Select.Value placeholder="Something" />
-      </Select.Trigger>
+			<Adapt when="sm" platform="touch">
+				<Sheet
+					native={!!props.native}
+					modal
+					dismissOnSnapToBottom
+					animationConfig={{
+						type: "spring",
+						damping: 20,
+						mass: 1.2,
+						stiffness: 250,
+					}}
+				>
+					<Sheet.Frame>
+						<Sheet.ScrollView>
+							<Adapt.Contents />
+						</Sheet.ScrollView>
+					</Sheet.Frame>
+					<Sheet.Overlay
+						animation="lazy"
+						enterStyle={{ opacity: 0 }}
+						exitStyle={{ opacity: 0 }}
+					/>
+				</Sheet>
+			</Adapt>
 
-      <Adapt when="sm" platform="touch">
-        <Sheet
-          native={!!props.native}
-          modal
-          dismissOnSnapToBottom
-          animationConfig={{
-            type: "spring",
-            damping: 20,
-            mass: 1.2,
-            stiffness: 250,
-          }}
-        >
-          <Sheet.Frame>
-            <Sheet.ScrollView>
-              <Adapt.Contents />
-            </Sheet.ScrollView>
-          </Sheet.Frame>
-          <Sheet.Overlay
-            animation="lazy"
-            enterStyle={{ opacity: 0 }}
-            exitStyle={{ opacity: 0 }}
-          />
-        </Sheet>
-      </Adapt>
-
-      <Select.Content zIndex={200000}>
-        <Select.ScrollUpButton
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          width="100%"
-          height="$3"
-        >
-          <YStack zIndex={10}>
-            <ChevronUp size={20} />
-          </YStack>
-          {/* <LinearGradient
+			<Select.Content zIndex={200000}>
+				<Select.ScrollUpButton
+					alignItems="center"
+					justifyContent="center"
+					position="relative"
+					width="100%"
+					height="$3"
+				>
+					<YStack zIndex={10}>
+						<ChevronUp size={20} />
+					</YStack>
+					{/* <LinearGradient
 						start={[0, 0]}
 						end={[0, 1]}
 						fullscreen
 						colors={["$background", "transparent"]}
 						borderRadius="$4"
 					/> */}
-        </Select.ScrollUpButton>
+				</Select.ScrollUpButton>
 
-        <Select.Viewport
-          // to do animations:
-          // animation="quick"
-          // animateOnly={['transform', 'opacity']}
-          // enterStyle={{ o: 0, y: -10 }}
-          // exitStyle={{ o: 0, y: 10 }}
-          minWidth={200}
-        >
-          <Select.Group>
-            <Select.Label>Fruits</Select.Label>
-            {/* for longer lists memoizing these is useful */}
-            {useMemo(
-              () =>
-                items.map((item, i) => {
-                  return (
-                    <Select.Item
-                      index={i}
-                      key={item.name}
-                      value={item.name.toLowerCase()}
-                    >
-                      <Select.ItemText>{item.name}</Select.ItemText>
-                      <Select.ItemIndicator marginLeft="auto">
-                        <Check size={16} />
-                      </Select.ItemIndicator>
-                    </Select.Item>
-                  );
-                }),
-              [items],
-            )}
-          </Select.Group>
-          {/* Native gets an extra icon */}
-          {props.native && (
-            <YStack
-              position="absolute"
-              right={0}
-              top={0}
-              bottom={0}
-              alignItems="center"
-              justifyContent="center"
-              width={"$4"}
-              pointerEvents="none"
-            >
-              <ChevronDown
-                size={getFontSize((props.size as FontSizeTokens) ?? "$true")}
-              />
-            </YStack>
-          )}
-        </Select.Viewport>
+				<Select.Viewport
+					// to do animations:
+					// animation="quick"
+					// animateOnly={['transform', 'opacity']}
+					// enterStyle={{ o: 0, y: -10 }}
+					// exitStyle={{ o: 0, y: 10 }}
+					minWidth={200}
+				>
+					<Select.Group>
+						<Select.Label>{props.val}</Select.Label>
+						{/* for longer lists memoizing these is useful */}
+						{useMemo(
+							() =>
+								props.items
+									.filter((x) => x != props.val)
+									.map((item, i) => {
+										return (
+											<Select.Item
+												index={i}
+												key={item}
+												value={item.toLowerCase()}
+											>
+												<Select.ItemText>{item}</Select.ItemText>
+												<Select.ItemIndicator marginLeft="auto">
+													<Check size={16} />
+												</Select.ItemIndicator>
+											</Select.Item>
+										);
+									}),
+							[props.items],
+						)}
+					</Select.Group>
+					{/* Native gets an extra icon */}
+					{props.native && (
+						<YStack
+							position="absolute"
+							right={0}
+							top={0}
+							bottom={0}
+							alignItems="center"
+							justifyContent="center"
+							width={"$4"}
+							pointerEvents="none"
+						>
+							<ChevronDown
+								size={getFontSize((props.size as FontSizeTokens) ?? "$true")}
+							/>
+						</YStack>
+					)}
+				</Select.Viewport>
 
-        <Select.ScrollDownButton
-          alignItems="center"
-          justifyContent="center"
-          position="relative"
-          width="100%"
-          height="$3"
-        >
-          <YStack zIndex={10}>
-            <ChevronDown size={20} />
-          </YStack>
-          {/* <LinearGradient
+				<Select.ScrollDownButton
+					alignItems="center"
+					justifyContent="center"
+					position="relative"
+					width="100%"
+					height="$3"
+				>
+					<YStack zIndex={10}>
+						<ChevronDown size={20} />
+					</YStack>
+					{/* <LinearGradient
 						start={[0, 0]}
 						end={[0, 1]}
 						fullscreen
 						colors={["transparent", "$background"]}
 						borderRadius="$4"
 					/> */}
-        </Select.ScrollDownButton>
-      </Select.Content>
-    </Select>
-  );
+				</Select.ScrollDownButton>
+			</Select.Content>
+		</Select>
+	);
 }
 interface MatchScoutAssignment {
-  matchId: string;
-  // alliance: "red" | "blue";
-  team: number;
-  red: [number, number, number];
-  blue: [number, number, number];
+	matchId: string;
+	// alliance: "red" | "blue";
+	team: number;
+	red: [number, number, number];
+	blue: [number, number, number];
 }
 function MatchScoutAssignment({
-  assignment,
+	assignment,
 }: {
-  assignment: MatchScoutAssignment;
+	assignment: MatchScoutAssignment;
 }) {
-  return (
-    <View className="bg-blue/10 flex flex-row rounded-lg bg-white/10 p-4">
-      <View className="flex-grow flex-col">
-        <View className="flex flex-row justify-evenly">
-          <View>
-            <Text className="text-emerald-400">
-              <Text
-                style={{ padding: 20 }}
-                className="rounded-box bg-stone-500 text-cyan-300"
-              >
-                Red
-              </Text>
-              : {assignment.red.join(", ")}
-            </Text>
-            <Text className="text-emerald-400">
-              Blue: {assignment.blue.join(", ")}
-            </Text>
-          </View>
-          <View>
-            <Text className="text-emerald-400">
-              Your team: {assignment.team}
-            </Text>
-            <View className="bg-zinc-900">
-              <Link href={`/match/${assignment.matchId}`} asChild={true}>
-                <Button>Start</Button>
-              </Link>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
+	console.log("asrs", assignment);
+	return (
+		<View className="bg-blue/10 flex flex-row rounded-lg bg-white/10 p-4">
+			<View className="flex-grow flex-col">
+				<View className="flex flex-row justify-evenly">
+					<View>
+						<Text className="text-emerald-400">
+							<Text
+								style={{ padding: 20 }}
+								className="rounded-box bg-stone-500 text-cyan-300"
+							>
+								Red
+							</Text>
+							: {assignment.red.join(", ")}
+						</Text>
+						<Text className="text-emerald-400">
+							Blue: {assignment.blue.join(", ")}
+						</Text>
+					</View>
+					<View>
+						<Text className="text-emerald-400">
+							Your team: {assignment.team}
+						</Text>
+						<View className="bg-zinc-900">
+							<Link
+								href={`/match/${
+									assignment.matchId
+								}?team=${assignment.team.toString()}`}
+								asChild={true}
+							>
+								<Button>Start</Button>
+							</Link>
+						</View>
+					</View>
+				</View>
+			</View>
+		</View>
+	);
 }
 // function PostCard({ post }: { post: RouterOutputs["post"]["all"][number] }) {
 // 	const utils = api.useUtils();
@@ -345,97 +333,78 @@ function MatchScoutAssignment({
 // }
 // import matchScoutAssignments from "../../../../packages/api/src/TBA/fetchMatches";
 export default function HomeScreen() {
-  const utils = api.useUtils();
-  const { data: matches } = api.scouting.matchesInEvent.useQuery({
-    event: "test",
-  });
-  console.log(matches);
-  // VERY BAD CODE
-  const teams = {
-    red: matches?.filter((x) => x.alliance.startsWith("red")) ?? [],
-    blue: matches?.filter((x) => x.alliance.startsWith("blue")) ?? [],
-  };
-  console.log(teams);
-  function getUniqueTeamsAcrossAlliances() {
-    const uniqueTeams = new Set<number>();
-    matches?.forEach((x) => {
-      uniqueTeams.add(parseInt(x.teamNum));
-    });
-    return Array.from(uniqueTeams);
-  }
+	const utils = api.useUtils();
+	const {
+		data: matchScoutAssignments,
+		isLoading,
+		isFetched,
+	} = api.scouting.matchesInEvent.useQuery({
+		event: "test",
+	});
+	const [val, setVal] = useState<string>("Loading...");
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	useEffect(() => {
+		if (isFetched) {
+			// biome-ignore lint/style/noNonNullAssertion: <explanation>
+			setVal(matchScoutAssignments?.[0]?.[0]?.eventId!);
+		}
+	}, [isFetched]);
 
-  // const { data: posts } = api.post.all.useQuery();
-  const matchScoutAssignments: MatchScoutAssignment[] =
-    getUniqueTeamsAcrossAlliances().map((x) => {
-      return {
-        team: x,
-        red: teams.red.map((x) => x.teamNum) as unknown as [
-          number,
-          number,
-          number,
-        ], //.filter((y) => y.teamNum === x).map((y) => y.matchNum),
-        blue: teams.blue.map((x) => x.teamNum) as unknown as [
-          number,
-          number,
-          number,
-        ], //.filter((y) => y.teamNum === x).map((y) => y.matchNum),
-      };
-    }); //
-  // matches.map((x) => {
-  //   return {
-  //     alliance: x.alliance.slice(0, -1),
-  //     team: parseInt(x.teamNum),
-  //     red,
-  //   };
-  // });
-  // //   [
-  //   { alliance: "red", team: 5, red: [9, 2, 3], blue: [4, 5, 6] },
-  //   { alliance: "red", team: 5, red: [8, 2, 3], blue: [4, 5, 6] },
-  // ];
-
-  return (
-    <SafeAreaView className="bg-zinc-900">
-      <Stack.Screen
-        options={{
-          headerLeft: () => <AuthAvatar />,
-          headerTitle: () => (
-            <Text className="text-3xl font-bold text-zinc-200">
-              <Text className="text-fuchsia-500">T3</Text>
-              <Text> x </Text>
-              <Text className="text-emerald-400">Supabase</Text>
-            </Text>
-          ),
-        }}
-      />
-      <View className="h-full w-full p-4">
-        {/* <XStack ai="center">
+	return (
+		<SafeAreaView className="bg-zinc-900">
+			<Stack.Screen
+				options={{
+					headerLeft: () => <AuthAvatar />,
+					headerTitle: () => (
+						<Text className="text-3xl font-bold text-zinc-200">
+							<Text className="text-fuchsia-500">T3</Text>
+							<Text> x </Text>
+							<Text className="text-emerald-400">Supabase</Text>
+						</Text>
+					),
+				}}
+			/>
+			<View className="h-full w-full p-4">
+				{/* <XStack ai="center">
 					<Label f={1} fb={0} color="white">
 						Native
 					</Label>
 
 					<SelectDemoItem native />
-				</XStack> */}
-        <Pressable
-          className="my-4 rounded bg-emerald-400 p-2"
-          onPress={() => void utils.post.all.invalidate()}
-        >
-          <Text className="font-semibold text-zinc-900">Refresh posts</Text>
-        </Pressable>
-        {/* <SelectDemoItem /> */}
-        <FlashList
-          data={matchScoutAssignments}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
-        />
-        <Text>
-          {JSON.stringify(
-            Object.keys(quantitativeScouting).filter(
-              (x) => !(x.toLowerCase().endsWith("id") || x === "createdAt"),
-            ),
-          )}
-        </Text>
-        {/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
+				</XStack>
+				<Pressable
+					className="my-4 rounded bg-emerald-400 p-2"
+					onPress={() => void utils.post.all.invalidate()}
+				>
+					<Text className="font-semibold text-zinc-900">Refresh posts</Text>
+				</Pressable> */}
+				{isLoading ? (
+					<Text>Loading...</Text>
+				) : (
+					<>
+						<NativeSelect
+							items={Array.from(
+								new Set(
+									matchScoutAssignments?.flatMap((x) =>
+										x.flatMap((y) => {
+											return y.eventId;
+										}),
+									) ?? [],
+								),
+							)}
+							val={val}
+							setVal={setVal}
+						/>
+						<FlashList
+							data={matchScoutAssignments ? matchScoutAssignments[0] : []}
+							estimatedItemSize={20}
+							ItemSeparatorComponent={() => <View className="h-2" />}
+							renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
+						/>
+					</>
+				)}
+
+				{/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
 					<XStack alignItems="center">
 						<Input flex={1} size={"$2"} placeholder={`Size ${"$2"}...`} />
 						<Button size={"$2"}>Go</Button>
@@ -455,8 +424,8 @@ export default function HomeScreen() {
 					<TextArea placeholder="Enter your details..." />
 				</YStack> */}
 
-        {/* <CreatePost /> */}
-      </View>
-    </SafeAreaView>
-  );
+				{/* <CreatePost /> */}
+			</View>
+		</SafeAreaView>
+	);
 }
