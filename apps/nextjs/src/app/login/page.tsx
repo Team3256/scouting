@@ -1,15 +1,16 @@
 "use client";
-import { createClient } from "@/lib/utils/supabase/client";
-import { login, signup } from "./actions";
-import { useRouter } from "next/navigation";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/utils/supabase/client";
+import { SignIn, UserButton } from "@clerk/nextjs";
 import { Auth } from "@supabase/auth-ui-react";
-import { UserButton } from "@clerk/nextjs";
-import { SignIn } from "@clerk/nextjs";
 import {
   // Import predefined theme
   ThemeSupa,
 } from "@supabase/auth-ui-shared";
+
+import { login, signup } from "./actions";
 
 export default function LoginPage() {
   const supabase = createClient();
