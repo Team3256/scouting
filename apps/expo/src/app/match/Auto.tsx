@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
+
+import type { UltimateHistory } from "./types";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
 import CheckboxWithLabel from "./components/CheckboxWithLabel";
-import type { UltimateHistory } from "./types";
 
 export default function Auto({
   setUltimateHistory,

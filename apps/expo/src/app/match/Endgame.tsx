@@ -8,10 +8,10 @@ import {
 } from "@tamagui/lucide-icons";
 import { Button, Checkbox, Label, XStack, YStack } from "tamagui";
 
+import type { UltimateHistory } from "./types";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
 import CheckboxWithLabel from "./components/CheckboxWithLabel";
-import type { UltimateHistory } from "./types";
 
 export default function Endgame({
   setUltimateHistory,

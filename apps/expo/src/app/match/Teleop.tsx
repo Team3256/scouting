@@ -1,10 +1,10 @@
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { XStack } from "tamagui";
 
+import type { UltimateHistory } from "./types";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
-import { useEffect, useState } from "react";
-import type { UltimateHistory } from "./types";
 
 export default function Teleop({
   setUltimateHistory,
