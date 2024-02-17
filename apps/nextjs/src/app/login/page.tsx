@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Auth } from "@supabase/auth-ui-react";
 import { UserButton } from "@clerk/nextjs";
+import { SignIn } from "@clerk/nextjs";
 import {
   // Import predefined theme
   ThemeSupa,
@@ -15,6 +16,7 @@ export default function LoginPage() {
   return (
     <div className="min-w-md mx-auto">
       <UserButton />
+      <SignIn />
       <Auth
         supabaseClient={supabase}
         appearance={{
