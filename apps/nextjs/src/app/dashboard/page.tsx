@@ -1,7 +1,11 @@
+"use server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { createClient } from "@/utils/supabase/server";
+import { createClient } from "@/lib/utils/supabase/server";
+
+import { cn } from "@/lib/utils";
+import { Browser } from "./browser";
 
 export default async function Dashboard() {
   const cookieStore = cookies();
@@ -12,5 +16,5 @@ export default async function Dashboard() {
     redirect("/");
   }
 
-  return <p>Hello {data.user.email}</p>;
+  return <Browser />;
 }

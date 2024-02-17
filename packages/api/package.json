@@ -18,7 +18,7 @@
     "@trpc/server": "next",
     "nanoid": "^5.0.4",
     "superjson": "2.2.1",
-    "zod": "^3.22.2"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:^0.2.0",
