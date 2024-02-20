@@ -1,17 +1,24 @@
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { XStack } from "tamagui";
 
+import type { UltimateHistory } from "./types";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
-import { useEffect, useState } from "react";
-import type { UltimateHistory } from "./types";
 
 export default function Teleop({
   setUltimateHistory,
+  ultimateHistory,
 }: {
   setUltimateHistory: (history: UltimateHistory) => void;
+  ultimateHistory: UltimateHistory;
 }) {
-  const [history, setHistory] = useState<History>([]);
+  function setHistory(history: History) {
+    setUltimateHistory({
+      ...ultimateHistory,
+      log: history,
+    } as UltimateHistory);
+  }
   const intakeActions = [
     "Human",
     "Ground",
@@ -23,21 +30,18 @@ export default function Teleop({
     // "Contact with Bot",
   ];
   const shooterActions = ["Speaker", "Amp", "Miss S📢", "Miss Amp"];
-  useEffect(() => {
-    setUltimateHistory({ log: history });
-  }, [history]);
   return (
     <View className="mt-5">
       <Text className="pl-3 text-lg">Intake</Text>
       <ActionGrid
         actions={intakeActions}
-        history={history}
+        history={ultimateHistory.log}
         setHistory={setHistory}
       />
       <Text className="pl-3 text-lg">Scoring (Speaker = 📢, Amp = 🔊)</Text>
       <ActionGrid
         actions={shooterActions}
-        history={history}
+        history={ultimateHistory.log}
         setHistory={setHistory}
         hideUndo={true}
         indexOverrides={{

@@ -1,32 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { Text, View } from "react-native";
+
+import type { UltimateHistory } from "./types";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
 import CheckboxWithLabel from "./components/CheckboxWithLabel";
-import type { UltimateHistory } from "./types";
 
 export default function Auto({
   setUltimateHistory,
+  ultimateHistory,
 }: {
   setUltimateHistory: (history: UltimateHistory) => void;
+  ultimateHistory: UltimateHistory;
 }) {
   const actions = ["Miss 📢", "Miss 🔊", "Score 📢", "Score 🔊"];
-  const [history, setHistory] = useState<History>([]);
-  const [gainedMobility, setGainedMobility] = useState(false);
+  const history = ultimateHistory.log;
+  const gainedMobility = ultimateHistory.checkboxes?.gainedMobility ?? false;
   const createActionHandler = (actionId: number) => {
     return () => {
       const newHistoryItem: [number, number] = [actionId, Date.now()];
-      setHistory((currentHistory) => [...currentHistory, newHistoryItem]);
+      setUltimateHistory({
+        ...ultimateHistory,
+        log: [...ultimateHistory.log, newHistoryItem],
+      } as UltimateHistory);
     };
   };
-  useEffect(() => {
-    setUltimateHistory({ log: history, checkboxes: { gainedMobility } });
-  }, [history, gainedMobility]);
-
-  const test = (x: boolean) => {
-    console.log("TEEEEEESTt");
-    setGainedMobility(x);
-  };
+  function setHistory(history: History) {
+    setUltimateHistory({
+      ...ultimateHistory,
+      log: history,
+    } as UltimateHistory);
+  }
+  function setGainedMobility(gainedMobility: boolean) {
+    setUltimateHistory({
+      ...ultimateHistory,
+      checkboxes: { gainedMobility },
+    } as UltimateHistory);
+  }
 
   return (
     <View className="mt-5">
@@ -35,7 +45,10 @@ export default function Auto({
           className="pl-[20px]"
           size={"$4"}
           label="Gained Mobility"
-          onCheckedChange={(event) => test(event.valueOf() as boolean)}
+          defaultChecked={gainedMobility}
+          onCheckedChange={(event) =>
+            setGainedMobility(event.valueOf() as boolean)
+          }
         />
       </View>
 

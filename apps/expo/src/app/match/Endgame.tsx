@@ -8,26 +8,30 @@ import {
 } from "@tamagui/lucide-icons";
 import { Button, Checkbox, Label, XStack, YStack } from "tamagui";
 
+import type { UltimateHistory } from "./types";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
 import CheckboxWithLabel from "./components/CheckboxWithLabel";
-import type { UltimateHistory } from "./types";
 
 export default function Endgame({
   setUltimateHistory,
+  ultimateHistory,
 }: {
   setUltimateHistory: (history: UltimateHistory) => void;
+  ultimateHistory: UltimateHistory;
 }) {
-  const [history, setHistory] = useState<History>([]);
-  useEffect(() => {
-    setUltimateHistory({ log: history });
-  }, [history]);
+  function setHistory(history: History) {
+    setUltimateHistory({
+      ...ultimateHistory,
+      log: history,
+    } as UltimateHistory);
+  }
   return (
     <View className="mt-5">
       <Text className="pl-3 text-lg">Scoring (Trap=🚪, Hanging=⛓️)</Text>
       <ActionGrid
         actions={["Miss 🚪", "Miss ⛓️", "Score 🚪", "Score ⛓️"]}
-        history={history}
+        history={ultimateHistory.log}
         setHistory={setHistory}
         themeOverrides={["red", "red", "green", "green"]}
       />

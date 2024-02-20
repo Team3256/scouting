@@ -6,6 +6,16 @@ import { desc, eq, schema } from "@acme/db";
 import { matches } from "@acme/db/schema";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
+const UltimateHistory = z.object({
+	log: z.array(z.tuple([z.number(), z.number()])),
+	checkboxes: z.optional(z.record(z.boolean())),
+});
+
+export const eventLog = z.object({
+	auto: UltimateHistory,
+	teleop: UltimateHistory,
+	endgame: UltimateHistory,
+});
 export const scoutingRouter = createTRPCRouter({
   // createMatch: publicProcedure.input(z.object({id:z.string({})}))
   // updateMatch: publicProcedure.input()
@@ -34,66 +44,35 @@ export const scoutingRouter = createTRPCRouter({
   //     });
   //   }),
 
-  // create: protectedProcedure
-  //   .input(
-  //     z.object({
-  //       title: z.string().min(1),
-  //       content: z.string().min(1),
-  //     }),
-  //   )
-  //   .mutation(async ({ ctx, input }) => {
-  //     function getNameFromUser() {
-  //       const meta = ctx.user.user_metadata;
-  //       if (typeof meta.name === "string") return meta.name;
-  //       if (typeof meta.full_name === "string") return meta.full_name;
-  //       if (typeof meta.user_name === "string") return meta.user_name;
-  //       return "[redacted]";
-  //     }
-
-  //     const authorId = await ctx.db.query.profile
-  //       .findFirst({
-  //         where: eq(schema.profile.id, ctx.user.id),
-  //       })
-  //       .then(async (profile) => {
-  //         if (profile) return profile.id;
-  //         const [newProfile] = await ctx.db
-  //           .insert(schema.profile)
-  //           .values({
-  //             id: ctx.user.id,
-  //             name: getNameFromUser(),
-  //             image: ctx.user.user_metadata.avatar_url as string | undefined,
-  //             email: ctx.user.email,
-  //             isLead: false,
-  //             isMentor: false,
-  //             role: "default",
-  //           })
-  //           .returning();
-
-  //         return newProfile!.id;
-  //       });
-
-  //     return ctx.db.insert(schema.post).values({
-  //       id: nanoid(),
-  //       authorId,
-  //       title: input.title,
-  //       content: input.content,
-  //     });
-  //   }),
-
-  // delete: protectedProcedure
-  //   .input(z.string())
-  //   .mutation(async ({ ctx, input }) => {
-  //     const post = await ctx.db.query.post.findFirst({
-  //       where: eq(schema.post.id, input),
-  //     });
-
-  //     if (post?.authorId !== ctx.user.id) {
-  //       throw new TRPCError({
-  //         code: "UNAUTHORIZED",
-  //         message: "Only the author is allowed to delete the post",
-  //       });
-  //     }
-
-  //     return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
-  //   }),
+	updateMatchLog: publicProcedure
+		.input(
+			z.object({
+				eventLog,
+				matchId: z.string(),
+				// teamNum: z.string(),
+			}),
+		)
+		.mutation(async ({ ctx, input }) => {
+			return ctx.db
+				.update(matches)
+				.set({ eventLog: input.eventLog })
+				.where(eq(matches.id, input.matchId))
+				// .where(eq(matches.teamNum, input.teamNum));
+		}),
+	getMatchLog: publicProcedure
+		.input(z.object({ matchId: z.string() }))
+		.query(async ({ ctx, input }) => {
+			return ctx.db
+				.select()
+				.from(matches)
+				.where(eq(matches.id, input.matchId))
+				.then((matches) => {
+					return matches.map((x) => {
+						return {
+							matchId: x.id,
+							eventLog: x.eventLog,
+						};
+					});
+				});
+		}),
 });
