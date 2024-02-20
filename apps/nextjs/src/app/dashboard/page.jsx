@@ -120,7 +120,7 @@ export default function Component() {
                 <div className="bg-gray-100 rounded shadow w-12 h-12 flex items-center justify-center">s</div>
                 <div className="bg-gray-100 rounded shadow w-12 h-12 flex items-center justify-center">o</div>
                 <div className="bg-gray-100 rounded shadow w-12 h-12 flex items-center justify-center">m</div>
-                <UserButton/>
+                {/* <UserButton/> */}
               </div>
             </div>
           </div>

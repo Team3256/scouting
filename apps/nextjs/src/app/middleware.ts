@@ -1,3 +1,29 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+// import { getSession } from '@clerk/nextjs'; // Import getSession
+import { createClient } from '../lib/utils/supabase/client'; // Import your Supabase client
+import { auth, currentUser } from "@clerk/nextjs";
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  const { userId } = auth();
+  const user = await currentUser();
+  const supabase = createClient(); // Create your Supabase client
+  if (!userId || !user) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  const supabaseUser = {
+    id: user.id,
+  };
+
+  try {
+    await supabase.auth.signUp({ email: user.id, password: 'password' });
+    res.status(200).json({ message: 'Supabase user created/updated successfully' });
+  } catch (error) {
+    console.error('Error creating Supabase user:', error);
+    res.status(500).json({ message: 'Internal error' });
+  }
+}
+/*
 import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
@@ -14,3 +40,6 @@ export const config = {
   // for more information about configuring your Middleware
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
+
+
+*/
