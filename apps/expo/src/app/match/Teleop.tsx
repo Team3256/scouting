@@ -3,9 +3,10 @@ import { XStack } from "tamagui";
 
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { UltimateHistory } from "./types";
 
-export default function Teleop() {
+export default function Teleop({ setUltimateHistory }: { setUltimateHistory: (history: UltimateHistory) => void }}) {
   const [history, setHistory] = useState<History>([]);
   const intakeActions = [
     "Human",
@@ -18,8 +19,11 @@ export default function Teleop() {
     // "Contact with Bot",
   ];
   const shooterActions = ["Speaker", "Amp", "Miss S📢", "Miss Amp"];
+  useEffect(() => {
+    setUltimateHistory({ log: history })
+  }, [history])
   return (
-    <View>
+    <View className="mt-5">
       <Text className="pl-3 text-lg">Intake</Text>
       <ActionGrid
         actions={intakeActions}

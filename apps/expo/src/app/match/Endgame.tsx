@@ -1,5 +1,5 @@
 import type { CheckboxProps, SizeTokens } from "tamagui";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import {
   ArrowLeftCircle,
@@ -11,11 +11,19 @@ import { Button, Checkbox, Label, XStack, YStack } from "tamagui";
 import ActionButton from "./components/ActionButton";
 import ActionGrid, { History } from "./components/ActionGrid";
 import CheckboxWithLabel from "./components/CheckboxWithLabel";
+import type { UltimateHistory } from "./types";
 
-export default function Endgame() {
+export default function Endgame({
+  setUltimateHistory,
+}: {
+  setUltimateHistory: (history: UltimateHistory) => void;
+}) {
   const [history, setHistory] = useState<History>([]);
+  useEffect(() => {
+    setUltimateHistory({ log: history });
+  }, [history]);
   return (
-    <View>
+    <View className="mt-5">
       <Text className="pl-3 text-lg">Scoring (Trap=🚪, Hanging=⛓️)</Text>
       <ActionGrid
         actions={["Miss 🚪", "Miss ⛓️", "Score 🚪", "Score ⛓️"]}
