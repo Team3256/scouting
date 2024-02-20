@@ -191,7 +191,7 @@ function SelectDemoItem(props: SelectProps) {
   );
 }
 interface MatchScoutAssignment {
-  alliance: "red" | "blue";
+  // alliance: "red" | "blue";
   team: number;
   red: [number, number, number];
   blue: [number, number, number];
@@ -342,14 +342,55 @@ function MatchScoutAssignment({
 // 		</KeyboardAvoidingView>
 // 	);
 // }
-
+// import matchScoutAssignments from "../../../../packages/api/src/TBA/fetchMatches";
 export default function HomeScreen() {
   const utils = api.useUtils();
+  const { data: matches } = api.scouting.matchesInEvent.useQuery({
+    event: "test",
+  });
+  console.log(matches);
+  // VERY BAD CODE
+  const teams = {
+    red: matches?.filter((x) => x.alliance.startsWith("red")) ?? [],
+    blue: matches?.filter((x) => x.alliance.startsWith("blue")) ?? [],
+  };
+  console.log(teams);
+  function getUniqueTeamsAcrossAlliances() {
+    const uniqueTeams = new Set<number>();
+    matches?.forEach((x) => {
+      uniqueTeams.add(parseInt(x.teamNum));
+    });
+    return Array.from(uniqueTeams);
+  }
 
   // const { data: posts } = api.post.all.useQuery();
-  const exampleMatchScoutAssignments: MatchScoutAssignment[] = [
-    { alliance: "red", team: 5, red: [1, 2, 3], blue: [4, 5, 6] },
-  ];
+  const matchScoutAssignments: MatchScoutAssignment[] =
+    getUniqueTeamsAcrossAlliances().map((x) => {
+      return {
+        team: x,
+        red: teams.red.map((x) => x.teamNum) as unknown as [
+          number,
+          number,
+          number,
+        ], //.filter((y) => y.teamNum === x).map((y) => y.matchNum),
+        blue: teams.blue.map((x) => x.teamNum) as unknown as [
+          number,
+          number,
+          number,
+        ], //.filter((y) => y.teamNum === x).map((y) => y.matchNum),
+      };
+    }); //
+  // matches.map((x) => {
+  //   return {
+  //     alliance: x.alliance.slice(0, -1),
+  //     team: parseInt(x.teamNum),
+  //     red,
+  //   };
+  // });
+  // //   [
+  //   { alliance: "red", team: 5, red: [9, 2, 3], blue: [4, 5, 6] },
+  //   { alliance: "red", team: 5, red: [8, 2, 3], blue: [4, 5, 6] },
+  // ];
 
   return (
     <SafeAreaView className="bg-zinc-900">
@@ -381,7 +422,7 @@ export default function HomeScreen() {
         </Pressable>
         {/* <SelectDemoItem /> */}
         <FlashList
-          data={exampleMatchScoutAssignments}
+          data={matchScoutAssignments}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
           renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
