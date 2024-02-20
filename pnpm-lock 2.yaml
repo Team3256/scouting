@@ -174,9 +174,6 @@ importers:
       '@acme/api':
         specifier: workspace:^
         version: link:../../packages/api
-      '@clerk/clerk-react':
-        specifier: ^4.30.5
-        version: 4.30.5(react@18.2.0)
       '@clerk/clerk-sdk-node':
         specifier: ^4.13.9
         version: 4.13.9(react@18.2.0)
