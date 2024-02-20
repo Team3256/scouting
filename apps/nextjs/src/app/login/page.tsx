@@ -10,7 +10,6 @@ export default function LoginPage() {
   return (
     <div className="min-w-md ">
       <SignIn />
-      {/* <UserButton /> */}
     </div>
   );
 }
