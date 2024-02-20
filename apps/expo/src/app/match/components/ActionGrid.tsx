@@ -25,16 +25,14 @@ export default function ActionGrid({
 }: {
   actions: string[];
   history: History;
-  setHistory: React.Dispatch<React.SetStateAction<History>>;
+  setHistory: (history: History) => void;
   themeOverrides?: ThemeOverrides;
   indexOverrides?: Record<number, number>;
   hideUndo?: boolean;
 }) {
   const undoLastAction = () => {
     if (history.length > 0) {
-      setHistory((currentHistory) =>
-        currentHistory.slice(0, currentHistory.length - 1),
-      );
+      setHistory(history.slice(0, history.length - 1));
     }
   };
 
@@ -81,10 +79,7 @@ export default function ActionGrid({
                     history.filter(([i]) => i === finalIndex).length
                   })`}
                   action={() =>
-                    setHistory((currentHistory) => [
-                      ...currentHistory,
-                      [finalIndex, Date.now()],
-                    ])
+                    setHistory([...history, [finalIndex, Date.now()]])
                   }
                   theme={
                     themeOverrides

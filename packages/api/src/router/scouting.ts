@@ -12,7 +12,7 @@ const UltimateHistory = z.object({
 	checkboxes: z.optional(z.record(z.boolean())),
 });
 
-export const godlyLog = z.object({
+export const eventLog = z.object({
 	auto: UltimateHistory,
 	teleop: UltimateHistory,
 	endgame: UltimateHistory,
@@ -65,17 +65,17 @@ export const scoutingRouter = createTRPCRouter({
 	updateMatchLog: publicProcedure
 		.input(
 			z.object({
-				godlyLog,
+				eventLog,
 				matchId: z.string(),
-				teamNum: z.string(),
+				// teamNum: z.string(),
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
 			return ctx.db
 				.update(matches)
-				.set({ eventLog: input.godlyLog })
+				.set({ eventLog: input.eventLog })
 				.where(eq(matches.id, input.matchId))
-				.where(eq(matches.teamNum, input.teamNum));
+				// .where(eq(matches.teamNum, input.teamNum));
 		}),
 	getMatchLog: publicProcedure
 		.input(z.object({ matchId: z.string() }))
