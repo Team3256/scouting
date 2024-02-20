@@ -1,0 +1,11 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "discord.enabled": false,
+  "cSpell.words": [
+    "Pressable"
+  ]
+}
