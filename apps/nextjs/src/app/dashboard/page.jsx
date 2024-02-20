@@ -1,6 +1,4 @@
 "use client";
-// import Link from "next/link"
-import { Browser } from "./browser"
 
 import * as React from "react";
 import Link from "next/link";
@@ -122,6 +120,7 @@ export default function Component() {
                 <div className="bg-gray-100 rounded shadow w-12 h-12 flex items-center justify-center">s</div>
                 <div className="bg-gray-100 rounded shadow w-12 h-12 flex items-center justify-center">o</div>
                 <div className="bg-gray-100 rounded shadow w-12 h-12 flex items-center justify-center">m</div>
+                <UserButton/>
               </div>
             </div>
           </div>
@@ -133,7 +132,8 @@ export default function Component() {
 
 function BookOpenIcon(props) {
   return (
-    <svg
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -154,7 +154,8 @@ function BookOpenIcon(props) {
 
 function CalendarIcon(props) {
   return (
-    <svg
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -177,7 +178,8 @@ function CalendarIcon(props) {
 
 function HomeIcon(props) {
   return (
-    <svg
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -198,7 +200,8 @@ function HomeIcon(props) {
 
 function Package2Icon(props) {
   return (
-    <svg
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -220,7 +223,8 @@ function Package2Icon(props) {
 
 function UserCheckIcon(props) {
   return (
-    <svg
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
