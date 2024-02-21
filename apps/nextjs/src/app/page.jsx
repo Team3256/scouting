@@ -4,19 +4,14 @@ import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useAuth } from '@clerk/clerk-react';
 import {supabaseClient} from '../lib/utils/supabase/client';
   
 export default function Home() {
-  const { getToken } = useAuth();
- 
+const supabase = supabaseClient();
+
   const fetchData = async () => {
     console.log("IOM HERE")
     // TODO #1: Replace with your JWT template name
-    const supabaseAccessToken = await getToken({ template: 'supabase' });
- 
-    const supabase = await supabaseClient(supabaseAccessToken);
-    
     // TODO #2: Replace with your database table name
     
     const { data, error } = await supabase.from('matches').select();

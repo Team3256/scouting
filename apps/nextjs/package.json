@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@acme/api": "workspace:^",
-    "@clerk/clerk-react": "^4.30.5",
-    "@clerk/clerk-sdk-node": "^4.13.9",
-    "@clerk/nextjs": "^4.29.7",
     "@hookform/resolvers": "^3.3.4",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",

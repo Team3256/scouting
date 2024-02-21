@@ -1,15 +1,10 @@
 "use client";
 
-import { createClient } from "@/lib/utils/supabase/client";
-import { SignIn, UserButton } from "@clerk/nextjs";
+import { supabaseClient } from "@/lib/utils/supabase/client";
 
 import { login, signup } from "./actions";
 
 export default function LoginPage() {
-  const supabase = createClient();
-  return (
-    <div className="min-w-md ">
-      <SignIn />
-    </div>
-  );
+  const supabase = supabaseClient();
+  return <div className="min-w-md ">{/* <SignIn /> */}</div>;
 }

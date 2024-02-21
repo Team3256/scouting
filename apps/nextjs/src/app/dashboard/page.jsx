@@ -23,7 +23,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { UserButton } from "@clerk/nextjs";
 
 export default function Component() {
   return (
