@@ -50,12 +50,15 @@ export default function Assignments() {
         setActiveId(active.id);
       }}
       onDragEnd={function handleDragEnd(event) {
-        const over = event.over as { id: string };
-        console.log("end", activeId, over);
+        const overId = event.over?.id;
+        if (overId === undefined) {
+          // Drag action was cacelled
+          return;
+        }
         setMembers((members) => {
           return {
             ...members,
-            [over.id]: [...members[over.id], activeId as string],
+            [overId]: [...members[overId], activeId as string],
           };
         });
         setAssignments((assignments) =>
