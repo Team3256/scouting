@@ -11,7 +11,7 @@ if (
 
 const defineConfig = (): ExpoConfig => ({
   name: "expo",
-  slug: "expo",
+  slug: "create-t3-turbo",
   scheme: "expo",
   version: "2.0.0",
   orientation: "portrait",
@@ -27,12 +27,12 @@ const defineConfig = (): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "co.team3256.scouting-app",
     supportsTablet: true,
     usesAppleSignIn: true,
   },
   android: {
-    package: "your.bundle.identifier",
+    package: "co.team3256.scouting-app",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#18181A",
@@ -44,13 +44,15 @@ const defineConfig = (): ExpoConfig => ({
   },
   extra: {
     eas: {
-      projectId: "a9894c73-59f2-4e00-915f-eb1dda8d311e",
+      projectId: "c7faf499-0164-4466-ba2a-46cf3b1047d7",
+      owner: "warriorborgs",
     },
   },
   plugins: [
     "./expo-plugins/with-modify-gradle.js",
     "expo-apple-authentication",
   ],
+  owner: "warriorborgs",
 });
 
 export default defineConfig;

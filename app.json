@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "c7faf499-0164-4466-ba2a-46cf3b1047d7"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "co.team3256.scouting-app"
+    }
+  }
+}
