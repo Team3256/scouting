@@ -10,9 +10,9 @@ if (
 }
 
 const defineConfig = (): ExpoConfig => ({
-  name: "expo",
+  name: "WarriorHappy",
   slug: "create-t3-turbo",
-  scheme: "expo",
+  scheme: "team3256",
   version: "2.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -27,12 +27,12 @@ const defineConfig = (): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    bundleIdentifier: "co.team3256.scouting-app",
+    bundleIdentifier: "co.team3256.warriorhappy",
     supportsTablet: true,
     usesAppleSignIn: true,
   },
   android: {
-    package: "co.team3256.scouting-app",
+    package: "co.team3256.warriorhhappy",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#18181A",
