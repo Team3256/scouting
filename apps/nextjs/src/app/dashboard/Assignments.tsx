@@ -35,22 +35,33 @@ const tags = Array.from({ length: 50 }).map(
 );
 
 export default function Assignments() {
-  const [activeId, setActiveId] = useState(null);
+  // XXX: Use real data
+  const [members, setMembers] = useState<{ [key: string]: string[] }>(
+    Object.fromEntries(tags.map((x) => [`${x}M`, []])),
+  );
+  const [assignments, setAssignments] = useState(tags.map((x) => `${x}A`));
+  const [activeId, setActiveId] = useState<string | null>(null);
   // const [parent, setParent] = useState(null);
   return (
     <DndContext
       onDragStart={function handleDragStart(event) {
-        const { active } = event;
+        const active = event.active as { id: string };
         console.log("start", active);
-        setActiveId(active?.id);
+        setActiveId(active.id);
       }}
       onDragEnd={function handleDragEnd(event) {
-        const { over } = event;
+        const over = event.over as { id: string };
         console.log("end", activeId, over);
+        setMembers((members) => {
+          return {
+            ...members,
+            [over.id]: [...members[over.id], activeId as string],
+          };
+        });
+        setAssignments((assignments) =>
+          assignments.filter((x) => x !== activeId),
+        );
         setActiveId(null);
-        // If the item is dropped over a container, set it as the parent
-        // otherwise reset the parent to `null`
-        // setParent(over ? over.id : null);
       }}
     >
       <ResizablePanelGroup
@@ -60,8 +71,8 @@ export default function Assignments() {
         <ResizablePanel defaultSize={50}>
           <ScrollArea className="h-full w-full rounded-md border">
             <div className="flex flex-wrap">
-              {tags.map((x) => (
-                <MemberCard key={x} user={`${x}P`} />
+              {Object.entries(members).map(([name, values]) => (
+                <MemberCard key={name} user={name} />
               ))}
             </div>
           </ScrollArea>
@@ -70,11 +81,14 @@ export default function Assignments() {
         <ResizablePanel defaultSize={50}>
           <ScrollArea className="h-full w-full rounded-md border">
             <div className="flex flex-wrap">
-              {tags.map((x) => (
-                <AssignmentCard key={x} assignment={`${x}A`} />
+              {assignments.map((x) => (
+                <AssignmentCard key={x} assignment={x} />
               ))}
             </div>
           </ScrollArea>
+          <DragOverlay>
+            {activeId && <AssignmentCard assignment={activeId} />}
+          </DragOverlay>
           {/* <ResizablePanelGroup direction="vertical">
             <ResizablePanel defaultSize={25}>
               <div className="flex h-full items-center justify-center p-6">
