@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/middleware.js", "src/app/api/trpc/[trpc]/route.js", "src/app/page.jsx", "src/lib/utils/supabase/client.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/middleware.js", "src/app/api/trpc/[trpc]/route.js", "src/app/page.tsx", "src/lib/utils/supabase/client.js"],
   "exclude": ["node_modules"]
 }
