@@ -42,11 +42,11 @@ const defineConfig = (): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  // extra: {
-  //   eas: {
-  //     projectId: "your-project-id",
-  //   },
-  // },
+  extra: {
+    eas: {
+      projectId: "a9894c73-59f2-4e00-915f-eb1dda8d311e",
+    },
+  },
   plugins: [
     "./expo-plugins/with-modify-gradle.js",
     "expo-apple-authentication",
