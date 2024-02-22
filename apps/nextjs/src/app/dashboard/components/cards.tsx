@@ -1,4 +1,10 @@
 import * as React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,25 +15,32 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { DragOverlay, useDraggable, useDroppable } from "@dnd-kit/core";
 
 // XXX: Properly conform to database types
-export function MemberCard({ user }: { user: string }) {
-  // const { isOver, setNodeRef } = useDroppable({
-  //   id: user,
-  // });
+export function MemberCard({
+  user,
+  assignments,
+}: {
+  user: string;
+  assignments: string[];
+}) {
+  const { isOver, setNodeRef } = useDroppable({
+    id: user,
+  });
   return (
     // <DragOverlay>
-    <Card className="h-fit w-fit">
+    <Card
+      className={`h-fit w-fit transition-all ${isOver && "bg-accent"}`}
+      ref={setNodeRef}
+    >
       <CardHeader>
         <CardTitle>
           <Avatar className="h-8 w-8">
@@ -37,8 +50,27 @@ export function MemberCard({ user }: { user: string }) {
         </CardTitle>
         <CardDescription>Bryan Hu ({user})</CardDescription>
       </CardHeader>
-      <CardContent>
-        I HAVE ZERO GIRLS
+      <CardContent className="h-full">
+        {assignments.length === 0 ? (
+          <p className="text-muted-foreground max-w-sm text-sm">
+            No assignments were assigned
+          </p>
+        ) : (
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                See ({assignments.length}) assignment
+                {assignments.length > 1 && "s"}
+              </AccordionTrigger>
+              <AccordionContent>
+                {assignments.map((assignment) => (
+                  <AssignmentCard key={assignment} assignment={assignment} />
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        )}
+
         {/* </Button> */}
         {/* <form>
           <div className="grid w-full items-center gap-4">
@@ -63,10 +95,10 @@ export function MemberCard({ user }: { user: string }) {
           </div>
         </form> */}
       </CardContent>
-      <CardFooter className="flex justify-between">
+      {/* <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
         <Button>Deploy</Button>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 }
@@ -119,10 +151,10 @@ export function AssignmentCard({ assignment }: { assignment: string }) {
           </div>
         </form> */}
       </CardContent>
-      <CardFooter className="flex justify-between">
+      {/* <CardFooter className="flex justify-between">
         <Button variant="outline">Cancel</Button>
         <Button>Deploy</Button>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 }

@@ -2012,7 +2012,11 @@ packages:
     peerDependencies:
       react-native: '*'
     dependencies:
+<<<<<<< HEAD
       react-native: 0.72.10(@babel/core@7.23.6)(@babel/preset-env@7.23.6)(react@18.2.0)
+=======
+      react-native: 0.72.6(@babel/core@7.23.6)(@babel/preset-env@7.23.6)(react@18.2.0)
+>>>>>>> db8990b (yum yum drag? WIP)
     dev: false
 
   /@cspotcode/source-map-support@0.8.1:
