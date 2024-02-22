@@ -88,7 +88,13 @@ export const createTRPCRouter = t.router;
  * tRPC API. It does not guarantee that a user querying is authorized, but you
  * can still access user session data if they are logged in
  */
-export const publicProcedure = t.procedure;
+
+const logAllRequests = t.middleware(({ ctx, path, type, input, next }) => {
+  console.log(">>> tRPC", type, path, "called with", input, "by", ctx.user);
+  return next();
+});
+
+export const publicProcedure = t.procedure.use(logAllRequests);
 
 /**
  * Reusable middleware that enforces users are logged in before running the
