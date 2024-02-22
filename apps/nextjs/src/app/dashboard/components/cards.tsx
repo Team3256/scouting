@@ -22,12 +22,12 @@ import { DragOverlay, useDraggable, useDroppable } from "@dnd-kit/core";
 
 // XXX: Properly conform to database types
 export function MemberCard({ user }: { user: string }) {
-  // const { isOver, setNodeRef } = useDroppable({
-  //   id: user,
-  // });
+  const { isOver, setNodeRef } = useDroppable({
+    id: user,
+  });
   return (
     // <DragOverlay>
-    <Card className="h-fit w-fit">
+    <Card className="h-fit w-fit" ref={setNodeRef}>
       <CardHeader>
         <CardTitle>
           <Avatar className="h-8 w-8">
