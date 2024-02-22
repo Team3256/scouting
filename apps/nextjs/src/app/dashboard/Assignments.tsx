@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -34,8 +35,24 @@ const tags = Array.from({ length: 50 }).map(
 );
 
 export default function Assignments() {
+  const [activeId, setActiveId] = useState(null);
+  // const [parent, setParent] = useState(null);
   return (
-    <DndContext>
+    <DndContext
+      onDragStart={function handleDragStart(event) {
+        const { active } = event;
+        console.log("start", active);
+        setActiveId(active?.id);
+      }}
+      onDragEnd={function handleDragEnd(event) {
+        const { over } = event;
+        console.log("end", activeId, over);
+        setActiveId(null);
+        // If the item is dropped over a container, set it as the parent
+        // otherwise reset the parent to `null`
+        // setParent(over ? over.id : null);
+      }}
+    >
       <ResizablePanelGroup
         direction="horizontal"
         className="max-w-screen h-rounded-lg h-full border"
