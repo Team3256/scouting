@@ -33,7 +33,7 @@ const getBaseUrl = () => {
 
   if (!localhost) {
     // return "https://turbo.t3.gg";
-    return "https://app-dev.warriorb.org/";
+    return "https://warriorb.org/";
     throw new Error(
       "Failed to get localhost. Please point to your production server.",
     );
