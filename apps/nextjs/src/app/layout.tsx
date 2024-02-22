@@ -1,8 +1,8 @@
 // import type { Metadata } from "next";
 
 import type { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
 // import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
 
@@ -19,10 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body>{children}</body>
+    </html>
   );
 }
