@@ -13,8 +13,11 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import Assignments from "./Assignments";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
 import { Overview } from "./components/overview";
@@ -52,33 +55,7 @@ export default function DashboardPage() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="assignments" className="h-[75vh] space-y-4">
-          <ResizablePanelGroup
-            direction="horizontal"
-            className="max-w-screen h-rounded-lg h-full border"
-          >
-            <ResizablePanel defaultSize={50}>
-              <div className=" items-center justify-center p-6">
-                <span className="font-semibold">One</span>
-              </div>
-            </ResizablePanel>
-            <ResizableHandle withHandle={true} />
-            <ResizablePanel defaultSize={50}>
-              Ur mom
-              {/* <ResizablePanelGroup direction="vertical">
-                <ResizablePanel defaultSize={25}>
-                  <div className="flex h-full items-center justify-center p-6">
-                    <span className="font-semibold">Two</span>
-                  </div>
-                </ResizablePanel>
-                <ResizableHandle />
-                <ResizablePanel defaultSize={75}>
-                  <div className="flex h-full items-center justify-center p-6">
-                    <span className="font-semibold">Three</span>
-                  </div>
-                </ResizablePanel>
-              </ResizablePanelGroup> */}
-            </ResizablePanel>
-          </ResizablePanelGroup>
+          <Assignments />
         </TabsContent>
         {/* <TabsContent value="overview" className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
