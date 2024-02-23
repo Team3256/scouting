@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useLocalSearchParams } from "expo-router";
 import {
   Button,
   H5,
@@ -15,6 +16,7 @@ import {
 
 import { api } from "~/utils/api";
 import { supabase } from "~/utils/supabase";
+import { ConsoleLogWriter } from "../../../../../packages/db";
 import Auto from "./Auto";
 import Dangerous from "./components/Dangerous";
 import Endgame from "./Endgame";

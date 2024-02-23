@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Button, YStack } from "tamagui";
+import { Text, View } from "react-native";
 import { Undo2 } from "@tamagui/lucide-icons";
+import { Button, YStack } from "tamagui";
+
 import ActionButton from "./ActionButton";
+
 // [Index, Timestamp]
 export type History = [number, number][];
 

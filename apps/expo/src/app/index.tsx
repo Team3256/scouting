@@ -1,5 +1,5 @@
 import type { FontSizeTokens, SelectProps } from "tamagui";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Alert,
   Keyboard,
@@ -35,43 +35,23 @@ import { quantitativeScouting } from "../../../../packages/db/schema";
 import { AuthAvatar } from "../components/header";
 import { api } from "../utils/api";
 
-const items = [
-  { name: "Apple" },
-  { name: "Pear" },
-  { name: "Blackberry" },
-  { name: "Peach" },
-  { name: "Apricot" },
-  { name: "Melon" },
-  { name: "Honeydew" },
-  { name: "Starfruit" },
-  { name: "Blueberry" },
-  { name: "Raspberry" },
-  { name: "Strawberry" },
-  { name: "Mango" },
-  { name: "Pineapple" },
-  { name: "Lime" },
-  { name: "Lemon" },
-  { name: "Coconut" },
-  { name: "Guava" },
-  { name: "Papaya" },
-  { name: "Orange" },
-  { name: "Grape" },
-  { name: "Jackfruit" },
-  { name: "Durian" },
-];
-function SelectDemoItem(props: SelectProps) {
-  const [val, setVal] = useState("apple");
-
+function NativeSelect(
+  props: {
+    items: string[];
+    val: string;
+    setVal: React.Dispatch<React.SetStateAction<string>>;
+  } & SelectProps,
+) {
   return (
     <Select
       id="food"
-      value={val}
-      onValueChange={setVal}
+      value={props.val}
+      onValueChange={props.setVal}
       disablePreventBodyScroll
       {...props}
     >
       <Select.Trigger width={220} iconAfter={ChevronDown}>
-        <Select.Value placeholder="Something" />
+        <Select.Value placeholder={props.val} />
       </Select.Trigger>
 
       <Adapt when="sm" platform="touch">
@@ -128,25 +108,27 @@ function SelectDemoItem(props: SelectProps) {
           minWidth={200}
         >
           <Select.Group>
-            <Select.Label>Fruits</Select.Label>
+            <Select.Label>{props.val}</Select.Label>
             {/* for longer lists memoizing these is useful */}
             {useMemo(
               () =>
-                items.map((item, i) => {
-                  return (
-                    <Select.Item
-                      index={i}
-                      key={item.name}
-                      value={item.name.toLowerCase()}
-                    >
-                      <Select.ItemText>{item.name}</Select.ItemText>
-                      <Select.ItemIndicator marginLeft="auto">
-                        <Check size={16} />
-                      </Select.ItemIndicator>
-                    </Select.Item>
-                  );
-                }),
-              [items],
+                props.items
+                  .filter((x) => x != props.val)
+                  .map((item, i) => {
+                    return (
+                      <Select.Item
+                        index={i}
+                        key={item}
+                        value={item.toLowerCase()}
+                      >
+                        <Select.ItemText>{item}</Select.ItemText>
+                        <Select.ItemIndicator marginLeft="auto">
+                          <Check size={16} />
+                        </Select.ItemIndicator>
+                      </Select.Item>
+                    );
+                  }),
+              [props.items],
             )}
           </Select.Group>
           {/* Native gets an extra icon */}
@@ -202,6 +184,7 @@ function MatchScoutAssignment({
 }: {
   assignment: MatchScoutAssignment;
 }) {
+  console.log("asrs", assignment);
   return (
     <View className="bg-blue/10 flex flex-row rounded-lg bg-white/10 p-4">
       <View className="flex-grow flex-col">
@@ -225,7 +208,12 @@ function MatchScoutAssignment({
               Your team: {assignment.team}
             </Text>
             <View className="bg-zinc-900">
-              <Link href={`/match/${assignment.matchId}`} asChild={true}>
+              <Link
+                href={`/match/${
+                  assignment.matchId
+                }?team=${assignment.team.toString()}`}
+                asChild={true}
+              >
                 <Button>Start</Button>
               </Link>
             </View>
@@ -346,52 +334,21 @@ function MatchScoutAssignment({
 // import matchScoutAssignments from "../../../../packages/api/src/TBA/fetchMatches";
 export default function HomeScreen() {
   const utils = api.useUtils();
-  const { data: matches } = api.scouting.matchesInEvent.useQuery({
+  const {
+    data: matchScoutAssignments,
+    isLoading,
+    isFetched,
+  } = api.scouting.matchesInEvent.useQuery({
     event: "test",
   });
-  console.log(matches);
-  // VERY BAD CODE
-  const teams = {
-    red: matches?.filter((x) => x.alliance.startsWith("red")) ?? [],
-    blue: matches?.filter((x) => x.alliance.startsWith("blue")) ?? [],
-  };
-  console.log(teams);
-  function getUniqueTeamsAcrossAlliances() {
-    const uniqueTeams = new Set<number>();
-    matches?.forEach((x) => {
-      uniqueTeams.add(parseInt(x.teamNum));
-    });
-    return Array.from(uniqueTeams);
-  }
-
-  // const { data: posts } = api.post.all.useQuery();
-  const matchScoutAssignments: MatchScoutAssignment[] =
-    getUniqueTeamsAcrossAlliances().map((x) => {
-      return {
-        team: x,
-        red: teams.red.map((x) => x.teamNum) as unknown as [
-          number,
-          number,
-          number,
-        ], //.filter((y) => y.teamNum === x).map((y) => y.matchNum),
-        blue: teams.blue.map((x) => x.teamNum) as unknown as [
-          number,
-          number,
-          number,
-        ], //.filter((y) => y.teamNum === x).map((y) => y.matchNum),
-      };
-    }); //
-  // matches.map((x) => {
-  //   return {
-  //     alliance: x.alliance.slice(0, -1),
-  //     team: parseInt(x.teamNum),
-  //     red,
-  //   };
-  // });
-  // //   [
-  //   { alliance: "red", team: 5, red: [9, 2, 3], blue: [4, 5, 6] },
-  //   { alliance: "red", team: 5, red: [8, 2, 3], blue: [4, 5, 6] },
-  // ];
+  const [val, setVal] = useState<string>("Loading...");
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (isFetched) {
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      setVal(matchScoutAssignments?.[0]?.[0]?.eventId!);
+    }
+  }, [isFetched]);
 
   return (
     <SafeAreaView className="bg-zinc-900">
@@ -414,27 +371,39 @@ export default function HomeScreen() {
 					</Label>
 
 					<SelectDemoItem native />
-				</XStack> */}
-        <Pressable
-          className="my-4 rounded bg-emerald-400 p-2"
-          onPress={() => void utils.post.all.invalidate()}
-        >
-          <Text className="font-semibold text-zinc-900">Refresh posts</Text>
-        </Pressable>
-        {/* <SelectDemoItem /> */}
-        <FlashList
-          data={matchScoutAssignments}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
-        />
-        <Text>
-          {JSON.stringify(
-            Object.keys(quantitativeScouting).filter(
-              (x) => !(x.toLowerCase().endsWith("id") || x === "createdAt"),
-            ),
-          )}
-        </Text>
+				</XStack>
+				<Pressable
+					className="my-4 rounded bg-emerald-400 p-2"
+					onPress={() => void utils.post.all.invalidate()}
+				>
+					<Text className="font-semibold text-zinc-900">Refresh posts</Text>
+				</Pressable> */}
+        {isLoading ? (
+          <Text>Loading...</Text>
+        ) : (
+          <>
+            <NativeSelect
+              items={Array.from(
+                new Set(
+                  matchScoutAssignments?.flatMap((x) =>
+                    x.flatMap((y) => {
+                      return y.eventId;
+                    }),
+                  ) ?? [],
+                ),
+              )}
+              val={val}
+              setVal={setVal}
+            />
+            <FlashList
+              data={matchScoutAssignments ? matchScoutAssignments[0] : []}
+              estimatedItemSize={20}
+              ItemSeparatorComponent={() => <View className="h-2" />}
+              renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
+            />
+          </>
+        )}
+
         {/* <YStack width={200} minHeight={250} margin="$3" padding="$2">
 					<XStack alignItems="center">
 						<Input flex={1} size={"$2"} placeholder={`Size ${"$2"}...`} />

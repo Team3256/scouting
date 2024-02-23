@@ -1,4 +1,5 @@
 import { View } from "react-native";
+
 import ActionButton from "./ActionButton";
 
 export default function Dangerous() {

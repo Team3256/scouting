@@ -2,8 +2,9 @@ import { TRPCError } from "@trpc/server";
 import { nanoid } from "nanoid";
 import { z } from "zod";
 
-import { desc, eq, schema } from "@acme/db";
+import { desc, eq, schema, sql } from "@acme/db";
 import { matches } from "@acme/db/schema";
+
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 const UltimateHistory = z.object({
@@ -17,32 +18,49 @@ export const eventLog = z.object({
 	endgame: UltimateHistory,
 });
 export const scoutingRouter = createTRPCRouter({
-  // createMatch: publicProcedure.input(z.object({id:z.string({})}))
-  // updateMatch: publicProcedure.input()
-  matchesInEvent: publicProcedure
-    .input(z.object({ event: z.string() }))
-    .query(({ ctx, input }) => {
-      return ctx.db
-        .select()
-        .from(matches)
-        .where(eq(matches.eventId, input.event));
-    }),
-  // all: publicProcedure.query(({ ctx }) => {
-  //   return ctx.db.query.post.findMany({
-  //     with: { author: true },
-  //     orderBy: desc(schema.post.id),
-  //     limit: 10,
-  //   });
-  // }),
+	// createMatch: publicProcedure.input(z.object({id:z.string({})}))
+	// updateMatch: publicProcedure.input()
+	matchesInEvent: publicProcedure
+		.input(z.object({ event: z.string() }))
+		.query(({ ctx, input }) => {
+			return ctx.db
+				.select()
+				.from(matches)
+				.where(eq(matches.eventId, input.event))
+				.then((matches) => {
+					const groupBy = <T>(
+						array: T[],
+						predicate: (value: T, index: number, array: T[]) => string,
+					) =>
+						array.reduce(
+							(acc, value, index, array) => {
+								(acc[predicate(value, index, array)] ||= []).push(value);
+								return acc;
+							},
+							{} as Record<string, T[]>,
+						);
+					const byMatch = groupBy(matches, (match) => match.matchNum);
 
-  // byId: publicProcedure
-  //   .input(z.object({ id: z.string() }))
-  //   .query(({ ctx, input }) => {
-  //     return ctx.db.query.post.findFirst({
-  //       with: { author: true },
-  //       where: eq(schema.post.id, input.id),
-  //     });
-  //   }),
+					return Object.values(byMatch).map((matches) => {
+						const redTeams = matches
+							.filter((team) => team.alliance.startsWith("red"))
+							.map((x) => parseInt(x.teamNum));
+						const blueTeams = matches
+							.filter((team) => team.alliance.startsWith("blue"))
+							.map((x) => parseInt(x.teamNum));
+						return matches.map((x) => {
+							return {
+								matchId: x.id,
+								matchNum: x.matchNum,
+								eventId: x.eventId,
+								team: parseInt(x.teamNum),
+								red: redTeams,
+								blue: blueTeams,
+							};
+						});
+					});
+				});
+		}),
 
 	updateMatchLog: publicProcedure
 		.input(
