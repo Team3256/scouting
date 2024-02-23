@@ -25,7 +25,7 @@ export function OPTIONS() {
 	return response;
 }
 
-const handler = async (req: Response) => {
+const handler = async (req: Request) => {
 	console.log("REQQY REQ REQ", req);
 	const supabase = createRouteHandlerClient({ cookies });
 
