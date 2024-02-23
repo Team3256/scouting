@@ -1,0 +1,34 @@
+name: Build iOS App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: "12.x"
+
+      - name: Install dependencies
+        run: |
+          pnpm install
+
+      - name: Build
+        run: |
+          pnpm build:ios:local
+
+      # zip the ./builds/ directory
+      - name: Grab Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ios-build
+          path: ./builds/
