@@ -17,6 +17,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import InteractiveButton from "./actions2";
 import Assignments from "./Assignments";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
@@ -38,7 +39,9 @@ export default function DashboardPage() {
         <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
-          <Button>Download</Button>
+          {/* <Button onClick={() => addMatch}>CCCCCC New Assignment</Button> */}
+          <Button onClick={InteractiveButton}>Newss Assignment</Button>
+          <Button>Downloadssss</Button>
         </div>
       </div>
       <Tabs defaultValue="assignments" className="space-y-4">

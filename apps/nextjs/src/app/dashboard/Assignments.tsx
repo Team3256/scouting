@@ -19,6 +19,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { createClient } from "@/lib/utils/supabase/server";
 import { DndContext, DragOverlay, useDroppable } from "@dnd-kit/core";
 
 import { AssignmentCard, MemberCard } from "./components/cards";
