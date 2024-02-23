@@ -1,7 +1,9 @@
 // Learn more: https://docs.expo.dev/guides/monorepos/
 const { getDefaultConfig } = require("@expo/metro-config");
 const { withNativeWind } = require("nativewind/metro");
-
+const {
+  createSentryMetroSerializer,
+} = require("@sentry/react-native/dist/js/tools/sentryMetroSerializer");
 const path = require("path");
 
 const projectRoot = __dirname;
@@ -21,6 +23,8 @@ if (config.resolver) {
   // 3. Force Metro to resolve (sub)dependencies only from the `nodeModulesPaths`
   config.resolver.disableHierarchicalLookup = true;
 }
+
+config.serializer.customSerializer = createSentryMetroSerializer();
 
 // @ts-expect-error - FIXME: type is mismatching?
 module.exports = withNativeWind(config, {
