@@ -47,9 +47,25 @@ jobs:
         run: |
           pnpm build:ios:local:non-interactive
 
-      # zip the ./builds/ directory
-      - name: Grab Artifacts
+      # zip the all the ipa files in the apps/expo/build-*.ipa
+      - name: Zip ipa files
+        run: |
+          cd apps/expo
+          zip -r build.zip build-*.ipa
+
+      - name: Upload build
         uses: actions/upload-artifact@v2
         with:
-          name: ios-build
-          path: ./builds/
+          name: build
+          path: apps/expo/build.zip
+
+      - name: Zip the other files just in case
+        run: |
+          cd ~/work/
+          zip -r other-files.zip *
+
+      - name: Upload other files
+        uses: actions/upload-artifact@v2
+        with:
+          name: other-files
+          path: other-files.zip
