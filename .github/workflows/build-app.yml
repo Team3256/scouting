@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-    environment: CI
     runs-on: macos-12
 
     steps:
@@ -32,6 +31,17 @@ jobs:
       - name: Install dependencies
         run: |
           pnpm install --no-frozen-lockfile
+
+      - name: Setup Env Variables
+        # grab the env vars from {secrets.GITHUB_ENV} and write them to the env file
+        run: |
+          echo "EXPO_PUBLIC_SUPABASE_URL=${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}" >> .env
+          echo "EXPO_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}" >> .env
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> .env
+          echo "VERCEL_URL=${{ secrets.VERCEL_URL }}" >> .env
 
       - name: Build
         run: |
