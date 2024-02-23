@@ -343,15 +343,17 @@ export default function HomeScreen() {
     data: matchScoutAssignments,
     isLoading,
     isFetched,
+    isError,
+    error,
   } = api.scouting.matchesInEvent.useQuery({
     event: "test",
   });
+  console.log(matchScoutAssignments, isLoading, isError, error);
   const [val, setVal] = useState<string>("Loading...");
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (isFetched) {
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
-      setVal(matchScoutAssignments?.[0]?.[0]?.eventId!);
+    if (isFetched && matchScoutAssignments?.[0]?.[0]?.eventId) {
+      setVal(matchScoutAssignments?.[0]?.[0]?.eventId);
     }
   }, [isFetched]);
 

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Constants from "expo-constants";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
+// import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import superjson from "superjson";
 
 import type { AppRouter } from "@acme/api";
+
+import { supabase } from "./supabase";
 
 /**
  * A set of typesafe hooks for consuming your API.
@@ -19,6 +21,7 @@ export { type RouterInputs, type RouterOutputs } from "@acme/api";
  * setting the baseUrl to your production API URL.
  */
 const getBaseUrl = () => {
+  // return "https://warriorb.org/";
   /**
    * Gets the IP address of your host-machine. If it cannot automatically find it,
    * you'll have to manually set it. NOTE: Port 3000 should work for most but confirm
@@ -43,8 +46,6 @@ const getBaseUrl = () => {
  * Use only in _app.tsx
  */
 export const TRPCProvider = (props: { children: React.ReactNode }) => {
-  const supabase = useSupabaseClient();
-
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     api.createClient({
@@ -57,7 +58,7 @@ export const TRPCProvider = (props: { children: React.ReactNode }) => {
           async headers() {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
-
+            console.log("supa", supabase);
             const { data } = await supabase.auth.getSession();
             const token = data.session?.access_token;
             // console.log("HEY SUPA DATA", data, token);

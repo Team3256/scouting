@@ -1,3 +1,4 @@
+// Learn more https://docs.expo.io/guides/customizing-metro
 // Learn more: https://docs.expo.dev/guides/monorepos/
 const { getDefaultConfig } = require("@expo/metro-config");
 const { withNativeWind } = require("nativewind/metro");

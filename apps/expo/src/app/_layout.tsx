@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { TamaguiProvider } from "tamagui";
@@ -36,9 +36,9 @@ export default function RootLayout() {
     return null;
   }
   return (
-    <TamaguiProvider config={tamaguiConfig}>
-      <SessionContextProvider supabaseClient={supabase}>
-        <TRPCProvider>
+    <TRPCProvider>
+      <TamaguiProvider config={tamaguiConfig}>
+        <SessionContextProvider supabaseClient={supabase}>
           {/*
            * The Stack component displays the current page.
            * It also allows you to configure your screens
@@ -68,10 +68,11 @@ export default function RootLayout() {
                 headerTitle: () => <></>,
               }}
             />
+            {/* <Slot /> */}
           </Stack>
           <StatusBar />
-        </TRPCProvider>
-      </SessionContextProvider>
-    </TamaguiProvider>
+        </SessionContextProvider>
+      </TamaguiProvider>
+    </TRPCProvider>
   );
 }
