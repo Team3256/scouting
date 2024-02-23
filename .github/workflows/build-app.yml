@@ -45,7 +45,7 @@ jobs:
 
       - name: Build
         run: |
-          pnpm build:ios:local
+          pnpm build:ios:local:non-interactive
 
       # zip the ./builds/ directory
       - name: Grab Artifacts
