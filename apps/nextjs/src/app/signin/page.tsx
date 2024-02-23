@@ -39,7 +39,7 @@ export default function LoginPage() {
           Sign Up
         </Link>
         <div className="bg-muted relative hidden h-full flex-col p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-zinc-900" />
+          <img src="[]" alt="decorative" />
           {/* <div className="relative z-20 flex items-center text-lg font-medium">
         <svg
           xmlns="http://www.w3.org/2000/svg"
