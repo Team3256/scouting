@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    environment: CI
     runs-on: macos-12
 
     steps:
