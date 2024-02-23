@@ -34,9 +34,6 @@ const getBaseUrl = () => {
   if (!localhost) {
     // return "https://turbo.t3.gg";
     return "https://warriorb.org/";
-    throw new Error(
-      "Failed to get localhost. Please point to your production server.",
-    );
   }
   return `http://${localhost}:3000`;
 };
@@ -51,16 +48,19 @@ export const TRPCProvider = (props: { children: React.ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     api.createClient({
-      transformer: superjson,
+      // httpLink:{httpBatchLink:{wsLink:superjson}},
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
+          transformer: superjson,
+
           async headers() {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
 
             const { data } = await supabase.auth.getSession();
             const token = data.session?.access_token;
+            // console.log("HEY SUPA DATA", data, token);
             if (token) headers.set("authorization", token);
 
             return Object.fromEntries(headers);
