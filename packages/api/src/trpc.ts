@@ -90,7 +90,7 @@ export const createTRPCRouter = t.router;
  */
 
 const logAllRequests = t.middleware(({ ctx, path, type, input, next }) => {
-  console.log(">>> tRPC", type, path, "called with", input, "by", ctx.user);
+  console.log(">>> tRPC", type, path, "called with", input, "by", ctx.user , " @ ", new Date());
   return next();
 });
 
