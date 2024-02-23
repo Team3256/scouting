@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@acme/db": "workspace:^0.1.0",
-    "@supabase/supabase-js": "^2.39.0",
+    "@supabase/supabase-js": "^2.39.7",
     "@trpc/client": "next",
     "@trpc/server": "next",
     "nanoid": "^5.0.4",
@@ -24,8 +24,8 @@
     "@acme/eslint-config": "workspace:^0.2.0",
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
-    "eslint": "^8.53.0",
-    "prettier": "^3.1.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {
