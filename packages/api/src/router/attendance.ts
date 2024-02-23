@@ -406,11 +406,7 @@ export const attendanceRouter = createTRPCRouter({
     )
     .mutation(({ ctx, input }) => {
       console.log(
-        ctx.user.email +
-          "wanted to check into meeting " +
-          input.meetingId +
-          " with code " +
-          input.code,
+        `${ctx.user.email}wanted to check into meeting ${input.meetingId} with code ${input.code}`,
       );
     }),
 });

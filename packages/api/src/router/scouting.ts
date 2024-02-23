@@ -40,7 +40,6 @@ export const scoutingRouter = createTRPCRouter({
 							{} as Record<string, T[]>,
 						);
 					const byMatch = groupBy(matches, (match) => match.matchNum);
-
 					return Object.values(byMatch).map((matches) => {
 						const redTeams = matches
 							.filter((team) => team.alliance.startsWith("red"))

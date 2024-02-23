@@ -13,7 +13,7 @@ const defineConfig = (): ExpoConfig => ({
   name: "WarriorHappy",
   slug: "create-t3-turbo",
   scheme: "team3256",
-  version: "2.0.2",
+  version: "2.0.3",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "dark",
