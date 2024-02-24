@@ -22,7 +22,9 @@
     "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:ws": "pnpm dlx sherif@latest",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:^0.1.0",
@@ -31,5 +33,6 @@
     "turbo": "^1.11.3",
     "typescript": "^5.3.3"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "version": "1.0.0"
 }
