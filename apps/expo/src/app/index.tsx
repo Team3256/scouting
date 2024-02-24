@@ -178,8 +178,9 @@ function NativeSelect(
   );
 }
 interface MatchScoutAssignment {
-  matchId: string;
-  // alliance: "red" | "blue";
+  matchKey: string;
+  eventKey: string;
+  eventName: string;
   team: number;
   red: [number, number, number];
   blue: [number, number, number];
@@ -214,9 +215,7 @@ function MatchScoutAssignment({
             </Text>
             <View className="bg-zinc-900">
               <Link
-                href={`/match/${
-                  assignment.matchId
-                }?team=${assignment.team.toString()}`}
+                href={`/match/${assignment.matchKey}?team=${assignment.team}`}
                 asChild={true}
               >
                 <Button>Start</Button>
@@ -339,21 +338,17 @@ function MatchScoutAssignment({
 // import matchScoutAssignments from "../../../../packages/api/src/TBA/fetchMatches";
 export default function HomeScreen() {
   const utils = api.useUtils();
-  const {
-    data: matchScoutAssignments,
-    isLoading,
-    isFetched,
-    isError,
-    error,
-  } = api.scouting.matchesInEvent.useQuery({
-    event: "test",
-  });
+  const { data, isLoading, isFetched, isError, error } =
+    api.scouting.getAssignments.useQuery({
+      event: "test",
+    });
+  const matchScoutAssignments = data as MatchScoutAssignment[][];
   console.log(matchScoutAssignments, isLoading, isError, error);
   const [val, setVal] = useState<string>("Loading...");
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (isFetched && matchScoutAssignments?.[0]?.[0]?.eventId) {
-      setVal(matchScoutAssignments?.[0]?.[0]?.eventId);
+    if (isFetched) {
+      setVal(matchScoutAssignments[0][0]?.eventName);
     }
   }, [isFetched]);
 
@@ -394,7 +389,7 @@ export default function HomeScreen() {
                 new Set(
                   matchScoutAssignments?.flatMap((x) =>
                     x.flatMap((y) => {
-                      return y.eventId;
+                      return y.eventName;
                     }),
                   ) ?? [],
                 ),
@@ -403,7 +398,14 @@ export default function HomeScreen() {
               setVal={setVal}
             />
             <FlashList
-              data={matchScoutAssignments ? matchScoutAssignments[0] : []}
+              data={
+                matchScoutAssignments
+                  ? // Should just be one event of that name
+                    matchScoutAssignments.filter(
+                      (x) => x[0].eventName === val,
+                    )[0]
+                  : []
+              }
               estimatedItemSize={20}
               ItemSeparatorComponent={() => <View className="h-2" />}
               renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
