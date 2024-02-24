@@ -11,9 +11,10 @@ const ExpoSecureStoreAdapter = {
 
 export const supabase = createClient(
 	// App Throws if these are not defined, so we can safely cast
-	process.env.EXPO_PUBLIC_SUPABASE_URL ?? "http://127.0.0.1:54321",
+	process.env.EXPO_PUBLIC_SUPABASE_URL ??
+		"https://nbyhwzvwvpwikgzoyank.supabase.co",
 	process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ??
-		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0",
+		"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5ieWh3enZ3dnB3aWtnem95YW5rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDQwMDQyNTIsImV4cCI6MjAxOTU4MDI1Mn0.ytShtlo0sjKyGCeyqzdVXWpGe-9frCevLXAq1gdjG0w",
 	{
 		auth: {
 			storage: ExpoSecureStoreAdapter,
