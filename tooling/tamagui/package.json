@@ -32,6 +32,6 @@
     "@tamagui/config": "^1.88.5",
     "@tamagui/core": "^1.88.5",
     "@tamagui/font-inter": "^1.88.5",
-    "tamagui": "^1.88.5"
+    "tamagui": "^1.90.6"
   }
 }
