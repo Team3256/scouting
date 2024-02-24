@@ -340,14 +340,14 @@ export default function HomeScreen() {
   const utils = api.useUtils();
   const { data, isLoading, isFetched, isError, error } =
     api.scouting.getAssignments.useQuery({
-      event: "test",
+      event: "2024urmom",
     });
   const matchScoutAssignments = data as MatchScoutAssignment[][];
   console.log(matchScoutAssignments, isLoading, isError, error);
   const [val, setVal] = useState<string>("Loading...");
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (isFetched) {
+    if (isFetched && matchScoutAssignments) {
       setVal(matchScoutAssignments[0][0]?.eventName);
     }
   }, [isFetched]);
