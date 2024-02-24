@@ -1,0 +1,23 @@
+{
+  "name": "warriorhappy",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "type": "module",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@acme/tamagui-config": "workspace:^",
+    "expo": "^50.0.7",
+    "expo-status-bar": "~1.11.1",
+    "react": "^18.2.0",
+    "react-native": "0.73.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9"
+  },
+  "private": true
+}
