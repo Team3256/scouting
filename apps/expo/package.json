@@ -33,7 +33,7 @@
     "@trpc/client": "11.0.0-next-beta.289",
     "@trpc/react-query": "11.0.0-next-beta.289",
     "@trpc/server": "11.0.0-next-beta.289",
-    "expo": "^50.0.7",
+    "expo": "~50.0.7",
     "expo-apple-authentication": "~6.3.0",
     "expo-constants": "~15.4.5",
     "expo-crypto": "^12.8.1",
