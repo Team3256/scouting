@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@acme/db": "workspace:^0.1.0",
+    "@acme/db-types": "workspace:^",
     "@supabase/supabase-js": "^2.39.7",
     "@trpc/client": "next",
     "@trpc/server": "next",
