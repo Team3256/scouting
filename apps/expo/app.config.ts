@@ -51,6 +51,14 @@ const defineConfig = (): ExpoConfig => ({
 	plugins: [
 		"./expo-plugins/with-modify-gradle.js",
 		"expo-apple-authentication",
+		[
+			"expo-build-properties",
+			{
+				ios: {
+					useFrameworks: "static",
+				},
+			},
+		],
 	],
 	owner: "warriorborgs",
 });
