@@ -10,6 +10,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import type {Database} from "@acme/db-types";
 
 import { db } from "@acme/db";
 
@@ -27,7 +28,7 @@ import { db } from "@acme/db";
  */
 export const createTRPCContext = async (opts: {
   headers: Headers;
-  supabase: SupabaseClient;
+  supabase: SupabaseClient<Database>;
 }) => {
   const supabase = opts.supabase;
 
@@ -44,6 +45,7 @@ export const createTRPCContext = async (opts: {
 
   return {
     user: user.data.user,
+    supabase,
     db,
   };
 };

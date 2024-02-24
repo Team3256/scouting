@@ -20,76 +20,127 @@ export const eventLog = z.object({
 export const scoutingRouter = createTRPCRouter({
 	// createMatch: publicProcedure.input(z.object({id:z.string({})}))
 	// updateMatch: publicProcedure.input()
-	matchesInEvent: publicProcedure
-		.input(z.object({ event: z.string() }))
-		.query(({ ctx, input }) => {
-			return ctx.db
-				.select()
-				.from(matches)
-				.where(eq(matches.eventId, input.event))
-				.then((matches) => {
-					const groupBy = <T>(
-						array: T[],
-						predicate: (value: T, index: number, array: T[]) => string,
-					) =>
-						array.reduce(
-							(acc, value, index, array) => {
-								(acc[predicate(value, index, array)] ||= []).push(value);
-								return acc;
-							},
-							{} as Record<string, T[]>,
-						);
-					const byMatch = groupBy(matches, (match) => match.matchNum);
-					return Object.values(byMatch).map((matches) => {
-						const redTeams = matches
-							.filter((team) => team.alliance.startsWith("red"))
-							.map((x) => parseInt(x.teamNum));
-						const blueTeams = matches
-							.filter((team) => team.alliance.startsWith("blue"))
-							.map((x) => parseInt(x.teamNum));
-						return matches.map((x) => {
-							return {
-								matchId: x.id,
-								matchNum: x.matchNum,
-								eventId: x.eventId,
-								team: parseInt(x.teamNum),
-								red: redTeams,
-								blue: blueTeams,
-							};
-						});
-					});
+	getAssignments: publicProcedure
+		.input(
+			z.object({ event: z.string(), assignee: z.string().uuid().nullable() }),
+		)
+		.query(async ({ ctx, input }) => {
+			let query = ctx.supabase
+				.from("assignments")
+				.select("matches (key), events (key, name), team, alliance")
+				.eq("events (key)", input.event);
+			if (input.assignee) {
+				query = query.eq("assignee", input.assignee);
+			}
+			const { data, error } = await query;
+
+			if (error !== null || data === null) {
+				throw new TRPCError({
+					code: "INTERNAL_SERVER_ERROR",
+					message: "Error fetching assignments",
+					cause: error,
 				});
+			}
+			// Some data wrangling to make it easier to work with
+			const groupBy = <T>(
+				array: T[],
+				predicate: (value: T, index: number, array: T[]) => string,
+			) =>
+				array.reduce(
+					(acc, value, index, array) => {
+						(acc[predicate(value, index, array)] ||= []).push(value);
+						return acc;
+					},
+					{} as Record<string, T[]>,
+				);
+			const byMatch = groupBy(data, ({ alliance }) => alliance);
+			return Object.values(byMatch).map((matches) => {
+				// Keys are guaranteed to be in the form of "frcXXXX" where XXXX is a number
+				const redTeams = matches
+					.filter((team) => team.alliance.startsWith("red"))
+					// biome-ignore lint/style/noNonNullAssertion: see above
+					.map((x) => parseInt(x.team.match(/\d+/)![0]));
+				const blueTeams = matches
+					.filter((team) => team.alliance.startsWith("blue"))
+					// biome-ignore lint/style/noNonNullAssertion: see above
+					.map((x) => parseInt(x.team.match(/\d+/)![0]));
+				return matches.map((x) => {
+					return {
+						// biome-ignore lint/style/noNonNullAssertion: Matches to a singular match
+						matchKey: x.matches!.key,
+						// biome-ignore lint/style/noNonNullAssertion: The match should be guaranteed to map to a singular event
+						eventKey: x.events[0]!.key,
+						// biome-ignore lint/style/noNonNullAssertion: see above
+						eventName: x.events[0]!.name,
+						// biome-ignore lint/style/noNonNullAssertion: see above
+						team: parseInt(x.team.match(/\d+/)![0]),
+						red: redTeams,
+						blue: blueTeams,
+					};
+				});
+			});
+			// return byMatch.map(
+			// 	({
+			// 		matches,
+			// 		events,
+			// 		team,
+
+			// 		alliance,
+			// 	}) => {
+			//
+			// 		return { team:  };
+			// 	},
+			// );
+
+			// return ctx.db
+			// 	.select()
+			// 	.from(matches)
+			// 	.where(eq(matches.eventId, input.event))
+			// 	.then((matches) => {
+
+			// 	});
 		}),
 
 	updateMatchLog: publicProcedure
 		.input(
 			z.object({
 				eventLog,
-				matchId: z.string(),
-				// teamNum: z.string(),
+				matchKey: z.string(),
+				team: z.string(),
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
-			return ctx.db
-				.update(matches)
-				.set({ eventLog: input.eventLog })
-				.where(eq(matches.id, input.matchId))
-				// .where(eq(matches.teamNum, input.teamNum));
+			const { error } = await ctx.supabase
+				.from("assigmments")
+				.update({ event_log: input.eventLog })
+				.eq("match", input.matchKey)
+				.eq("team", input.team);
+			if (error !== null) {
+				throw new TRPCError({
+					code: "INTERNAL_SERVER_ERROR",
+					message: "Error updating match log",
+					cause: error,
+				});
+			}
+
+			// .where(eq(matches.teamNum, input.teamNum));
 		}),
 	getMatchLog: publicProcedure
-		.input(z.object({ matchId: z.string() }))
+		.input(z.object({ matchKey: z.string(), team: z.string() }))
 		.query(async ({ ctx, input }) => {
-			return ctx.db
-				.select()
-				.from(matches)
-				.where(eq(matches.id, input.matchId))
-				.then((matches) => {
-					return matches.map((x) => {
-						return {
-							matchId: x.id,
-							eventLog: x.eventLog,
-						};
-					});
+			const { data: assignments, error } = await ctx.supabase
+				.from("assignments")
+				.select("event_log")
+
+				.eq("match", input.matchKey)
+				.eq("team", input.team);
+			if (error !== null) {
+				throw new TRPCError({
+					code: "INTERNAL_SERVER_ERROR",
+					message: "Error fetching match log",
+					cause: error,
 				});
+			}
+			return assignments;
 		}),
 });

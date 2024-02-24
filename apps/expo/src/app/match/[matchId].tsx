@@ -26,7 +26,8 @@ import { UltimateHistory } from "./types";
 export default function Match() {
   const local = useLocalSearchParams();
   const key = {
-    matchId: local.matchId as string,
+    matchKey: local.matchId as string,
+    team: local.team as string,
   };
   const utils = api.useUtils();
   const rawUpdate = api.scouting.updateMatchLog.useMutation({
@@ -109,7 +110,7 @@ export default function Match() {
               setUltimateHistory={(stuff) => {
                 console.log("stuff", stuff);
                 rawUpdate.mutate({
-                  matchId: local.matchId as string,
+                  ...key,
                   eventLog: { ...godlyHistory, auto: stuff },
                 });
               }}
@@ -122,7 +123,7 @@ export default function Match() {
               ultimateHistory={godlyHistory.teleop}
               setUltimateHistory={(stuff) => {
                 rawUpdate.mutate({
-                  matchId: local.matchId as string,
+                  ...key,
                   eventLog: { ...godlyHistory, teleop: stuff },
                 });
               }}
@@ -134,7 +135,7 @@ export default function Match() {
               ultimateHistory={godlyHistory.endgame}
               setUltimateHistory={(stuff) => {
                 rawUpdate.mutate({
-                  matchId: local.matchId as string,
+                  ...key,
                   eventLog: { ...godlyHistory, endgame: stuff },
                 });
               }}
