@@ -1,16 +1,42 @@
 {
   "cli": {
+<<<<<<< HEAD
     "version": ">= 7.3.0"
   },
   "build": {
     "development": {
+=======
+    "version": ">= 4.1.2"
+  },
+  "build": {
+    "base": {
+      "node": "18.16.1",
+      "ios": {
+        "resourceClass": "m-medium"
+      }
+    },
+    "development": {
+      "extends": "base",
+>>>>>>> 5e3e22c (WIP)
       "developmentClient": true,
       "distribution": "internal"
     },
     "preview": {
+<<<<<<< HEAD
       "distribution": "internal"
     },
     "production": {}
+=======
+      "extends": "base",
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "production": {
+      "extends": "base"
+    }
+>>>>>>> 5e3e22c (WIP)
   },
   "submit": {
     "production": {}

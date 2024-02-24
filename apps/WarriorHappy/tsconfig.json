@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "compilerOptions": {
     "jsx": "react",
     "strict": true,
@@ -9,11 +10,19 @@
       "~/*": ["./src/*"]
     }
   },
+=======
+  "compilerOptions": {},
+  "extends": "expo/tsconfig.base",
+>>>>>>> 5e3e22c (WIP)
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
+<<<<<<< HEAD
   ],
   "extends": "expo/tsconfig.base"
+=======
+  ]
+>>>>>>> 5e3e22c (WIP)
 }
