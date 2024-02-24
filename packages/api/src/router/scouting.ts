@@ -22,18 +22,19 @@ export const scoutingRouter = createTRPCRouter({
 	// updateMatch: publicProcedure.input()
 	getAssignments: publicProcedure
 		.input(
-			z.object({ event: z.string(), assignee: z.string().uuid().nullable() }),
+			z.object({ event: z.string(), assignee: z.string().uuid().optional() }),
 		)
 		.query(async ({ ctx, input }) => {
 			let query = ctx.supabase
 				.from("assignments")
-				.select("matches (key), events (key, name), team, alliance")
-				.eq("events (key)", input.event);
+				.select("matches (key, event, events (key, name)), team, alliance")
+				.eq("matches.event", input.event);
+			console.log(input);
 			if (input.assignee) {
 				query = query.eq("assignee", input.assignee);
 			}
 			const { data, error } = await query;
-
+			console.log(data, input.event);
 			if (error !== null || data === null) {
 				throw new TRPCError({
 					code: "INTERNAL_SERVER_ERROR",
@@ -69,9 +70,9 @@ export const scoutingRouter = createTRPCRouter({
 						// biome-ignore lint/style/noNonNullAssertion: Matches to a singular match
 						matchKey: x.matches!.key,
 						// biome-ignore lint/style/noNonNullAssertion: The match should be guaranteed to map to a singular event
-						eventKey: x.events[0]!.key,
+						eventKey: x.matches!.event,
 						// biome-ignore lint/style/noNonNullAssertion: see above
-						eventName: x.events[0]!.name,
+						eventName: "x.matches!.events![0]!.name",
 						// biome-ignore lint/style/noNonNullAssertion: see above
 						team: parseInt(x.team.match(/\d+/)![0]),
 						red: redTeams,
