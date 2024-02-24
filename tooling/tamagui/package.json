@@ -29,7 +29,7 @@
   },
   "prettier": "@acme/prettier-config",
   "dependencies": {
-    "@tamagui/config": "^1.88.5",
+    "@tamagui/config": "^1.90.6",
     "@tamagui/core": "^1.88.5",
     "@tamagui/font-inter": "^1.88.5",
     "tamagui": "^1.90.6"
