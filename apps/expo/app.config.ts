@@ -1,4 +1,5 @@
 import type { ExpoConfig } from "@expo/config";
+import "dotenv/config";
 
 if (
 	!process.env.EXPO_PUBLIC_SUPABASE_URL ||
