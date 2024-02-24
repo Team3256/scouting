@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "expo1",
-    "slug": "expo1",
+    "name": "StickerSmash",
+    "slug": "StickerSmash",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.warriorborgs.StickerSmash"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +26,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7a4672a2-a663-4a54-bac2-53d87fa22008"
+      }
+    },
+    "owner": "warriorborgs"
   }
 }
