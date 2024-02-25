@@ -52,14 +52,14 @@ jobs:
       # zip the all the ipa files in the apps/expo/build-*.ipa
       - name: Zip ipa files
         run: |
-          cd apps/expo
+          cd apps/WarriorHappy
           zip -r build.zip build-*.ipa
 
       - name: Upload build
         uses: actions/upload-artifact@v2
         with:
           name: build
-          path: apps/expo/build.zip
+          path: apps/WarriorHappy/build.zip
 
       - name: Zip the other files just in case
         run: |
