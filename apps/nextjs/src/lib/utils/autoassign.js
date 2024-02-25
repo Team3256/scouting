@@ -1,4 +1,4 @@
-function assignTasks(times, users) {
+export function assignTasks(times, users) {
     // Sort the times for ordered assignment
     const sortedTimes = times.sort();
 
@@ -38,12 +38,12 @@ users.forEach(user => {
     return assignments;
   }
   
-  // Example usage:
-  const times = ['10:00', '10:30', '11:00', '11:30'].reduce((acc, time) => acc.concat(Array(6).fill(time)), []);
-  const users = ['Bryan', 'has', 'no', 'girls', 'also', 'the', 'scouting', 'app', 'works','on','his','computer'];
+  // // Example usage:
+  // const times = ['10:00', '10:30', '11:00', '11:30'].reduce((acc, time) => acc.concat(Array(6).fill(time)), []);
+  // const users = ['Bryan', 'has', 'no', 'girls', 'also', 'the', 'scouting', 'app', 'works','on','his','computer'];
   
-  const assignments = assignTasks(times, users);
-  for (const user in assignments) {
-    console.log(`${user}: ${assignments[user]}`);
-  }
+  // const assignments = assignTasks(times, users);
+  // for (const user in assignments) {
+  //   console.log(`${user}: ${assignments[user]}`);
+  // }
   
