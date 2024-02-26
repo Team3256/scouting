@@ -33,6 +33,7 @@ export default function Match() {
   const rawUpdate = api.scouting.updateMatchLog.useMutation({
     onSuccess: (data, variables, context) => {
       console.log("data", data, variables, context);
+
       utils.scouting.getMatchLog.setData(key, [variables]);
       //   utils.scouting.getMatchLog.invalidateQuery();
     },
@@ -48,8 +49,8 @@ export default function Match() {
   //     endgame: UltimateHistory;
   //   } | null>(null);
   //   // TODO: Pre-emptively cache
-  const { data, isLoading } = api.scouting.getMatchLog.useQuery(key);
-
+  const { data, isLoading, isError } = api.scouting.getMatchLog.useQuery(key);
+  console.log("daata", data, isError);
   //   const update = useCallback(
   //     (h) => {
   //       rawUpdate.mutate({
@@ -62,8 +63,8 @@ export default function Match() {
   //   );
   //   useEffect(() => {
   //     if (!isLoading) {
-  //       console.log("set", data[0].eventLog);
-  //       setGodlyHistory(data[0].eventLog);
+  //       console.log("set", data[0].event_log);
+  //       setGodlyHistory(data[0].event_log);
   //     }
   //   }, [isLoading]);
   //   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -79,7 +80,7 @@ export default function Match() {
   // 		</SafeAreaView>
   // 	);
   // }
-  const godlyHistory = data?.[0]?.eventLog as {
+  const godlyHistory = data?.[0]?.event_log as {
     auto: UltimateHistory;
     teleop: UltimateHistory;
     endgame: UltimateHistory;
@@ -111,7 +112,7 @@ export default function Match() {
                 console.log("stuff", stuff);
                 rawUpdate.mutate({
                   ...key,
-                  eventLog: { ...godlyHistory, auto: stuff },
+                  event_log: { ...godlyHistory, auto: stuff },
                 });
               }}
             />
@@ -124,7 +125,7 @@ export default function Match() {
               setUltimateHistory={(stuff) => {
                 rawUpdate.mutate({
                   ...key,
-                  eventLog: { ...godlyHistory, teleop: stuff },
+                  event_log: { ...godlyHistory, teleop: stuff },
                 });
               }}
             />
@@ -136,7 +137,7 @@ export default function Match() {
               setUltimateHistory={(stuff) => {
                 rawUpdate.mutate({
                   ...key,
-                  eventLog: { ...godlyHistory, endgame: stuff },
+                  event_log: { ...godlyHistory, endgame: stuff },
                 });
               }}
             />

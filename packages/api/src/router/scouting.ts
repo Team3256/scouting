@@ -72,7 +72,7 @@ export const scoutingRouter = createTRPCRouter({
 						// biome-ignore lint/style/noNonNullAssertion: The match should be guaranteed to map to a singular event
 						eventKey: x.matches!.event,
 						// biome-ignore lint/style/noNonNullAssertion: see above
-						eventName: "x.matches!.events![0]!.name",
+						eventName: x.matches!.events[0].name,
 						// biome-ignore lint/style/noNonNullAssertion: see above
 						team: parseInt(x.team.match(/\d+/)![0]),
 						red: redTeams,

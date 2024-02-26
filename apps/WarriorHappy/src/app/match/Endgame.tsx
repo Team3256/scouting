@@ -30,10 +30,10 @@ export default function Endgame({
     <View className="mt-5">
       <Text className="pl-3 text-lg">Scoring (Trap=🚪, Hanging=⛓️)</Text>
       <ActionGrid
-        actions={["Miss 🚪", "Miss ⛓️", "Score 🚪", "Score ⛓️"]}
+        actions={["Miss 🚪", "Miss ⛓️", "Score 🚪", "Score ⛓️", "Park"]}
         history={ultimateHistory.log}
         setHistory={setHistory}
-        themeOverrides={["red", "red", "green", "green"]}
+        themeOverrides={["red", "red", "green", "green", "gray"]}
       />
     </View>
   );
