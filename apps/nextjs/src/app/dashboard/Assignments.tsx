@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,6 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { assignTasks } from "@/lib/utils/autoassign";
 import { DndContext, DragOverlay, useDroppable } from "@dnd-kit/core";
 
 import { AssignmentCard, MemberCard } from "./components/cards";
@@ -34,19 +33,7 @@ import { UserNav } from "./components/user-nav";
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`,
 );
-function autoAssign(
-  assignments: string[],
-  members: { [key: string]: string[] },
-  setMembers: (members: { [key: string]: string[] }) => void,
-  setAssignments: (assignments: string[]) => void,
-) {
-  // useEffect(() => {
-  const autoassign = assignTasks(assignments, Object.keys(members));
-  console.log(autoassign, typeof autoassign);
-  setMembers(autoassign);
-  setAssignments([]);
-  // }, []);
-}
+
 export default function Assignments() {
   // XXX: Use real data via tRPC
   const [members, setMembers] = useState<{ [key: string]: string[] }>(
@@ -150,13 +137,6 @@ export default function Assignments() {
           </ResizablePanelGroup> */}
         </ResizablePanel>
       </ResizablePanelGroup>
-      <Button
-        onClick={() =>
-          autoAssign(assignments, members, setMembers, setAssignments)
-        }
-      >
-        Auto Assign
-      </Button>
     </DndContext>
   );
 }
