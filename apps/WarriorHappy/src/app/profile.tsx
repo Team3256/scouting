@@ -1,13 +1,37 @@
-import { useState } from "react";
-import { Alert, Pressable, Text, TextInput, View } from "react-native";
+import { useEffect, useState } from "react";
+import {
+  Alert,
+  AppState,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { AntDesign } from "@expo/vector-icons";
-import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 
 import { initiateAppleSignIn } from "../utils/auth";
+import { supabase } from "../utils/supabase";
+
+// Tells Supabase Auth to continuously refresh the session automatically if
+// the app is in the foreground. When this is added, you will continue to receive
+// `onAuthStateChange` events with the `TOKEN_REFRESHED` or `SIGNED_OUT` event
+// if the user's session is terminated. This should only be registered once.
+AppState.addEventListener("change", (state) => {
+  if (state === "active") {
+    supabase.auth.startAutoRefresh();
+  } else {
+    supabase.auth.stopAutoRefresh();
+  }
+});
 
 export default function Profile() {
-  const user = useUser();
+  let user = null;
+  useEffect(() => {
+    supabase.auth.getUser().then((u) => {
+      user = u.data.user;
+    });
+  });
   return (
     <View className="flex-1 bg-zinc-800 p-4">
       {user ? <SignedInView /> : <SignedOutView />}
@@ -16,8 +40,12 @@ export default function Profile() {
 }
 
 function SignedInView() {
-  const supabase = useSupabaseClient();
-  const user = useUser();
+  let user = null;
+  useEffect(() => {
+    supabase.auth.getUser().then((u) => {
+      user = u.data.user;
+    });
+  });
 
   return (
     <View className="flex gap-4">
@@ -33,8 +61,6 @@ function SignedInView() {
 }
 
 function SignedOutView() {
-  const supabase = useSupabaseClient();
-
   const signInWithApple = async () => {
     try {
       const { token, nonce } = await initiateAppleSignIn();
@@ -105,8 +131,6 @@ function SignedOutView() {
 }
 
 function EmailForm() {
-  const supabase = useSupabaseClient();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
