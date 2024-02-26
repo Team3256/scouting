@@ -14,7 +14,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Image } from "expo-image";
 import { Link, Stack } from "expo-router";
-import * as Sentry from "@sentry/react-native";
+// import * as Sentry from "@sentry/react-native";
 import { FlashList } from "@shopify/flash-list";
 import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
 import {
@@ -36,9 +36,9 @@ import { quantitativeScouting } from "../../../../packages/db/schema";
 import { AuthAvatar } from "../components/header";
 import { api } from "../utils/api";
 
-Sentry.init({
-  dsn: "https://5bd43c96b85e892b471db83bbd773662@o4506794882170880.ingest.sentry.io/4506794897768448",
-});
+// Sentry.init({
+//   dsn: "https://5bd43c96b85e892b471db83bbd773662@o4506794882170880.ingest.sentry.io/4506794897768448",
+// });
 
 function NativeSelect(
   props: {
