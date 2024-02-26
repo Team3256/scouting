@@ -54,7 +54,13 @@ export const scoutingRouter = createTRPCRouter({
 					},
 					{} as Record<string, T[]>,
 				);
-			const byMatch = groupBy(data, ({ key }) => key);
+
+			const byMatch = groupBy(
+				data,
+				({ matches }) =>
+					// biome-ignore lint/style/noNonNullAssertion: <explanation>
+					matches!.key,
+			);
 			return Object.values(byMatch).map((matches) => {
 				// Keys are guaranteed to be in the form of "frcXXXX" where XXXX is a number
 				const redTeams = matches
