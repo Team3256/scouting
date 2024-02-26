@@ -252,6 +252,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.0.7
         version: 1.0.7(@types/react-dom@18.2.19)(@types/react@18.2.58)(react-dom@18.2.0)(react@18.2.0)
+      '@sentry/browser':
+        specifier: ^7.102.1
+        version: 7.102.1
       '@sentry/nextjs':
         specifier: ^7.102.1
         version: 7.102.1(next@14.1.0)(react@18.2.0)
