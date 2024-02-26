@@ -139,7 +139,6 @@ export const scoutingRouter = createTRPCRouter({
 			const { data: assignments, error } = await ctx.supabase
 				.from("assignments")
 				.select("event_log")
-
 				.eq("match", input.matchKey)
 				.eq("team", input.team);
 			if (error !== null) {

@@ -36,7 +36,11 @@ export default function Match() {
     onSuccess: (data, variables, context) => {
       console.log("data", data, variables, context);
 
-      utils.scouting.getMatchLog.setData(key, [variables]);
+      utils.scouting.getMatchLog.setData(key, [
+        {
+          event_log: variables.eventLog,
+        },
+      ]);
       //   utils.scouting.getMatchLog.invalidateQuery();
     },
     onError: (error, variables, context) => {
@@ -82,7 +86,7 @@ export default function Match() {
   // 		</SafeAreaView>
   // 	);
   // }
-  const godlyHistory = data?.[0]?.eventLog as {
+  const godlyHistory = data?.[0]?.event_log as {
     auto: UltimateHistory;
     teleop: UltimateHistory;
     endgame: UltimateHistory;
