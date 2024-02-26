@@ -116,7 +116,16 @@ export default function Match() {
                 });
               }}
             />
-            <Dangerous />
+            <Dangerous
+              ultimateHistory={godlyHistory.auto}
+              setUltimateHistory={(stuff) => {
+                console.log("stuff", stuff);
+                rawUpdate.mutate({
+                  ...key,
+                  event_log: { ...godlyHistory, auto: stuff },
+                });
+              }}
+            />
           </Tabs.Content>
 
           <Tabs.Content value="tab2" height={"100%"} paddingBottom="15%">
@@ -129,7 +138,15 @@ export default function Match() {
                 });
               }}
             />
-            <Dangerous />
+            <Dangerous
+              ultimateHistory={godlyHistory.teleop}
+              setUltimateHistory={(stuff) => {
+                rawUpdate.mutate({
+                  ...key,
+                  event_log: { ...godlyHistory, teleop: stuff },
+                });
+              }}
+            />
           </Tabs.Content>
           <Tabs.Content value="tab3" height={"100%"} paddingBottom="15%">
             <Endgame
@@ -141,7 +158,15 @@ export default function Match() {
                 });
               }}
             />
-            <Dangerous />
+            <Dangerous
+              ultimateHistory={godlyHistory.endgame}
+              setUltimateHistory={(stuff) => {
+                rawUpdate.mutate({
+                  ...key,
+                  event_log: { ...godlyHistory, endgame: stuff },
+                });
+              }}
+            />
           </Tabs.Content>
         </Tabs>
       )}
