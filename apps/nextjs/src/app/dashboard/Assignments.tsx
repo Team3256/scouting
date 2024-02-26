@@ -22,6 +22,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { assignTasks } from "@/lib/utils/autoassign";
 import { DndContext, DragOverlay, useDroppable } from "@dnd-kit/core";
 
+import { addToDatabase } from "./actions";
 import { AssignmentCard, MemberCard } from "./components/cards";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
@@ -68,6 +69,7 @@ export default function Assignments() {
       }}
       onDragEnd={function handleDragEnd(event) {
         const overId = event.over?.id;
+        addToDatabase();
         console.log("end", overId, activeId, members, assignments);
         if (overId === undefined) {
           // Drag action was cancelled
