@@ -17,6 +17,7 @@ export default function Dangerous({
         marginTop: "auto",
         marginBottom: 30,
         display: "flex",
+        flexWrap: "wrap",
         flexDirection: "row",
         justifyContent: "space-between",
       }}
@@ -31,6 +32,16 @@ export default function Dangerous({
         }}
         label="Disconnected"
         theme={"red"}
+      />
+      <ActionButton
+        action={() => {
+          setUltimateHistory({
+            ...ultimateHistory,
+            log: [...ultimateHistory.log, "Reconnected"],
+          } as UltimateHistory);
+        }}
+        label="Reconnected"
+        theme={"green"}
       />
       <ActionButton
         action={() => {

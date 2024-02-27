@@ -20,8 +20,8 @@ export default function Teleop({
     } as UltimateHistory);
   }
   const intakeActions = [
-    "Human",
-    "Ground",
+    "Source",
+    "Floor",
     // "Climb",
     // "Shoot Amp",
     // "Miss Speaker",
