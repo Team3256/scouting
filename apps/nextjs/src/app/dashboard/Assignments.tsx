@@ -48,16 +48,39 @@ function autoAssign(
   setAssignments([]);
   // }, []);
 }
-export default function Assignments() {
+function Assignments() {
   // XXX: Use real data via tRPC
   const [members, setMembers] = useState<{ [key: string]: string[] }>(
     Object.fromEntries(tags.map((x) => [`${x}M`, []])),
   );
-  // const { data, isLoading } = trpc.tba.teamEvents.useQuery({
+
+  const { data, isLoading } = trpc.tba.eventMatches.useQuery({
+    teamKey: "frc3256",
+    eventKey: "2023arc",
+  });
+
+  // const { data2, isLoading2 } = trpc.tba.teamEvents.useQuery({
   //   teamKey: "frc3256",
-  //   year: 2024,
+  //   year: 2023,
   // });
-  const [assignments, setAssignments] = useState(tags.map((x) => `${x}A`));
+
+  console.log("DATAAAAAAA: ", data);
+
+  if (isLoading) {
+    return;
+  }
+
+  const teamKeys = data.flatMap((match) =>
+    match.alliances.blue.team_keys.concat(match.alliances.red.team_keys),
+  );
+  const uniqueTeamKeys = [...new Set(teamKeys)];
+  console.log("UNIQUE TEAM KEYS: ", uniqueTeamKeys);
+  let [assignments, setAssignments] = useState(); 
+  setAssignments(uniqueTeamKeys);
+  // const [assignments, setAssignments] = useState(uniqueTeamKeys);
+  console.log("HERE: ", assignments); // Output the result to the console
+
+  // const [assignments, setAssignments] = useState(tags.map((x) => `${x}A`));
   // useEffect(() => {
   //   if (!isLoading) {
   //     setAssignments(data);
@@ -187,3 +210,5 @@ function AssignmentList({ assignments }: { assignments: string[] }) {
     </ScrollArea>
   );
 }
+
+export default trpc.withTRPC(Assignments);

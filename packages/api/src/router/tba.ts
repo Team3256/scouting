@@ -29,9 +29,10 @@ export const tbaRouter = createTRPCRouter({
     }),
   eventMatches: publicProcedure
     .input(z.object({ teamKey: z.string() }))
+    .input(z.object({ eventKey: z.string() }))
     .query(async ({ input }) => {
       const response = await axios.get(
-        `https://www.thebluealliance.com/api/v3/event/${input.teamKey}/matches`,
+        `https://www.thebluealliance.com/api/v3/team/${input.teamKey}/event/${input.eventKey}/matches/simple`,
         {
           headers: {
             "X-TBA-Auth-Key":
@@ -41,7 +42,7 @@ export const tbaRouter = createTRPCRouter({
       );
       const extractedData2 = (
         response.data as {
-          match_number: string;
+          match_number: number;
           key: string;
           alliances: {
             red: { team_keys: [string, string, string] };
@@ -50,7 +51,7 @@ export const tbaRouter = createTRPCRouter({
         }[]
       ).map(
         (match: {
-          match_number: string;
+          match_number: number;
           key: string;
           alliances: {
             red: { team_keys: [string, string, string] };
@@ -63,12 +64,6 @@ export const tbaRouter = createTRPCRouter({
           // predicted_time: match.predicted_time,
         }),
       );
-      return extractedData2 as {
-        match_num: string;
-        alliances: {
-          red: { team_keys: [string, string, string] };
-          blue: { team_keys: [string, string, string] };
-        };
-      }[];
+      return extractedData2;
     }),
 });
