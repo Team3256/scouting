@@ -118,11 +118,12 @@ export const scoutingRouter = createTRPCRouter({
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
-			const { error } = await ctx.supabase
+			const { error, data } = await ctx.supabase
 				.from("assignments")
 				.update({ event_log: input.eventLog })
 				.eq("match", input.matchKey)
-				.eq("team", input.team);
+				.eq("team", input.team)
+				.select();
 			if (error !== null) {
 				throw new TRPCError({
 					code: "INTERNAL_SERVER_ERROR",
@@ -130,7 +131,8 @@ export const scoutingRouter = createTRPCRouter({
 					cause: error,
 				});
 			}
-
+			console.log("mutation", data, error, input);
+			// TODO: Actually return somthing for data
 			// .where(eq(matches.teamNum, input.teamNum));
 		}),
 	getMatchLog: publicProcedure
