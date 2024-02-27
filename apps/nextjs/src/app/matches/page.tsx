@@ -1,17 +1,17 @@
 import React from "react";
+import { trpc } from "@/lib/utils/trpc";
 import { createTRPCClient } from "@trpc/client";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { createTRPCReact } from "@trpc/react-query";
 
 import type { AppRouter } from "@acme/api";
 
-const api = createTRPCReact<AppRouter>();
-
 export default async function getTeamEvents(teamKey: string, year: number) {
-  const teamEvents = await api.tba.teamEvents.useQuery({
-    teamKey,
-    year,
-  });
+  // const teamEvents = await trpc.tba.teamEvents.useQuery({
+  //   teamKey,
+  //   year,
+  // });
+  const teamEvents = await trpc.tba.teamEvents.useQuery({ teamKey, year });
   console.log(teamEvents);
   return teamEvents;
 }

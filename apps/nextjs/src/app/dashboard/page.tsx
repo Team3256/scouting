@@ -17,6 +17,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// import { allEvents } from "../matches/getEvents";
+import { allEvents } from "../matches/getEvents";
 import Assignments from "./Assignments";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
@@ -39,6 +41,9 @@ export default function DashboardPage() {
         <div className="flex items-center space-x-2">
           <CalendarDateRangePicker />
           <Button>Download</Button>
+          {/* <p>DATA: </p> */}
+          {/* {allEvents("frc3256", 2024)} */}
+          {/* <allEvents team="frc3256" y={2024} /> */}
         </div>
       </div>
       <Tabs defaultValue="assignments" className="space-y-4">

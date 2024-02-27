@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -19,9 +19,10 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { assignTasks } from "@/lib/utils/autoassign";
+import { trpc } from "@/lib/utils/trpc";
 import { DndContext, DragOverlay, useDroppable } from "@dnd-kit/core";
 
-import { addToDatabase } from "./actions";
 import { AssignmentCard, MemberCard } from "./components/cards";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
@@ -34,13 +35,34 @@ import { UserNav } from "./components/user-nav";
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`,
 );
-
+function autoAssign(
+  assignments: string[],
+  members: { [key: string]: string[] },
+  setMembers: (members: { [key: string]: string[] }) => void,
+  setAssignments: (assignments: string[]) => void,
+) {
+  // useEffect(() => {
+  const autoassign = assignTasks(assignments, Object.keys(members));
+  console.log(autoassign, typeof autoassign);
+  setMembers(autoassign);
+  setAssignments([]);
+  // }, []);
+}
 export default function Assignments() {
   // XXX: Use real data via tRPC
   const [members, setMembers] = useState<{ [key: string]: string[] }>(
     Object.fromEntries(tags.map((x) => [`${x}M`, []])),
   );
+  // const { data, isLoading } = trpc.tba.teamEvents.useQuery({
+  //   teamKey: "frc3256",
+  //   year: 2024,
+  // });
   const [assignments, setAssignments] = useState(tags.map((x) => `${x}A`));
+  // useEffect(() => {
+  //   if (!isLoading) {
+  //     setAssignments(data);
+  //   }
+  // });
   const [activeId, setActiveId] = useState<string | null>(null);
   // Inverted members
   const reverseAssignmentToMembers = Object.fromEntries(
@@ -56,7 +78,6 @@ export default function Assignments() {
       }}
       onDragEnd={function handleDragEnd(event) {
         const overId = event.over?.id;
-        addToDatabase();
         console.log("end", overId, activeId, members, assignments);
         if (overId === undefined) {
           // Drag action was cancelled
@@ -139,6 +160,13 @@ export default function Assignments() {
           </ResizablePanelGroup> */}
         </ResizablePanel>
       </ResizablePanelGroup>
+      <Button
+        onClick={() =>
+          autoAssign(assignments, members, setMembers, setAssignments)
+        }
+      >
+        Auto Assign
+      </Button>
     </DndContext>
   );
 }
