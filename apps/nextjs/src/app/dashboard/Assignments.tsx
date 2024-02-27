@@ -70,15 +70,15 @@ function Assignments() {
     return;
   }
 
-  const teamKeys = data.flatMap((match) =>
-    match.alliances.blue.team_keys.concat(match.alliances.red.team_keys),
-  );
-  const uniqueTeamKeys = [...new Set(teamKeys)];
-  console.log("UNIQUE TEAM KEYS: ", uniqueTeamKeys);
-  let [assignments, setAssignments] = useState(); 
-  setAssignments(uniqueTeamKeys);
+  // const teamKeys = data.flatMap((match) =>
+    // match.alliances.blue.team_keys.concat(match.alliances.red.team_keys),
+  // );
+  // const uniqueTeamKeys = [...new Set(teamKeys)];
+  // console.log("UNIQUE TEAM KEYS: ", uniqueTeamKeys);
+  // let [assignments, setAssignments] = useState(); 
+  // setAssignments(uniqueTeamKeys);
   // const [assignments, setAssignments] = useState(uniqueTeamKeys);
-  console.log("HERE: ", assignments); // Output the result to the console
+  // console.log("HERE: ", assignments); // Output the result to the console
 
   // const [assignments, setAssignments] = useState(tags.map((x) => `${x}A`));
   // useEffect(() => {
@@ -184,12 +184,12 @@ function Assignments() {
         </ResizablePanel>
       </ResizablePanelGroup>
       <Button
+          </Button>
         onClick={() =>
           autoAssign(assignments, members, setMembers, setAssignments)
         }
       >
         Auto Assign
-      </Button>
     </DndContext>
   );
 }
