@@ -186,6 +186,7 @@ interface MatchScoutAssignment {
   team: number;
   red: [number, number, number];
   blue: [number, number, number];
+  assignee?: string;
 }
 function MatchScoutAssignment({
   assignment,
@@ -198,18 +199,45 @@ function MatchScoutAssignment({
       <View className="flex-grow flex-col">
         <View className="flex flex-row justify-evenly">
           <View>
-            <Text className="text-emerald-400">
+            <Text className="text-red-400">
               <Text
               // style={{ padding: 20 }}
               // className="rounded-box bg-stone-500 text-cyan-300"
               >
                 Red
               </Text>
-              : {assignment.red.join(", ")}
+              :{" "}
+              {assignment.red
+                .map<React.ReactNode>((x) => (
+                  <Text
+                    className={
+                      x === assignment.team ? "bg-amber-300" : undefined
+                    }
+                  >
+                    {x}{" "}
+                  </Text>
+                ))
+                .reduce((prev, curr) => [prev, ", ", curr])}
             </Text>
-            <Text className="text-emerald-400">
-              Blue: {assignment.blue.join(", ")}
+            <Text className="text-blue-400">
+              Blue:{" "}
+              {assignment.blue
+                .map<React.ReactNode>((x) => (
+                  <Text
+                    className={
+                      x === assignment.team ? "bg-amber-300" : undefined
+                    }
+                  >
+                    {x}{" "}
+                  </Text>
+                ))
+                .reduce((prev, curr) => [prev, ", ", curr])}
             </Text>
+            {assignment.assignee && (
+              <Text className="text-yellow-500">
+                This task is assigned to you
+              </Text>
+            )}
           </View>
           <View>
             <Text className="text-emerald-400">
