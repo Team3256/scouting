@@ -99,7 +99,7 @@ export default function Match() {
       endgame: UltimateHistory;
     },
   );
-  const ready = !isLoading && localEventLog !== null;
+  const ready = !isLoading && localEventLog != null;
   useEffect(() => {
     if (godlyHistory) {
       setLocalEventLog(godlyHistory);
