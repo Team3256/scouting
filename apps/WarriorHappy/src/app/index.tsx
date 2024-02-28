@@ -211,7 +211,7 @@ function MatchScoutAssignment({
                 .map<React.ReactNode>((x) => (
                   <Text
                     className={
-                      x === assignment.team ? "bg-amber-300" : undefined
+                      x === assignment.team ? "bg-yellow-300" : undefined
                     }
                   >
                     {x}{" "}
@@ -219,13 +219,13 @@ function MatchScoutAssignment({
                 ))
                 .reduce((prev, curr) => [prev, ", ", curr])}
             </Text>
-            <Text className="text-blue-400">
+            <Text className="text-blue-500">
               Blue:{" "}
               {assignment.blue
                 .map<React.ReactNode>((x) => (
                   <Text
                     className={
-                      x === assignment.team ? "bg-amber-300" : undefined
+                      x === assignment.team ? "bg-yellow-300" : undefined
                     }
                   >
                     {x}{" "}
