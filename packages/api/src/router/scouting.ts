@@ -118,7 +118,7 @@ export const scoutingRouter = createTRPCRouter({
 			}),
 		)
 		.mutation(async ({ ctx, input }) => {
-			const { error, data } = await ctx.supabase
+			const { data, error } = await ctx.supabase
 				.from("assignments")
 				.update({ event_log: input.eventLog })
 				.eq("match", input.matchKey)
