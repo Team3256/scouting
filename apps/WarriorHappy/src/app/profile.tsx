@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { AntDesign } from "@expo/vector-icons";
+import { Session, User } from "@supabase/supabase-js";
 
 import { initiateAppleSignIn } from "../utils/auth";
 import { supabase } from "../utils/supabase";
@@ -26,27 +27,33 @@ AppState.addEventListener("change", (state) => {
 });
 
 export default function Profile() {
-  let user = null;
+  const [session, setSession] = useState<Session | null>(null);
+
   useEffect(() => {
-    supabase.auth.getUser().then((u) => {
-      user = u.data.user;
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
     });
-  });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
   return (
     <View className="flex-1 bg-zinc-800 p-4">
-      {user ? <SignedInView /> : <SignedOutView />}
+      {session !== null && session?.user !== null ? (
+        <SignedInView user={session.user} />
+      ) : (
+        <SignedOutView />
+      )}
     </View>
   );
 }
 
-function SignedInView() {
-  let user = null;
-  useEffect(() => {
-    supabase.auth.getUser().then((u) => {
-      user = u.data.user;
-    });
-  });
-
+function SignedInView({ user }: { user: User }) {
   return (
     <View className="flex gap-4">
       <Text className="text-zinc-200">Signed in as {user?.email}</Text>
@@ -150,6 +157,7 @@ function EmailForm() {
     else if (isSignUp && data.user) {
       Alert.alert("Check your email for a confirmation link.");
       setIsSignUp(false);
+      return;
     }
   };
 
