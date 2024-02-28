@@ -31,8 +31,11 @@ export default function Match() {
   };
   console.log("sdakkkk", key);
   const utils = api.useUtils();
-  const { data, isLoading, isError } = api.scouting.getMatchLog.useQuery(key);
+  const { data, isLoading, isError } = api.scouting.getMatchLog.useQuery(key, {
+    networkMode: "offlineFirst",
+  });
   const rawUpdate = api.scouting.updateMatchLog.useMutation({
+    networkMode: "offlineFirst",
     onSuccess: (data, variables, context) => {
       console.log("data", data, variables, context);
 
@@ -43,10 +46,10 @@ export default function Match() {
       ]);
       //   utils.scouting.getMatchLog.invalidateQuery();
     },
-    onError: (error, variables, context) => {
-      // An error happened!
-      console.log(`rolling back optimistic update with id ${context.id}`);
-    },
+    // onError: (error, variables, context) => {
+    // An error happened!
+    // console.log(`rolling back optimistic update with id ${context.id}`);
+    // },
     onMutate: (x) => console.log("syntaxc", x),
   });
   //   const [godlyHistory, setGodlyHistory] = useState<{
