@@ -27,7 +27,9 @@ export const scoutingRouter = createTRPCRouter({
 		.query(async ({ ctx, input }) => {
 			let query = ctx.supabase
 				.from("assignments")
-				.select("matches (key, event, events (key, name)), team, alliance")
+				.select(
+					"matches (key, event, events (key, name)), team, alliance, assignee",
+				)
 				.eq("matches.event", input.event);
 			console.log(input);
 			if (input.assignee) {
@@ -84,6 +86,7 @@ export const scoutingRouter = createTRPCRouter({
 						team: parseInt(x.team.match(/\d+/)![0]),
 						red: redTeams,
 						blue: blueTeams,
+						assignee: x.assignee,
 					};
 				});
 			});

@@ -16,6 +16,7 @@ import { Image } from "expo-image";
 import { Link, Stack } from "expo-router";
 // import * as Sentry from "@sentry/react-native";
 import { FlashList } from "@shopify/flash-list";
+import { Session } from "@supabase/supabase-js";
 import { Check, ChevronDown, ChevronUp } from "@tamagui/lucide-icons";
 import {
   Adapt,
@@ -35,6 +36,7 @@ import type { RouterOutputs } from "../utils/api";
 import { quantitativeScouting } from "../../../../packages/db/schema";
 import { AuthAvatar } from "../components/header";
 import { api } from "../utils/api";
+import { supabase } from "../utils/supabase";
 
 // Sentry.init({
 //   dsn: "https://5bd43c96b85e892b471db83bbd773662@o4506794882170880.ingest.sentry.io/4506794897768448",
@@ -198,8 +200,8 @@ function MatchScoutAssignment({
           <View>
             <Text className="text-emerald-400">
               <Text
-                style={{ padding: 20 }}
-                className="rounded-box bg-stone-500 text-cyan-300"
+              // style={{ padding: 20 }}
+              // className="rounded-box bg-stone-500 text-cyan-300"
               >
                 Red
               </Text>
@@ -338,11 +340,27 @@ function MatchScoutAssignment({
 // import matchScoutAssignments from "../../../../packages/api/src/TBA/fetchMatches";
 export default function HomeScreen() {
   const utils = api.useUtils();
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
   const { data, isLoading, isFetched, isError, error } =
     api.scouting.getAssignments.useQuery({
       event: "2024urmom",
     });
-  const matchScoutAssignments = data as MatchScoutAssignment[][];
+  // biome-ignore lint/style/noNonNullAssertion: <explanation>
+  const matchScoutAssignments = data!;
   console.log(matchScoutAssignments, isLoading, isError, error);
   const [val, setVal] = useState<string>("Loading...");
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
@@ -351,6 +369,20 @@ export default function HomeScreen() {
       setVal(matchScoutAssignments[0][0]?.eventName);
     }
   }, [isFetched]);
+  const filteredByEvent = useMemo(
+    () =>
+      matchScoutAssignments
+        ? // Should just be one event of that name
+          matchScoutAssignments.filter((x) => x[0].eventName === val)[0]
+        : [],
+    [matchScoutAssignments, val],
+  );
+  const filteredByAssigned = useMemo(() => {
+    return filteredByEvent?.filter(
+      // I'm relying on short-circuiting here for type safety lol
+      (x) => x?.assignee == null || x.assignee === session?.user?.id,
+    );
+  }, [filteredByEvent, session]);
 
   return (
     <SafeAreaView className="bg-zinc-900">
@@ -398,14 +430,7 @@ export default function HomeScreen() {
               setVal={setVal}
             />
             <FlashList
-              data={
-                matchScoutAssignments
-                  ? // Should just be one event of that name
-                    matchScoutAssignments.filter(
-                      (x) => x[0].eventName === val,
-                    )[0]
-                  : []
-              }
+              data={filteredByAssigned}
               estimatedItemSize={20}
               ItemSeparatorComponent={() => <View className="h-2" />}
               renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
