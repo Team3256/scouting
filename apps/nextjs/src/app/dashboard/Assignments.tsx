@@ -53,45 +53,70 @@ function Assignments() {
   const [members, setMembers] = useState<{ [key: string]: string[] }>(
     Object.fromEntries(tags.map((x) => [`${x}M`, []])),
   );
-
-  const { data, isLoading } = trpc.tba.eventMatches.useQuery({
-    teamKey: "frc3256",
-    eventKey: "2023arc",
-  });
-
-  // const { data2, isLoading2 } = trpc.tba.teamEvents.useQuery({
-  //   teamKey: "frc3256",
-  //   year: 2023,
-  // });
-
-  console.log("DATAAAAAAA: ", data);
-
-  if (isLoading) {
-    return;
-  }
-
-  // const teamKeys = data.flatMap((match) =>
-    // match.alliances.blue.team_keys.concat(match.alliances.red.team_keys),
-  // );
-  // const uniqueTeamKeys = [...new Set(teamKeys)];
-  // console.log("UNIQUE TEAM KEYS: ", uniqueTeamKeys);
-  // let [assignments, setAssignments] = useState(); 
-  // setAssignments(uniqueTeamKeys);
-  // const [assignments, setAssignments] = useState(uniqueTeamKeys);
-  // console.log("HERE: ", assignments); // Output the result to the console
-
-  // const [assignments, setAssignments] = useState(tags.map((x) => `${x}A`));
-  // useEffect(() => {
-  //   if (!isLoading) {
-  //     setAssignments(data);
-  //   }
-  // });
+  const [assignments, setAssignments] = useState<string[]>([]); // Updated t
   const [activeId, setActiveId] = useState<string | null>(null);
   // Inverted members
   const reverseAssignmentToMembers = Object.fromEntries(
     Object.entries(members).flatMap(([k, v]) => v.map((x) => [x, k])),
   );
   // const [parent, setParent] = useState(null);
+  // const { data, isLoading } = trpc.tba.teamEvents.useQuery({
+  // teamKey: "frc3256",
+  // year: 2023,
+  // });
+
+  const { data, isLoading } = trpc.tba.eventMatches.useQuery({
+    teamKey: "frc3256",
+    eventKey: "2023arc",
+  });
+  if (!isLoading) {
+    console.log("DATA: ", data);
+  }
+  useEffect(() => {
+    if (!isLoading && data) {
+      // Extract relevant information from the data and generate assignments
+      const matches = data.map((match: any) => ({
+        match_num: match.match_num,
+        alliances: match.alliances,
+      }));
+      let newAssignments: string[] = [];
+      // Iterate over each match object
+      let count = 0;
+      let c2 = 1;
+      // biome-ignore lint/complexity/noForEach: <explanation>
+      matches.forEach((match: any) => {
+        // Extract match number and alliances
+        const { match_num, alliances } = match;
+
+        // Iterate over each alliance (blue and red)
+        // biome-ignore lint/complexity/noForEach: <explanation>
+        Object.values(alliances).forEach((alliance: any) => {
+          // Extract team keys from the alliance
+          const teamKeys = alliance.team_keys;
+
+          // Iterate over each team key
+          // biome-ignore lint/complexity/noForEach: <explanation>
+          teamKeys.forEach((teamKey: string) => {
+            // Construct the assignment string with match number and team number
+            const assignment = `Match ${c2} - Team ${teamKey}`;
+            count++;
+            if (count % 6 == 0) {
+              count = 0;
+              c2++;
+            }
+            // Check if the assignment already exists in the assignments array
+            if (!newAssignments.includes(assignment)) {
+              // If not, add it to the newAssignments array
+              newAssignments.push(assignment);
+            }
+          });
+        });
+      });
+
+      // Update the state with the newAssignments array
+      setAssignments(newAssignments);
+    }
+  }, [isLoading, data]);
   return (
     <DndContext
       onDragStart={function handleDragStart(event) {
@@ -184,12 +209,12 @@ function Assignments() {
         </ResizablePanel>
       </ResizablePanelGroup>
       <Button
-          </Button>
         onClick={() =>
           autoAssign(assignments, members, setMembers, setAssignments)
         }
       >
         Auto Assign
+      </Button>
     </DndContext>
   );
 }
@@ -210,5 +235,4 @@ function AssignmentList({ assignments }: { assignments: string[] }) {
     </ScrollArea>
   );
 }
-
 export default trpc.withTRPC(Assignments);
