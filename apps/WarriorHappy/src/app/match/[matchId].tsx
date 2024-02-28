@@ -91,7 +91,6 @@ export default function Match() {
     teleop: UltimateHistory;
     endgame: UltimateHistory;
   } | null;
-  const ready = !isLoading && godlyHistory != null;
   const [localEventLog, setLocalEventLog] = useState(
     // wont ever be used if it was null
     godlyHistory as {
@@ -100,7 +99,12 @@ export default function Match() {
       endgame: UltimateHistory;
     },
   );
-
+  const ready = !isLoading && localEventLog !== null;
+  useEffect(() => {
+    if (godlyHistory) {
+      setLocalEventLog(godlyHistory);
+    }
+  }, [godlyHistory]);
   const submit = () => {
     rawUpdate.mutate({
       ...key,
