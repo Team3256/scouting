@@ -58,7 +58,7 @@ function NativeSelect(
       {...props}
     >
       <Select.Trigger width={220} iconAfter={ChevronDown}>
-        <Select.Value placeholder={props.val} />
+        <Select.Value placeholder={"No events found"}>{props.val}</Select.Value>
       </Select.Trigger>
 
       <Adapt when="sm" platform="touch">
