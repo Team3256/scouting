@@ -45,7 +45,7 @@ export function MemberCard({
         <CardTitle>
           <Avatar className="h-8 w-8">
             <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback>SC</AvatarFallback>
+            <AvatarFallback>BH</AvatarFallback>
           </Avatar>
         </CardTitle>
         <CardDescription>Bryan Hu ({user})</CardDescription>
@@ -126,7 +126,7 @@ export function AssignmentCard({ assignment }: { assignment: string }) {
       </CardHeader>
       <CardContent>
         {" "}
-        I AM BORING
+        I HAVE NO GIRLS
         {/* </Button> */}
         {/* <form>
           <div className="grid w-full items-center gap-4">
