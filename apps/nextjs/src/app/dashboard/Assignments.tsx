@@ -23,7 +23,7 @@ import { assignTasks } from "@/lib/utils/autoassign";
 import { trpc } from "@/lib/utils/trpc";
 import { DndContext, DragOverlay, useDroppable } from "@dnd-kit/core";
 
-import { addMatches, getEmails } from "./actions";
+import { addAssignment, addMatches, getEmails } from "./actions";
 import { AssignmentCard, MemberCard } from "./components/cards";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
@@ -54,9 +54,7 @@ function Assignments({ selectedEvent }) {
   // const [members, setMembers] = useState<{ [key: string]: string[] }>(
   //   Object.fromEntries(tags.map((x) => [`${x}M`, []])),
   // );
-  const [members, setMembers] = useState<{ [key: string]: string[] }>({
-    "": [],
-  });
+  const [members, setMembers] = useState<{ [key: string]: string[] }>({});
   // Object.fromEntries(tags.map((x) => [`${x}M`, []])),
 
   //use useEffect to make a supabase request from the auth tabke to fill it with emails
@@ -92,6 +90,7 @@ function Assignments({ selectedEvent }) {
       // Extract relevant information from the data and generate assignments
       const matches = data.map((match: any) => ({
         match_num: match.match_num,
+        // match_key: match.match_key,
         alliances: match.alliances,
       }));
       const matchKeys = data.map((match: any) => ({
@@ -112,7 +111,7 @@ function Assignments({ selectedEvent }) {
       // biome-ignore lint/complexity/noForEach: <explanation>
       matches.forEach((match: any) => {
         // Extract match number and alliances
-        const { match_num, alliances } = match;
+        const { match_num, match_key, alliances } = match;
 
         // Iterate over each alliance (blue and red)
         // biome-ignore lint/complexity/noForEach: <explanation>
@@ -125,6 +124,7 @@ function Assignments({ selectedEvent }) {
           teamKeys.forEach((teamKey: string) => {
             // Construct the assignment string with match number and team number
             const assignment = `Match ${c2} - Team ${teamKey}`;
+            // const assignment = `Match ${match_key} - Team ${teamKey}`;
             count++;
             if (count % 6 == 0) {
               count = 0;
@@ -155,7 +155,73 @@ function Assignments({ selectedEvent }) {
         }}
         onDragEnd={function handleDragEnd(event) {
           const overId = event.over?.id;
-          console.log("end", overId, activeId, members, assignments);
+          console.log(
+            "end",
+            "OVERID: ",
+            overId,
+            "ACTIVE ID: ",
+            activeId,
+            members,
+            assignments,
+          );
+
+          // Find the match object corresponding to the activeTeamKey
+          if (activeId && data) {
+            const activeTeamKey = activeId.split(" ")[4];
+            const match = data.find((match) => {
+              // Check if activeTeamKey is part of the blue alliance
+              if (match.alliances.blue.team_keys.includes(activeTeamKey)) {
+                return true; // Return true if found in blue alliance
+              }
+              // Check if activeTeamKey is part of the red alliance
+              if (match.alliances.red.team_keys.includes(activeTeamKey)) {
+                return true; // Return true if found in red alliance
+              }
+              return false; // Return false if not found in either alliance
+            });
+
+            // Check if the activeTeamKey is part of the blue alliance or the red alliance
+            const allianceColor = match.alliances.blue.team_keys.includes(
+              activeTeamKey,
+            )
+              ? "blue"
+              : "red";
+            console.log("Alliance color:", allianceColor);
+
+            // Find the index of the match object within the data array
+            // const index = data.indexOf(match);
+            // Find the index of the team key within the blue or red alliance array
+            let index;
+            if (allianceColor === "blue") {
+              index = match.alliances.blue.team_keys.indexOf(activeTeamKey);
+            } else {
+              index = match.alliances.red.team_keys.indexOf(activeTeamKey);
+            }
+
+            // If the team key is found, return the corresponding index + 1
+            if (index !== -1) {
+              const correspondingIndex = index + 1;
+              console.log("Corresponding index:", correspondingIndex);
+            } else {
+              console.log("Team key not found in data.");
+            }
+
+            const alliance = (allianceColor + (index + 1)) as string;
+            const matchNumber = parseInt(activeId.split(" ")[1]);
+
+            // Make sure index is within the valid range of data array
+
+            const currentMatchKey = data[matchNumber - 1].match_key;
+            const currentTeam = parseInt(activeId.split(" ")[4].slice(-4));
+
+            addAssignment({
+              match: currentMatchKey,
+              team: currentTeam,
+              alliance: alliance,
+              assignee: overId,
+            });
+          }
+
           if (overId === undefined) {
             // Drag action was cancelled
             return;

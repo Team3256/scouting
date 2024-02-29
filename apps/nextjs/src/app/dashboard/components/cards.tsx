@@ -35,6 +35,8 @@ export function MemberCard({
   const { isOver, setNodeRef } = useDroppable({
     id: user,
   });
+  const str =
+    typeof user === "string" && user.length >= 2 ? user[0] + user[1] : "";
   return (
     // <DragOverlay>
     <Card
@@ -45,10 +47,10 @@ export function MemberCard({
         <CardTitle>
           <Avatar className="h-8 w-8">
             <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback>BH</AvatarFallback>
+            <AvatarFallback>{str.toUpperCase()}</AvatarFallback>
           </Avatar>
         </CardTitle>
-        <CardDescription>Bryan Hu ({user})</CardDescription>
+        <CardDescription>{user}</CardDescription>
       </CardHeader>
       <CardContent className="h-full">
         {assignments.length === 0 ? (

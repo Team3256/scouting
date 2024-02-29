@@ -1,16 +1,22 @@
 import { createClient } from "@/lib/utils/supabase/client";
 
-export async function addToDatabase() {
+export async function addAssignment({ match, team, alliance, assignee }) {
   const supabase = createClient();
+
+  const { data: profileData, error: profileError } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("email", assignee)
+    .single();
 
   const { data, error } = await supabase
     .from("assignments")
     .insert([
       {
-        match: "2023cacg_qm13",
-        team: "325666",
-        alliance: "blue1",
-        assignee: null,
+        match: match,
+        team: team,
+        alliance: alliance,
+        assignee: profileData?.id,
         event_log: {
           auto: { log: [], checkboxes: null },
           teleop: { log: [], checkboxes: null },
