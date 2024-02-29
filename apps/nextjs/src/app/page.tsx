@@ -1,18 +1,30 @@
+"use client";
+
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect, useSearchParams } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { SignUp } from "@/components/user-auth-form";
 import { cn } from "@/lib/utils";
 
 import { signup } from "./actions";
 
-export const metadata: Metadata = {
-  title: "Authentication",
-  description: "Authentication forms built using the components.",
-};
+// export const metadata: Metadata = {
+//   title: "Authentication",
+//   description: "Authentication forms built using the components.",
+// };
 
 export default function AuthenticationPage() {
+  const searchParams = useSearchParams();
+  const noredir = searchParams.get("noredir");
+  const code = searchParams.get("code");
+  if (code) {
+    redirect("/signin?signup=true&code=" + code);
+  }
+  // if (!noredir) {
+  //   redirect("/signin");
+  // }
   return (
     <>
       <div className="md:hidden">
