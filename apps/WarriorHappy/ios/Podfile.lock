@@ -1,4 +1,10 @@
 PODS:
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
+    - AppAuth/Core
   - boost (1.83.0)
   - DoubleConversion (1.1.6)
   - EXConstants (15.4.5):
@@ -7,6 +13,10 @@ PODS:
     - ExpoModulesCore
   - Expo (50.0.7):
     - ExpoModulesCore
+  - ExpoAdapterGoogleSignIn (11.0.0):
+    - ExpoModulesCore
+    - GoogleSignIn (~> 7.0)
+    - React-Core
   - ExpoAppleAuthentication (6.3.0):
     - ExpoModulesCore
   - ExpoCrypto (12.8.1):
@@ -51,6 +61,14 @@ PODS:
     - ReactCommon/turbomodule/core (= 0.73.4)
   - fmt (6.2.1)
   - glog (0.3.5)
+  - GoogleSignIn (7.0.0):
+    - AppAuth (~> 1.5)
+    - GTMAppAuth (< 3.0, >= 1.3)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.1)
+  - GTMAppAuth (2.0.0):
+    - AppAuth/Core (~> 1.6)
+    - GTMSessionFetcher/Core (< 4.0, >= 1.5)
+  - GTMSessionFetcher/Core (3.3.1)
   - hermes-engine (0.73.4):
     - hermes-engine/Pre-built (= 0.73.4)
   - hermes-engine/Pre-built (0.73.4)
@@ -1120,6 +1138,9 @@ PODS:
     - React-Core
   - RNFlashList (1.6.3):
     - React-Core
+  - RNGoogleSignin (11.0.0):
+    - GoogleSignIn (~> 7.0)
+    - React-Core
   - RNReanimated (3.7.1):
     - glog
     - RCT-Folly (= 2022.05.16.00)
@@ -1151,6 +1172,7 @@ DEPENDENCIES:
   - EXConstants (from `../../../node_modules/expo-constants/ios`)
   - EXFont (from `../../../node_modules/expo-font/ios`)
   - Expo (from `../../../node_modules/expo`)
+  - "ExpoAdapterGoogleSignIn (from `../../../node_modules/@react-native-google-signin/google-signin/expo/ios`)"
   - ExpoAppleAuthentication (from `../../../node_modules/expo-apple-authentication/ios`)
   - ExpoCrypto (from `../../../node_modules/expo-crypto/ios`)
   - ExpoFileSystem (from `../../../node_modules/expo-file-system/ios`)
@@ -1213,6 +1235,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../../../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../../../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFlashList (from `../../../node_modules/@shopify/flash-list`)"
+  - "RNGoogleSignin (from `../../../node_modules/@react-native-google-signin/google-signin`)"
   - RNReanimated (from `../../../node_modules/react-native-reanimated`)
   - RNScreens (from `../../../node_modules/react-native-screens`)
   - RNSVG (from `../../../node_modules/react-native-svg`)
@@ -1220,7 +1243,11 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppAuth
     - fmt
+    - GoogleSignIn
+    - GTMAppAuth
+    - GTMSessionFetcher
     - libaom
     - libavif
     - libevent
@@ -1243,6 +1270,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/expo-font/ios"
   Expo:
     :path: "../../../node_modules/expo"
+  ExpoAdapterGoogleSignIn:
+    :path: "../../../node_modules/@react-native-google-signin/google-signin/expo/ios"
   ExpoAppleAuthentication:
     :path: "../../../node_modules/expo-apple-authentication/ios"
   ExpoCrypto:
@@ -1362,6 +1391,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/@react-native-async-storage/async-storage"
   RNFlashList:
     :path: "../../../node_modules/@shopify/flash-list"
+  RNGoogleSignin:
+    :path: "../../../node_modules/@react-native-google-signin/google-signin"
   RNReanimated:
     :path: "../../../node_modules/react-native-reanimated"
   RNScreens:
@@ -1372,11 +1403,13 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   EXConstants: 988aa430ca0f76b43cd46b66e7fae3287f9cc2fc
   EXFont: f20669cb266ef48b004f1eb1f2b20db96cd1df9f
   Expo: 1cf3922a9b26262b2556544d4defcecccd37d033
+  ExpoAdapterGoogleSignIn: ee39be2723cc5a39b3c01cb56d779831c975e17f
   ExpoAppleAuthentication: 4fc9972356977f009911f2f3a5f56319c2a5b11b
   ExpoCrypto: b6428f48599c007676dc81a9b5f72c07e62fdccc
   ExpoFileSystem: a9273932e69a9a1e1a8d01b6ba895bb8294bbea2
@@ -1392,6 +1425,9 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: b5983e1ab92f2a059a712ab9267d661d8d0d9158
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
+  GoogleSignIn: b232380cf495a429b8095d3178a8d5855b42e842
+  GTMAppAuth: 99fb010047ba3973b7026e45393f51f27ab965ae
+  GTMSessionFetcher: 8a1b34ad97ebe6f909fb8b9b77fba99943007556
   hermes-engine: b2669ce35fc4ac14f523b307aff8896799829fe2
   libaom: 144606b1da4b5915a1054383c3a4459ccdb3c661
   libavif: 84bbb62fb232c3018d6f1bab79beea87e35de7b7
@@ -1442,6 +1478,7 @@ SPEC CHECKSUMS:
   ReactCommon: dcc65c813041388dead6c8b477444757425ce961
   RNCAsyncStorage: 618d03a5f52fbccb3d7010076bc54712844c18ef
   RNFlashList: 4b4b6b093afc0df60ae08f9cbf6ccd4c836c667a
+  RNGoogleSignin: fc408799f1990a12497a32f64280c0fe353ffcc1
   RNReanimated: 68be24ba590b9136af90698bb01527387c8061da
   RNScreens: 2b73f5eb2ac5d94fbd61fa4be0bfebd345716825
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a

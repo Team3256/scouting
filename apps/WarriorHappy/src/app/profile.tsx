@@ -9,6 +9,11 @@ import {
 } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { AntDesign } from "@expo/vector-icons";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from "@react-native-google-signin/google-signin";
 import { Session, User } from "@supabase/supabase-js";
 
 import { initiateAppleSignIn } from "../utils/auth";
@@ -52,7 +57,48 @@ export default function Profile() {
     </View>
   );
 }
+function GoogleSignIn() {
+  GoogleSignin.configure({
+    scopes: ["https://www.googleapis.com/auth/userinfo.email"],
+    webClientId:
+      "439665504915-55me8e9me7evlcjsldvpnug8jriok7dh.apps.googleusercontent.com",
+  });
 
+  return (
+    <GoogleSigninButton
+      size={GoogleSigninButton.Size.Wide}
+      color={GoogleSigninButton.Color.Dark}
+      onPress={async () => {
+        try {
+          await GoogleSignin.hasPlayServices();
+          const userInfo = await GoogleSignin.signIn();
+          if (userInfo.idToken) {
+            const { data, error } = await supabase.auth.signInWithIdToken({
+              provider: "google",
+              token: userInfo.idToken,
+            });
+            console.log(error, data);
+          } else {
+            throw new Error("no ID token present!");
+          }
+        } catch (error: any) {
+          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+            Alert.alert("Error", "cancelled");
+            // user cancelled the login flow
+          } else if (error.code === statusCodes.IN_PROGRESS) {
+            // operation (e.g. sign in) is in progress already
+            Alert.alert("Error", "in progress");
+          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            // play services not available or outdated
+          } else {
+            // some other error happened
+            Alert.alert("Error", "other");
+          }
+        }
+      }}
+    />
+  );
+}
 function SignedInView({ user }: { user: User }) {
   return (
     <View className="flex gap-4">
@@ -90,17 +136,6 @@ function SignedOutView() {
     }
   };
 
-  const signInWithGoogle = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-      });
-      if (error) return Alert.alert("Error", error.message);
-    } catch (e) {
-      console.error("Unexpected error from Google SignIn: ", e);
-    }
-  };
-
   return (
     <View className="space-y-4">
       <Text className="mb-4 text-2xl font-bold text-zinc-200">Sign In</Text>
@@ -127,12 +162,7 @@ function SignedOutView() {
           or
         </Text>
       </View>
-      <Text
-        className="mb-2 mr-2  inline-flex w-full items-center justify-between rounded-lg bg-[#4285F4] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#4285F4]/90 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50 dark:focus:ring-[#4285F4]/55"
-        onPress={signInWithGoogle}
-      >
-        <Text className="flex-1 text-center">Continue with Google</Text>
-      </Text>
+      <GoogleSignIn />
     </View>
   );
 }
