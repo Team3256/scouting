@@ -25,17 +25,13 @@ export const scoutingRouter = createTRPCRouter({
 			z.object({ event: z.string(), assignee: z.string().uuid().optional() }),
 		)
 		.query(async ({ ctx, input }) => {
-			let query = ctx.supabase
+			const { data, error } = await ctx.supabase
 				.from("assignments")
 				.select(
 					"matches (key, event, events (key, name)), team, alliance, assignee",
 				)
-				.eq("matches.event", input.event);
-			console.log(input);
-			if (input.assignee) {
-				query = query.eq("assignee", input.assignee);
-			}
-			const { data, error } = await query;
+				.eq("matches.event", input.event)
+				.eq("assignee", input?.assignee === undefined ? null : input.assignee);
 			console.log(data, input.event);
 			if (error !== null || data === null) {
 				throw new TRPCError({

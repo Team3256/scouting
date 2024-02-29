@@ -386,6 +386,7 @@ export default function HomeScreen() {
   const { data, isLoading, isFetched, isError, error } =
     api.scouting.getAssignments.useQuery({
       event: "2024urmom",
+      assignee: session?.user?.id,
     });
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
   const matchScoutAssignments = data!;
@@ -405,12 +406,12 @@ export default function HomeScreen() {
         : [],
     [matchScoutAssignments, val],
   );
-  const filteredByAssigned = useMemo(() => {
-    return filteredByEvent?.filter(
-      // I'm relying on short-circuiting here for type safety lol
-      (x) => x?.assignee == null || x.assignee === session?.user?.id,
-    );
-  }, [filteredByEvent, session]);
+  // const filteredByAssigned = useMemo(() => {
+  //   return filteredByEvent?.filter(
+  //     // I'm relying on short-circuiting here for type safety lol
+  //     (x) => x?.assignee == null || x.assignee === session?.user?.id,
+  //   );
+  // }, [filteredByEvent, session]);
 
   return (
     <SafeAreaView className="bg-zinc-900">
@@ -458,7 +459,7 @@ export default function HomeScreen() {
               setVal={setVal}
             />
             <FlashList
-              data={filteredByAssigned}
+              data={filteredByEvent}
               estimatedItemSize={20}
               ItemSeparatorComponent={() => <View className="h-2" />}
               renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
