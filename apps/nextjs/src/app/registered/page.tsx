@@ -8,7 +8,9 @@ const SuccessPage: React.FC = () => {
       <Alert>
         <AlertTitle>Success!</AlertTitle>
         <AlertDescription>
-          Your account on "scouting-app" has been created successfully.
+          Your account on the Scouting App has been successfully created.
+          <br />
+          You will be assigned scouting roles & matches soon.
         </AlertDescription>
       </Alert>
     </div>
