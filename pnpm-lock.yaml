@@ -41,9 +41,6 @@ importers:
       '@react-native-async-storage/async-storage':
         specifier: 1.21.0
         version: 1.21.0(react-native@0.73.4)
-      '@react-native-google-signin/google-signin':
-        specifier: ^11.0.0
-        version: 11.0.0(expo@50.0.7)(react-native@0.73.4)(react@18.2.0)
       '@react-navigation/native':
         specifier: ^6.0.2
         version: 6.1.10(react-native@0.73.4)(react@18.2.0)
@@ -5192,21 +5189,6 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
-    dev: false
-
-  /@react-native-google-signin/google-signin@11.0.0(expo@50.0.7)(react-native@0.73.4)(react@18.2.0):
-    resolution: {integrity: sha512-J8BFFGr5HcEWE2gRaVSJ0rQN8ztxYIr2wdWMG4PS1vhQZJqUzmRr6vpu12O1GppItq8ai7AA0rl/ja7hSytSXA==}
-    peerDependencies:
-      expo: '>=47.0.0'
-      react: '*'
-      react-native: '*'
-    peerDependenciesMeta:
-      expo:
-        optional: true
-    dependencies:
-      expo: 50.0.7(@babel/core@7.23.9)(@react-native/babel-preset@0.73.21)
-      react: 18.2.0
-      react-native: 0.73.4(@babel/core@7.23.9)(@babel/preset-env@7.23.9)(react@18.2.0)
     dev: false
 
   /@react-native/assets-registry@0.73.1:
