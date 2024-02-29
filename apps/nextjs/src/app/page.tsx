@@ -17,7 +17,6 @@ import { signup } from "./actions";
 
 export default function AuthenticationPage() {
   const searchParams = useSearchParams();
-  const noredir = searchParams.get("noredir");
   const code = searchParams.get("code");
   if (code) {
     redirect("/signin?signup=true&code=" + code);
