@@ -395,7 +395,7 @@ export default function HomeScreen() {
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isFetched && matchScoutAssignments) {
-      setVal(matchScoutAssignments[0][0]?.eventName);
+      setVal(matchScoutAssignments?.[0]?.[0]?.eventName);
     }
   }, [isFetched]);
   const filteredByEvent = useMemo(
