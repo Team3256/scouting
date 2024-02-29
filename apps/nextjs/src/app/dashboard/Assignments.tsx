@@ -23,6 +23,7 @@ import { assignTasks } from "@/lib/utils/autoassign";
 import { trpc } from "@/lib/utils/trpc";
 import { DndContext, DragOverlay, useDroppable } from "@dnd-kit/core";
 
+import { addMatches, getEmails } from "./actions";
 import { AssignmentCard, MemberCard } from "./components/cards";
 import { CalendarDateRangePicker } from "./components/date-range-picker";
 import { MainNav } from "./components/main-nav";
@@ -48,11 +49,24 @@ function autoAssign(
   setAssignments([]);
   // }, []);
 }
-function Assignments() {
+function Assignments({ selectedEvent }) {
   // XXX: Use real data via tRPC
-  const [members, setMembers] = useState<{ [key: string]: string[] }>(
-    Object.fromEntries(tags.map((x) => [`${x}M`, []])),
-  );
+  // const [members, setMembers] = useState<{ [key: string]: string[] }>(
+  //   Object.fromEntries(tags.map((x) => [`${x}M`, []])),
+  // );
+  const [members, setMembers] = useState<{ [key: string]: string[] }>({
+    "": [],
+  });
+  // Object.fromEntries(tags.map((x) => [`${x}M`, []])),
+
+  //use useEffect to make a supabase request from the auth tabke to fill it with emails
+  useEffect(() => {
+    async function fetchData() {
+      getEmails(setMembers);
+      console.log("HEEEEE: ", members);
+    }
+    fetchData();
+  }, []);
   const [assignments, setAssignments] = useState<string[]>([]); // Updated t
   const [activeId, setActiveId] = useState<string | null>(null);
   // Inverted members
@@ -67,10 +81,11 @@ function Assignments() {
 
   const { data, isLoading } = trpc.tba.eventMatches.useQuery({
     teamKey: "frc3256",
-    eventKey: "2023arc",
+    eventKey: selectedEvent,
   });
   if (!isLoading) {
     console.log("DATA: ", data);
+    console.log("SELECTED EVENT: ", selectedEvent);
   }
   useEffect(() => {
     if (!isLoading && data) {
@@ -79,6 +94,17 @@ function Assignments() {
         match_num: match.match_num,
         alliances: match.alliances,
       }));
+      const matchKeys = data.map((match: any) => ({
+        match_key: match.match_key,
+        event: selectedEvent,
+      }));
+      console.log("MATCHES: ", matchKeys);
+      // for(int i = 0; i < matchKeys.length; i++) {
+      //   addMatches({ match: matchKeys[i] });
+      // }
+      for (let i = 0; i < matchKeys.length; i++) {
+        addMatches({ match: matchKeys[i] });
+      }
       let newAssignments: string[] = [];
       // Iterate over each match object
       let count = 0;
@@ -118,82 +144,88 @@ function Assignments() {
     }
   }, [isLoading, data]);
   return (
-    <DndContext
-      onDragStart={function handleDragStart(event) {
-        const active = event.active as { id: string };
-        console.log("start", active);
-        setActiveId(active.id);
-      }}
-      onDragEnd={function handleDragEnd(event) {
-        const overId = event.over?.id;
-        console.log("end", overId, activeId, members, assignments);
-        if (overId === undefined) {
-          // Drag action was cancelled
-          return;
-        }
-        if (overId === "ASSIGNMENT_LIST") {
-          if (assignments.includes(activeId as string)) {
-            // Assignment already exists in the list
+    <>
+      {/* <ModalSelectComponent /> */}
+
+      <DndContext
+        onDragStart={function handleDragStart(event) {
+          const active = event.active as { id: string };
+          console.log("start", active);
+          setActiveId(active.id);
+        }}
+        onDragEnd={function handleDragEnd(event) {
+          const overId = event.over?.id;
+          console.log("end", overId, activeId, members, assignments);
+          if (overId === undefined) {
+            // Drag action was cancelled
             return;
           }
-          setAssignments((assignments) => [...assignments, activeId as string]);
-          setMembers((members) => {
-            const prevMember = reverseAssignmentToMembers[activeId as string];
-            return {
-              ...members,
-              [prevMember]: members[prevMember].filter((x) => x !== activeId),
-            };
-          });
+          if (overId === "ASSIGNMENT_LIST") {
+            if (assignments.includes(activeId as string)) {
+              // Assignment already exists in the list
+              return;
+            }
+            setAssignments((assignments) => [
+              ...assignments,
+              activeId as string,
+            ]);
+            setMembers((members) => {
+              const prevMember = reverseAssignmentToMembers[activeId as string];
+              return {
+                ...members,
+                [prevMember]: members[prevMember].filter((x) => x !== activeId),
+              };
+            });
+            setActiveId(null);
+            return;
+          }
+          if (members[overId].includes(activeId as string)) {
+            // Assignment already exists in the member's list
+            return;
+          }
+          const prevMember = reverseAssignmentToMembers[activeId as string];
+          if (prevMember !== undefined) {
+            setMembers((members) => {
+              return {
+                ...members,
+                [overId]: [...members[overId], activeId as string],
+                [prevMember]: members[prevMember].filter((x) => x !== activeId),
+              };
+            });
+          } else {
+            setMembers((members) => {
+              return {
+                ...members,
+                [overId]: [...members[overId], activeId as string],
+              };
+            });
+          }
+          setAssignments((assignments) =>
+            assignments.filter((x) => x !== activeId),
+          );
           setActiveId(null);
-          return;
-        }
-        if (members[overId].includes(activeId as string)) {
-          // Assignment already exists in the member's list
-          return;
-        }
-        const prevMember = reverseAssignmentToMembers[activeId as string];
-        if (prevMember !== undefined) {
-          setMembers((members) => {
-            return {
-              ...members,
-              [overId]: [...members[overId], activeId as string],
-              [prevMember]: members[prevMember].filter((x) => x !== activeId),
-            };
-          });
-        } else {
-          setMembers((members) => {
-            return {
-              ...members,
-              [overId]: [...members[overId], activeId as string],
-            };
-          });
-        }
-        setAssignments((assignments) =>
-          assignments.filter((x) => x !== activeId),
-        );
-        setActiveId(null);
-      }}
-    >
-      <ResizablePanelGroup
-        direction="horizontal"
-        className="max-w-screen h-rounded-lg h-full border"
+        }}
       >
-        <ResizablePanel defaultSize={50}>
-          <ScrollArea className="h-full w-full rounded-md border">
-            <div className="flex flex-wrap">
-              {Object.entries(members).map(([name, values]) => (
-                <MemberCard key={name} user={name} assignments={values} />
-              ))}
-            </div>
-          </ScrollArea>
-        </ResizablePanel>
-        <ResizableHandle withHandle={true} />
-        <ResizablePanel defaultSize={50}>
-          <AssignmentList assignments={assignments} />
-          <DragOverlay>
-            {activeId && <AssignmentCard assignment={activeId} />}
-          </DragOverlay>
-          {/* <ResizablePanelGroup direction="vertical">
+        <ResizablePanelGroup
+          direction="horizontal"
+          className="max-w-screen h-rounded-lg h-full border"
+        >
+          <ResizablePanel defaultSize={50}>
+            <ScrollArea className="h-full w-full rounded-md border">
+              <div className="flex flex-wrap">
+                {Object.entries(members).map(([name, values]) => (
+                  <MemberCard key={name} user={name} assignments={values} />
+                ))}
+              </div>
+            </ScrollArea>
+          </ResizablePanel>
+          <ResizableHandle withHandle={true} />
+          <ResizablePanel defaultSize={50}>
+            <AssignmentList assignments={assignments} />
+            <DragOverlay>
+              {activeId && <AssignmentCard assignment={activeId} />}
+            </DragOverlay>
+            {/* <ResizablePanelGroup direction="vertical">
             <ResizablePanel defaultSize={25}>
               <div className="flex h-full items-center justify-center p-6">
                 <span className="font-semibold">Two</span>
@@ -206,16 +238,17 @@ function Assignments() {
               </div>
             </ResizablePanel>
           </ResizablePanelGroup> */}
-        </ResizablePanel>
-      </ResizablePanelGroup>
-      <Button
-        onClick={() =>
-          autoAssign(assignments, members, setMembers, setAssignments)
-        }
-      >
-        Auto Assign
-      </Button>
-    </DndContext>
+          </ResizablePanel>
+        </ResizablePanelGroup>
+        <Button
+          onClick={() =>
+            autoAssign(assignments, members, setMembers, setAssignments)
+          }
+        >
+          Auto Assign
+        </Button>
+      </DndContext>
+    </>
   );
 }
 function AssignmentList({ assignments }: { assignments: string[] }) {
