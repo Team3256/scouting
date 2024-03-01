@@ -409,7 +409,7 @@ export default function HomeScreen() {
     matchScoutAssignments.length !== 0 &&
     matchScoutAssignments[0].length !== 0
       ? // Should just be one event of that name
-        matchScoutAssignments.filter((x) => x[0].eventName === val)[0]
+        matchScoutAssignments.filter((x) => x[0].eventName === val).flat()
       : [];
   // const filteredByAssigned = useMemo(() => {
   //   return filteredByEvent?.filter(
@@ -465,7 +465,7 @@ export default function HomeScreen() {
             />
             <FlashList
               data={filteredByEvent}
-              estimatedItemSize={20}
+              estimatedItemSize={100}
               ItemSeparatorComponent={() => <View className="h-2" />}
               renderItem={(p) => <MatchScoutAssignment assignment={p.item} />}
             />
