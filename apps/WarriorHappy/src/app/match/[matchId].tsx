@@ -29,7 +29,7 @@ export default function Match() {
     matchKey: local.matchId as string,
     team: local.team as string,
   };
-  console.log("sdakkkk", key);
+  console.log("Match Scouting RPC key:", key);
   const utils = api.useUtils();
   // staletime infinity = fetch once
   const { data, isLoading, isError } = api.scouting.getMatchLog.useQuery(key, {
@@ -39,7 +39,7 @@ export default function Match() {
   const rawUpdate = api.scouting.updateMatchLog.useMutation({
     networkMode: "offlineFirst",
     onSuccess: (data, variables, context) => {
-      console.log("data", data, variables, context);
+      console.log("Mutation Data `onSuccess`:", data, variables, context);
       router.push("/");
       //   utils.scouting.getMatchLog.invalidateQuery();
     },

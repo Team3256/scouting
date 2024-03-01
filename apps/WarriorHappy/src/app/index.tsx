@@ -193,7 +193,7 @@ function MatchScoutAssignment({
 }: {
   assignment: MatchScoutAssignment;
 }) {
-  console.log("asrs", assignment);
+  console.log("Match Scout Assignment:", assignment);
   return (
     <View className="bg-blue/10 flex flex-row rounded-lg bg-white/10 p-4">
       <View className="flex-grow flex-col">
@@ -395,17 +395,22 @@ export default function HomeScreen() {
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (isFetched && matchScoutAssignments) {
-      setVal(matchScoutAssignments?.[0]?.[0]?.eventName);
+      if (matchScoutAssignments.length === 0) {
+        setVal("No events found");
+      } else if (matchScoutAssignments[0].length === 0) {
+        setVal("No assignments found");
+      } else {
+        setVal(matchScoutAssignments[0][0].eventName);
+      }
     }
   }, [isFetched]);
-  const filteredByEvent = useMemo(
-    () =>
-      matchScoutAssignments
-        ? // Should just be one event of that name
-          matchScoutAssignments.filter((x) => x[0].eventName === val)[0]
-        : [],
-    [matchScoutAssignments, val],
-  );
+  const filteredByEvent =
+    matchScoutAssignments &&
+    matchScoutAssignments.length !== 0 &&
+    matchScoutAssignments[0].length !== 0
+      ? // Should just be one event of that name
+        matchScoutAssignments.filter((x) => x[0].eventName === val)[0]
+      : [];
   // const filteredByAssigned = useMemo(() => {
   //   return filteredByEvent?.filter(
   //     // I'm relying on short-circuiting here for type safety lol

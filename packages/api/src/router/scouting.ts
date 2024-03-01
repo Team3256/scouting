@@ -37,7 +37,7 @@ export const scoutingRouter = createTRPCRouter({
 				query = query.eq("assignee", input.assignee);
 			}
 			const { data, error } = await query;
-			console.log(data, input.event);
+			console.log("RPC: getAssignments | input:", input, " | db output:", data);
 			if (error !== null || data === null) {
 				throw new TRPCError({
 					code: "INTERNAL_SERVER_ERROR",
@@ -81,8 +81,7 @@ export const scoutingRouter = createTRPCRouter({
 						// biome-ignore lint/style/noNonNullAssertion: The match should be guaranteed to map to a singular event
 						eventKey: x.matches!.event,
 						// biome-ignore lint/style/noNonNullAssertion: see above
-
-						eventName: x.matches!.events?.name, // @ts-ignore
+						eventName: x.matches!.events!.name,
 						// biome-ignore lint/style/noNonNullAssertion: see above
 						team: parseInt(x.team.match(/\d+/)![0]),
 						red: redTeams,
@@ -135,7 +134,12 @@ export const scoutingRouter = createTRPCRouter({
 					cause: error,
 				});
 			}
-			console.log("mutation", data, error, input);
+			console.log(
+				"RPC: updateMatchLog (db returned data, error, input):",
+				data,
+				error,
+				input,
+			);
 			// TODO: Actually return somthing for data
 			// .where(eq(matches.teamNum, input.teamNum));
 		}),
