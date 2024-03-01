@@ -385,7 +385,7 @@ export default function HomeScreen() {
   }, []);
   const { data, isLoading, isFetched, isError, error } =
     api.scouting.getAssignments.useQuery({
-      event: "2024urmom",
+      event: "2024svrpractice",
       assignee: session?.user?.id,
     });
   // biome-ignore lint/style/noNonNullAssertion: <explanation>
