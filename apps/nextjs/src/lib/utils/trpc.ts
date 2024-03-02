@@ -56,5 +56,19 @@ export const trpc = createTRPCNext<AppRouter>({
 	 * @link https://trpc.io/docs/v11/ssr
 	 **/
 	ssr: false,
+					// You can pass any HTTP headers you wish here
+					async headers() {
+						return {
+							// authorization: getAuthCookie(),
+						};
+					},
+				}),
+			],
+		};
+	},
+	/**
+	 * @link https://trpc.io/docs/v11/ssr
+	 **/
+	ssr: false,
 });
 
