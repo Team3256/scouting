@@ -25,31 +25,6 @@ importers:
         version: 5.3.3
 
   apps/WarriorHappy:
-<<<<<<< HEAD
-=======
-    dependencies:
-      '@acme/tamagui-config':
-        specifier: workspace:^
-        version: link:../../tooling/tamagui
-      expo:
-        specifier: ^50.0.7
-        version: 50.0.7(@babel/core@7.23.9)(@react-native/babel-preset@0.73.21)
-      expo-status-bar:
-        specifier: ~1.11.1
-        version: 1.11.1
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-native:
-        specifier: 0.73.4
-        version: 0.73.4(@babel/core@7.23.9)(@babel/preset-env@7.23.9)(react@18.2.0)
-    devDependencies:
-      '@babel/core':
-        specifier: ^7.23.9
-        version: 7.23.9
-
-  apps/expo:
->>>>>>> 5e3e22c (WIP)
     dependencies:
       '@acme/api':
         specifier: workspace:^
@@ -110,11 +85,7 @@ importers:
         version: 6.2.2(expo@50.0.7)
       expo-router:
         specifier: ~3.4.7
-<<<<<<< HEAD
         version: 3.4.7(expo-constants@15.4.5)(expo-linking@6.2.2)(expo-modules-autolinking@1.10.3)(expo-status-bar@1.11.1)(expo@50.0.7)(react-dom@18.2.0)(react-native-reanimated@3.7.1)(react-native-safe-area-context@4.8.2)(react-native-screens@3.29.0)(react-native@0.73.4)(react@18.2.0)
-=======
-        version: 3.4.7(expo-constants@15.4.5)(expo-linking@6.2.2)(expo-modules-autolinking@1.10.3)(expo-status-bar@1.11.1)(expo@50.0.7)(react-dom@18.2.0)(react-native-reanimated@3.6.3)(react-native-safe-area-context@4.8.2)(react-native-screens@3.29.0)(react-native@0.73.4)(react@18.2.0)
->>>>>>> 5e3e22c (WIP)
       expo-secure-store:
         specifier: ~12.8.1
         version: 12.8.1(expo@50.0.7)
@@ -520,15 +491,7 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
-<<<<<<< HEAD
   packages/tba-api: {}
-=======
-  packages/tba-api:
-    devDependencies:
-      '@openapitools/openapi-generator-cli':
-        specifier: ^2.9.0
-        version: 2.9.0
->>>>>>> 5e3e22c (WIP)
 
   tooling/eslint:
     dependencies:
@@ -8936,11 +8899,7 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
-<<<<<<< HEAD
     dev: false
-=======
-    dev: true
->>>>>>> 5e3e22c (WIP)
 
   /cliui@8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
@@ -9093,18 +9052,12 @@ packages:
     resolution: {integrity: sha512-W9pAhw0ja1Edb5GVdIF1mjZw/ASI0AlShXM83UUGe2DVr5TdAPEA1OA8m/g8zWp9x6On7gqufY+FatDbC3MDQg==}
     dev: false
 
-<<<<<<< HEAD
   /compare-urls@2.0.0:
     resolution: {integrity: sha512-eCJcWn2OYFEIqbm70ta7LQowJOOZZqq1a2YbbFCFI1uwSvj+TWMwXVn7vPR1ceFNcAIt5RSTDbwdlX82gYLTkA==}
     engines: {node: '>=6'}
     dependencies:
       normalize-url: 2.0.1
     dev: false
-=======
-  /compare-versions@4.1.4:
-    resolution: {integrity: sha512-FemMreK9xNyL8gQevsdRMrvO4lFCkQP7qbuktn1q8ndcNk1+0mz7lgE7b/sNvbhVgY4w6tMN1FDp6aADjqw2rw==}
-    dev: true
->>>>>>> 5e3e22c (WIP)
 
   /component-type@1.2.2:
     resolution: {integrity: sha512-99VUHREHiN5cLeHm3YLq312p6v+HUEcwtLCAtelvUDI6+SH5g5Cr85oNR2S1o6ywzL0ykMbuwLzM2ANocjEOIA==}
@@ -9395,7 +9348,6 @@ packages:
     engines: {node: '>= 14'}
     dev: true
 
-<<<<<<< HEAD
   /data-urls@3.0.2:
     resolution: {integrity: sha512-Jy/tj3ldjZJo63sVAvg6LHt2mHvl4V6AgRAmNDtLdm7faqtsx+aJG42rsyCo9JCoRVKwPFzKlIPx3DIibwSIaQ==}
     engines: {node: '>=12'}
@@ -9403,13 +9355,6 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
-=======
-  /date-fns@2.30.0:
-    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
-    engines: {node: '>=0.11'}
-    dependencies:
-      '@babel/runtime': 7.23.9
->>>>>>> 5e3e22c (WIP)
     dev: true
 
   /date-fns@3.3.1:
@@ -11079,7 +11024,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-<<<<<<< HEAD
 
   /formdata-polyfill@4.0.10:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
@@ -12081,7 +12025,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-<<<<<<< HEAD
   /istanbul-lib-coverage@3.2.2:
     resolution: {integrity: sha512-O8dpsF+r0WV/8MNRKfnmrtCWhuKjxrq2w+jpzBL5UZKTi2LeVWnWOmWRxFlesJONmc+wLAGvKQZEOanko0LFTg==}
     engines: {node: '>=8'}
@@ -12139,11 +12082,6 @@ packages:
     dependencies:
       html-escaper: 2.0.2
       istanbul-lib-report: 3.0.1
-=======
-  /iterare@1.2.1:
-    resolution: {integrity: sha512-RKYVTCjAnRthyJes037NX/IiqeidgN1xc3j1RjFfECFp28A1GVwK9nA+i0rJPaHqSZwygLzRnFlzUuHFoWWy+Q==}
-    engines: {node: '>=6'}
->>>>>>> 5e3e22c (WIP)
     dev: true
 
   /iterator.prototype@1.1.2:
@@ -16608,6 +16546,7 @@ packages:
 
   /tr46@0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: false
 
   /tr46@3.0.0:
     resolution: {integrity: sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==}
@@ -17472,11 +17411,7 @@ packages:
   /yargs-parser@20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}
     engines: {node: '>=10'}
-<<<<<<< HEAD
     dev: false
-=======
-    dev: true
->>>>>>> 5e3e22c (WIP)
 
   /yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
@@ -17510,11 +17445,7 @@ packages:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 20.2.9
-<<<<<<< HEAD
     dev: false
-=======
-    dev: true
->>>>>>> 5e3e22c (WIP)
 
   /yargs@17.7.2:
     resolution: {integrity: sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==}

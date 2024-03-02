@@ -3,6 +3,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect, useSearchParams } from "next/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { SignIn } from "@/components/user-auth-form";
 import { cn } from "@/lib/utils";
@@ -10,6 +11,13 @@ import { cn } from "@/lib/utils";
 import { signin } from "./actions";
 
 export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const noredir = searchParams.get("noredir");
+  const code = searchParams.get("code");
+  const isSignup = searchParams.get("signup");
+  if (code && isSignup) {
+    redirect("/registered?action=show_coming_soon&code=" + code);
+  }
   return (
     <>
       <div className="md:hidden">
@@ -30,7 +38,7 @@ export default function LoginPage() {
       </div>
       <div className="container relative hidden h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
-          href="/signup"
+          href="/?noredir=true"
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "absolute right-4 top-4 md:right-8 md:top-8",
