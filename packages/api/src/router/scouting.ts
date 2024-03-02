@@ -8,14 +8,14 @@ import { matches } from "@acme/db/schema";
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 const UltimateHistory = z.object({
-	log: z.array(z.tuple([z.number(), z.number()])),
-	checkboxes: z.optional(z.record(z.boolean())),
+  log: z.array(z.tuple([z.number(), z.number()])),
+  checkboxes: z.optional(z.record(z.boolean())),
 });
 
 export const eventLog = z.object({
-	auto: UltimateHistory,
-	teleop: UltimateHistory,
-	endgame: UltimateHistory,
+  auto: UltimateHistory,
+  teleop: UltimateHistory,
+  endgame: UltimateHistory,
 });
 export const scoutingRouter = createTRPCRouter({
 	// createMatch: publicProcedure.input(z.object({id:z.string({})}))
@@ -96,21 +96,36 @@ export const scoutingRouter = createTRPCRouter({
 			// 		events,
 			// 		team,
 
-			// 		alliance,
-			// 	}) => {
-			//
-			// 		return { team:  };
-			// 	},
-			// );
+      // return ctx.db
+      // 	.select()
+      // 	.from(matches)
+      // 	.where(eq(matches.eventId, input.event))
+      // 	.then((matches) => {
 
-			// return ctx.db
-			// 	.select()
-			// 	.from(matches)
-			// 	.where(eq(matches.eventId, input.event))
-			// 	.then((matches) => {
+      // 	});
+    }),
 
-			// 	});
-		}),
+  updateMatchLog: publicProcedure
+    .input(
+      z.object({
+        eventLog,
+        matchKey: z.string(),
+        team: z.string(),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      const { error } = await ctx.supabase
+        .from("assigmments")
+        .update({ event_log: input.eventLog })
+        .eq("match", input.matchKey)
+        .eq("team", input.team);
+      if (error !== null) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Error updating match log",
+          cause: error,
+        });
+      }
 
 	updateMatchLog: publicProcedure
 		.input(
