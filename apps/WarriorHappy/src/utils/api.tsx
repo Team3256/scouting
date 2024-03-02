@@ -58,7 +58,7 @@ export const TRPCProvider = (props: { children: React.ReactNode }) => {
           async headers() {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
-            console.log("supa", supabase);
+            console.log("Supabase instance:", supabase);
             const { data } = await supabase.auth.getSession();
             const token = data.session?.access_token;
             // console.log("HEY SUPA DATA", data, token);

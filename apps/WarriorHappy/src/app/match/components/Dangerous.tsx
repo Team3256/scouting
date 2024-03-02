@@ -1,8 +1,15 @@
 import { View } from "react-native";
 
+import { UltimateHistory } from "../types";
 import ActionButton from "./ActionButton";
 
-export default function Dangerous() {
+export default function Dangerous({
+  setUltimateHistory,
+  ultimateHistory,
+}: {
+  setUltimateHistory: (history: UltimateHistory) => void;
+  ultimateHistory: UltimateHistory;
+}) {
   return (
     <View
       style={{
@@ -10,18 +17,39 @@ export default function Dangerous() {
         marginTop: "auto",
         marginBottom: 30,
         display: "flex",
+        flexWrap: "wrap",
         flexDirection: "row",
         justifyContent: "space-between",
       }}
       className="space-x-2"
     >
       <ActionButton
-        action={() => console.log("DC")}
+        action={() => {
+          setUltimateHistory({
+            ...ultimateHistory,
+            log: [...ultimateHistory.log, "DISCONNECTED"],
+          } as UltimateHistory);
+        }}
         label="Disconnected"
         theme={"red"}
       />
       <ActionButton
-        action={() => console.log("Tippy lol")}
+        action={() => {
+          setUltimateHistory({
+            ...ultimateHistory,
+            log: [...ultimateHistory.log, "Reconnected"],
+          } as UltimateHistory);
+        }}
+        label="Reconnected"
+        theme={"green"}
+      />
+      <ActionButton
+        action={() => {
+          setUltimateHistory({
+            ...ultimateHistory,
+            log: [...ultimateHistory.log, "TIPP"],
+          } as UltimateHistory);
+        }}
         label="Tipped Over"
         theme={"red"}
       />

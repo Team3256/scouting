@@ -20,8 +20,8 @@ export default function Teleop({
     } as UltimateHistory);
   }
   const intakeActions = [
-    "Human",
-    "Ground",
+    "Source",
+    "Floor",
     // "Climb",
     // "Shoot Amp",
     // "Miss Speaker",
@@ -30,6 +30,7 @@ export default function Teleop({
     // "Contact with Bot",
   ];
   const shooterActions = ["Speaker", "Amp", "Miss S📢", "Miss Amp"];
+  const otherActions = ["AMPLIFIED"];
   return (
     <View className="mt-5">
       <Text className="pl-3 text-lg">Intake</Text>
@@ -51,6 +52,19 @@ export default function Teleop({
           3: shooterActions.length + 3,
         }}
         themeOverrides={["green", "green", "red", "red"]}
+      />
+      <ActionGrid
+        actions={otherActions}
+        history={ultimateHistory.log}
+        setHistory={setHistory}
+        hideUndo={true}
+        indexOverrides={{
+          0: shooterActions.length + 4,
+          // 1: shooterActions.length + 5,
+          // 2: shooterActions.length + 6,
+          // 3: shooterActions.length + 7,
+        }}
+        themeOverrides={["green"]}
       />
     </View>
   );

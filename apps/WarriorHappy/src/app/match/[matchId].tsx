@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import {
   Button,
   H5,
@@ -29,18 +29,25 @@ export default function Match() {
     matchKey: local.matchId as string,
     team: local.team as string,
   };
+  console.log("Match Scouting RPC key:", key);
   const utils = api.useUtils();
+  // staletime infinity = fetch once
+  const { data, isLoading, isError } = api.scouting.getMatchLog.useQuery(key, {
+    networkMode: "offlineFirst",
+    staleTime: Infinity,
+  });
   const rawUpdate = api.scouting.updateMatchLog.useMutation({
+    networkMode: "offlineFirst",
     onSuccess: (data, variables, context) => {
-      console.log("data", data, variables, context);
-      utils.scouting.getMatchLog.setData(key, [variables]);
+      console.log("Mutation Data `onSuccess`:", data, variables, context);
+      router.push("/");
       //   utils.scouting.getMatchLog.invalidateQuery();
     },
-    onError: (error, variables, context) => {
-      // An error happened!
-      console.log(`rolling back optimistic update with id ${context.id}`);
-    },
-    onMutate: (x) => console.log("syntaxc", x),
+    // onError: (error, variables, context) => {
+    // An error happened!
+    // console.log(`rolling back optimistic update with id ${context.id}`);
+    // },
+    // onMutate: (x) => console.log("syntaxc", x),
   });
   //   const [godlyHistory, setGodlyHistory] = useState<{
   //     auto: UltimateHistory;
@@ -48,8 +55,8 @@ export default function Match() {
   //     endgame: UltimateHistory;
   //   } | null>(null);
   //   // TODO: Pre-emptively cache
-  const { data, isLoading } = api.scouting.getMatchLog.useQuery(key);
 
+  console.log("daata", data, isError);
   //   const update = useCallback(
   //     (h) => {
   //       rawUpdate.mutate({
@@ -79,70 +86,113 @@ export default function Match() {
   // 		</SafeAreaView>
   // 	);
   // }
-  const godlyHistory = data?.[0]?.eventLog as {
+  const godlyHistory = data?.[0]?.event_log as {
     auto: UltimateHistory;
     teleop: UltimateHistory;
     endgame: UltimateHistory;
   } | null;
-  const ready = !isLoading && godlyHistory != null;
+  const [localEventLog, setLocalEventLog] = useState(
+    // wont ever be used if it was null
+    godlyHistory as {
+      auto: UltimateHistory;
+      teleop: UltimateHistory;
+      endgame: UltimateHistory;
+    },
+  );
+  const ready = !isLoading && localEventLog != null;
+  useEffect(() => {
+    if (godlyHistory) {
+      setLocalEventLog(godlyHistory);
+    }
+  }, [godlyHistory]);
+  const submit = () => {
+    rawUpdate.mutate({
+      ...key,
+      eventLog: localEventLog,
+    });
+  };
   return (
     <SafeAreaView className="mt-[-45px] h-full">
       {!ready ? (
         <Text>Loading...</Text>
       ) : (
-        <Tabs defaultValue="tab1" flexDirection="column">
-          <Tabs.List gap>
-            <Tabs.Tab value="tab1">
-              <SizableText>Auto</SizableText>
-            </Tabs.Tab>
+        <View>
+          <Button theme={"yellow"} onPress={submit}>
+            SUBMIT
+          </Button>
+          <Tabs defaultValue="tab1" flexDirection="column">
+            <Tabs.List gap>
+              <Tabs.Tab value="tab1">
+                <SizableText>Auto</SizableText>
+              </Tabs.Tab>
 
-            <Tabs.Tab value="tab2">
-              <SizableText>Teleop</SizableText>
-            </Tabs.Tab>
-            <Tabs.Tab value="tab3">
-              <SizableText>Endgame</SizableText>
-            </Tabs.Tab>
-          </Tabs.List>
+              <Tabs.Tab value="tab2">
+                <SizableText>Teleop</SizableText>
+              </Tabs.Tab>
+              <Tabs.Tab value="tab3">
+                <SizableText>Endgame</SizableText>
+              </Tabs.Tab>
+            </Tabs.List>
 
-          <Tabs.Content value="tab1" height={"100%"} paddingBottom="15%">
-            <Auto
-              ultimateHistory={godlyHistory.auto}
-              setUltimateHistory={(stuff) => {
-                console.log("stuff", stuff);
-                rawUpdate.mutate({
-                  ...key,
-                  eventLog: { ...godlyHistory, auto: stuff },
-                });
-              }}
-            />
-            <Dangerous />
-          </Tabs.Content>
+            <Tabs.Content value="tab1" height={"100%"} paddingBottom="15%">
+              <Auto
+                ultimateHistory={localEventLog.auto}
+                setUltimateHistory={(stuff) => {
+                  console.log("stuff", stuff);
+                  setLocalEventLog((x) => {
+                    return { ...x, auto: stuff };
+                  });
+                }}
+              />
+              <Dangerous
+                ultimateHistory={localEventLog.auto}
+                setUltimateHistory={(stuff) => {
+                  console.log("stuff", stuff);
+                  setLocalEventLog((x) => {
+                    return { ...x, auto: stuff };
+                  });
+                }}
+              />
+            </Tabs.Content>
 
-          <Tabs.Content value="tab2" height={"100%"} paddingBottom="15%">
-            <Teleop
-              ultimateHistory={godlyHistory.teleop}
-              setUltimateHistory={(stuff) => {
-                rawUpdate.mutate({
-                  ...key,
-                  eventLog: { ...godlyHistory, teleop: stuff },
-                });
-              }}
-            />
-            <Dangerous />
-          </Tabs.Content>
-          <Tabs.Content value="tab3" height={"100%"} paddingBottom="15%">
-            <Endgame
-              ultimateHistory={godlyHistory.endgame}
-              setUltimateHistory={(stuff) => {
-                rawUpdate.mutate({
-                  ...key,
-                  eventLog: { ...godlyHistory, endgame: stuff },
-                });
-              }}
-            />
-            <Dangerous />
-          </Tabs.Content>
-        </Tabs>
+            <Tabs.Content value="tab2" height={"100%"} paddingBottom="15%">
+              <Teleop
+                ultimateHistory={localEventLog.teleop}
+                setUltimateHistory={(stuff) => {
+                  setLocalEventLog((x) => {
+                    return { ...x, teleop: stuff };
+                  });
+                }}
+              />
+              <Dangerous
+                ultimateHistory={localEventLog.teleop}
+                setUltimateHistory={(stuff) => {
+                  setLocalEventLog((x) => {
+                    return { ...x, teleop: stuff };
+                  });
+                }}
+              />
+            </Tabs.Content>
+            <Tabs.Content value="tab3" height={"100%"} paddingBottom="15%">
+              <Endgame
+                ultimateHistory={localEventLog.endgame}
+                setUltimateHistory={(stuff) => {
+                  setLocalEventLog((x) => {
+                    return { ...x, endgame: stuff };
+                  });
+                }}
+              />
+              <Dangerous
+                ultimateHistory={localEventLog.endgame}
+                setUltimateHistory={(stuff) => {
+                  setLocalEventLog((x) => {
+                    return { ...x, endgame: stuff };
+                  });
+                }}
+              />
+            </Tabs.Content>
+          </Tabs>
+        </View>
       )}
     </SafeAreaView>
   );
