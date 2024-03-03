@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "angry"
+version = "0.1.0"
+description = ""
+authors = ["Bryan Hu <bryan.hu.2020@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "^2.2.1"
+numpy = "^1.26.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
