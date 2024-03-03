@@ -15,7 +15,6 @@ This document aims to describe the future of WarriorBorg's scouting app.
 - Team: an FRC team (e.g. 1678, 3256, or 254)
 - (match scouting) assignment: a singular team that's playing in a match. Your assignment is to scout this team
 
-
 Current date as this document is last updated: **2024-03-03**
 
 ## Optimum experience
@@ -43,18 +42,23 @@ TK.
 ## What to do before East Bay regional
 
 ### WarriorSad
+
 - refactor
- - fetch match/assignments **and** put into DB
-   - auto assign into DB
-   - clean error logs
-   - Fix the name displays
-- WarriorHappy
-  - Robustness to work offline-first
-  - cache assignment list locally
-  - be able to view non-assigned assignments
-- Emotions (both WarriorHappy and WarriorSad)
-  - get everyone on the app
-  - branding
+- fetch match/assignments **and** put into DB
+- auto assign into DB
+- clean error logs
+- Fix the name displays
+
+### WarriorHappy
+
+- Robustness to work offline-first
+- cache assignment list locally
+- be able to view non-assigned assignments
+
+## Emotions
+
+- get everyone on the app
+- branding
 
 ## Optimum app (what it should look like in the future)
 
