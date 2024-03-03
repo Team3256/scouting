@@ -1,262 +1,300 @@
-Timestamp,"Match ID (Quals-1, Elims-12 / Playoffs-12)",Alliance,Team #,# Speaker Notes,# Amp Notes,Mobility,# Speaker Notes,# Amp Notes,Endgame endpoint,DC,No show :(,Outcome,NOTES ABOUT MATCH ,Can score trap?
-3/2/2024 10:06:58,Quals-6,Red,100,1,0,Failure,0,6,Park,No DC,they showed up,Win,,
-3/2/2024 10:51:03,Qual 14,Red,100,0,0,Failure,1,4,Hang,No DC,they showed up,Loss,"Little bit slow with alignment but pretty consistent amp and ok consistency with speaker, I think they were planning to do trap but had no time",
-3/2/2024 9:31:35,Qual 4,Blue,192,1,0,Failure,0,2,Hang,No DC,they showed up,Win,"Pretty good with amp, consistent with amp, can hang, can cycle under stage, played defense",
-3/2/2024 10:20:48,Quals-10,Red,192,0,0,Success,0,0,Park,No DC,they showed up,Loss,"They didn’t really do anything, not even defense",
-3/2/2024 13:02:45,Quals 21,Red,192,0,0,Success,0,5,Hang,No DC,they showed up,Loss,really good team players they let us score and went for amp,
-3/2/2024 13:03:47,Quals-21,Red,192,1,1,Success,1,2,Hang,No DC,they showed up,Loss,192 had very rash driving and lots of amp note placement issues. Struggled with amp but it's their main scoring method.,
-3/2/2024 9:57:32,Quals-8,Blue,253,0,0,Failure,0,0,Park,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,
-3/2/2024 11:31:02,Qual 18,Red,253,0,0,Success,0,3,DC,Late Match: last half of teleop,they showed up,Loss,Consistent amp but slow,
-3/2/2024 9:30:05,Qual-4,Blue,581,3,0,Success,6,0,Hang,No DC,they showed up,Win,"Scored 1 trap, scored higher than the other red team combined (33 - 31)",
-3/2/2024 9:58:01,Quals-8,Red,581,2,0,Success,10,0,Hang,No DC,they showed up,Win,"scored trap, only missed one speaker note, intaking was SO SMOOTH, only hit stage once, and missed trap initially but had plenty time to score again",
-3/2/2024 11:40:04,Quals - 19,Blue,581,2,0,Success,7,0,Hang,No DC,they showed up,Win,"Very fast cycles under the stage, and consistent shooting. They tried trap at the end but couldn’t get it in, and they had to try to climb twice, but it worked in the end.",
-3/2/2024 9:37:14,Quals-5,Blue,604,3,0,Success,0,8,Park,No DC,they showed up,Win,"Nice amp, about 8-9 cycles, not sure with speaker",
-3/2/2024 9:38:23,Qual 5,Blue,604,2,0,Success,2,7,Park,No DC,they showed up,Win,"Really consistent and fast with amp, got like 7-8 cycles with amp, really fast intake, speaker alignment is kind of bad, about 3 cycles for speaker (including auto) but missed 2",
-3/2/2024 10:43:45,Qual 13,Red,604,3,0,Success,13,0,Park,No DC,they showed up,Win,"THEY SCORED 13 NOTES PLUS 3 IN AUTO, extremely consistent with intaking and shooting, penalty from intaking 2 notes",
-3/2/2024 11:47:45,Qual 20,Red,604,5,0,Success,4,1,Park,No DC,they showed up,Loss,They TIED,
-3/2/2024 9:21:13,Quals-3,Red,668,1,0,Failure,8,0,Hang,No DC,they showed up,Win,,
-3/2/2024 9:57:56,Quals-8,Blue,668,1,0,Success,5,0,Park,No DC,they showed up,Loss,"Rarely went source, slow to align and inconsistent slow shooting",
-3/2/2024 10:03:15,Quals-5,Red,670,0,0,Success,7,4,Park,No DC,they showed up,Loss,,
-3/2/2024 10:26:43,Quals-11,Blue,670,1,0,Success,5,6,Park,No DC,they showed up,Win,,
-3/2/2024 11:39:20,Qual 19,Red,670,0,0,Success,4,5,Neither,No DC,they showed up,Loss,Fast amp,
+Timestamp,"Match ID (Quals-1, Elims-12 / Playoffs-12)",Alliance,Team #,Auto # Speaker Notes,Auto # Amp Notes,Mobility,# Speaker Notes,# Amp Notes,Endgame endpoint,DC,No show :(,Outcome,Can score trap?,NOTES ABOUT MATCH 
+3/2/2024 15:25:16,Qual 39,Red,2288,1,0,Success,DC,DC,DC,Mid Match: somewhere middle of teleop,they showed up,Win,No,
+3/2/2024 16:10:32,Qual 44,Red,3008,0,0,Success,DC,DC,DC,Late Match: last half of teleop,they showed up,Loss,No,"Tippy, shooter is inconsistent "
+3/2/2024 14:47:12,Quals-34,Red,5027,DC,DC,DC,DC,DC,DC,Early Match: Auto / opening seconds of teleop,they showed up,Win,No,DC.
+3/2/2024 9:04:58,Quals-1,Red,8546,DC,DC,DC,DC,DC,DC,Early Match: Auto / opening seconds of teleop,they showed up,Win,,
+3/2/2024 11:22:08,Qual 17,Red,8546,0,0,Failure,DC,DC,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,,"Structure completely broke, seems like a consistent amp scorer tho"
+3/2/2024 10:43:45,Qual 13,Red,604,3,0,Success,13,0,Park,No DC,they showed up,Win,,"THEY SCORED 13 NOTES PLUS 3 IN AUTO, extremely consistent with intaking and shooting, penalty from intaking 2 notes"
+3/2/2024 16:43:25,Quals 48,Blue,Blue holistic,3,0,Success,13,0,Park,No DC,they showed up,Win,No,"8404 has 4 piece auto potential, 5026 is decent"
+3/2/2024 16:23:38,Quals 45,Blue,Holistic blue,3,0,Success,13,0,Hang,No DC,they showed up,Loss,No,
+3/2/2024 16:50:47,Quals 49,Blue,Blue holistic,1,0,Success,11,1,Hang,No DC,they showed up,Loss,No,Double hang and coopertition bonus
 3/2/2024 9:01:46,quals-1,Red,841,0,0,Success,11,0,Park,No DC,they showed up,Win,,
-3/2/2024 10:42:59,Qual-13,Red,841,0,0,Failure,4,0,Park,No DC,they showed up,Win,poor communication with human player - leaving without notes. ,
-3/2/2024 11:11:15,Qual 16,Blue,841,1,0,Success,1,0,Park,No DC,they showed up,Loss,Their speaker scoring was very incosistent (they tried for 5 and only scored 1).,
-3/2/2024 9:30:17,Quals 4,Red,972,0,0,Success,1,0,Park,No DC,they showed up,Loss,972 clearly had some trouble with their shooter it was either hit shooting at all or it was going way too short their cycles also were really long,
-3/2/2024 10:08:14,Quals 9,Red,972,0,0,Failure,0,0,Hang,No DC,they showed up,Loss,,
-3/2/2024 11:23:55,Quals-17,Blue,972,1,0,Success,3,2,Park,No DC,they showed up,Win,They had pretty good cycles and were able to do speaker and amp without missing shots. Pretty fast and kinda has the cg of our robot. They also didn’t try to hang. I think they were most of the reason the alliance won because the other robots were either not moving or enabled for only half the match.,
-3/2/2024 9:44:56,Quals-6,Blue,987,3,0,Success,5,0,Neither,No DC,they showed up,Loss,,
-3/2/2024 10:34:46,Quals-12,Blue,987,3,0,Success,7,0,Park,No DC,they showed up,Loss,"Good, mostly accurate and consistent adjustable shooter, pretty good at cycling",
-3/2/2024 13:03:08,Qual 21,Blue,987,3,0,Success,4,2,Neither,No DC,they showed up,Win,Missed 2 speaker. Driver not very decisive ,
-3/2/2024 9:20:57,Quals-3,Red,1351,0,0,Success,0,4,Hang,No DC,they showed up,Win,,
-3/2/2024 9:21:15,Quals-3,Red,1351,0,0,Success,2,4,Park,No DC,they showed up,Win,,
-3/2/2024 11:42:35,Quals 19,Blue,1351,0,0,Failure,1,5,Hang,No DC,they showed up,Win,"Not bad, primarily went for amp",
-3/2/2024 9:52:38,Quals-7,Red,1678,5,0,Success,10,1,Hang,No DC,they showed up,Win,"Were able to recover quickly even when they intaked notes wrong or misscored, they did trap",
-3/2/2024 10:34:21,Quals 12,Red,1678,5,0,Success,4,6,Hang,No DC,they showed up,Win,#1 most cracked team here. Cycles are like 7secs,
-3/2/2024 11:48:51,Quals-20,Blue,1678,4,0,Success,2,6,Hang,No DC,they showed up,Loss,"It was a tie, but I put a loss because they had less RP than the other alliance. They had very very nice amp and speaker cycles, very fast. They tried climb but had to try again, AND GOT TRAP 🧑‍🍳.",
-3/2/2024 9:44:07,Quals-6,Blue,1868,0,0,Failure,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Loss,DC during the whole match ,
-3/2/2024 10:20:14,Quals 10,Red,1868,0,0,DC,0,0,Park,Early Match: Auto / opening seconds of teleop,they showed up,Loss,They initially DCed but then came back with no functional shooter,
-3/2/2024 11:22:06,Quals 17,Blue,1868,0,0,Failure,4,0,Park,No DC,they showed up,Win,The initially didn’t move but then regained control,
-3/2/2024 10:00:08,Qual-4,Red,1967,0,0,Failure,3,0,Hang,No DC,they showed up,Win,,
-3/2/2024 10:44:28,Quals-13,Blue,1967,0,0,Failure,1,0,Park,No DC,they showed up,Loss,"Intake broke early on, tried to hang but didn’t hold on",
-3/2/2024 11:38:42,Qual 19,Blue,1967,0,0,Failure,0,0,Hang,No DC,they showed up,Win,Their driving was not smooth and was very jerky,
-3/2/2024 9:09:22,Quals 2,Blue,2035,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,,
-3/2/2024 10:33:45,Quals-12,Red,2035,1,0,Failure,0,0,Park,No DC,they showed up,Win,,
-3/2/2024 11:31:42,Quals-18,Red,2035,0,0,Failure,1,0,Park,No DC,they showed up,Loss,"attempted and missed a shot, i didnt see notes scored early in teleop and rhey might have had a note stuck? also poor human player communication",
-3/2/2024 9:20:56,Qual 3,Blue,2073,2,0,Success,5,0,Neither,No DC,they showed up,Loss,,
+3/2/2024 9:52:38,Quals-7,Red,1678,5,0,Success,10,1,Hang,No DC,they showed up,Win,,"Were able to recover quickly even when they intaked notes wrong or misscored, they did trap"
+3/2/2024 16:29:02,Quals 46,Blue,Blue holistic,4,0,Success,10,1,Hang,Mid Match: somewhere middle of teleop,they showed up,Loss,No,3256 DC in the middle of match
+3/2/2024 9:58:01,Quals-8,Red,581,2,0,Success,10,0,Hang,No DC,they showed up,Win,,"scored trap, only missed one speaker note, intaking was SO SMOOTH, only hit stage once, and missed trap initially but had plenty time to score again"
+3/2/2024 15:33:11,604,Blue,604,5,0,Success,10,0,Neither,No DC,they showed up,Win,No,"8-13 cycle, speaker count might be wrong "
+3/2/2024 16:09:58,44,Blue,604,2,0,Success,10,0,Park,No DC,they showed up,Win,No,"Too good, grab and go is perfect, auto was not as consistent this match (scouted team previously)"
+3/2/2024 16:36:18,Qualms-47,Red,841,0,0,Failure,10,0,Hang,No DC,they showed up,Win,No,"4-5 sec per cycle, good speaker shoot"
+3/2/2024 15:53:19,Qual-42,Red,581,2,0,Success,9,0,Hang,No DC,they showed up,Win,Success,intske any cycling was crazy smooth ! missed one speaker note total
+3/2/2024 15:25:48,Quals-39,Red,1678,3,0,Success,8,3,Park,No DC,they showed up,Win,No,"missed one attempted speaker note, intakinf was SO SMOOTH ITS CRAZY and very very speedy cycles"
+3/2/2024 13:42:10,Qual 26,Blue,1678,5,0,Success,8,2,Hang,No DC,they showed up,Win,,
+3/2/2024 9:21:13,Quals-3,Red,668,1,0,Failure,8,0,Hang,No DC,they showed up,Win,,
+3/2/2024 14:17:51,Quals-30,Blue,668,0,0,Success,8,0,Hang,No DC,they showed up,Loss,,"Lined up to speaker to shoot, fast cycles"
+3/2/2024 14:47:42,Quals-34,Red,3256,1,0,Success,8,0,Hang,No DC,they showed up,Win,No,🔥
+3/2/2024 16:09:41,Qual-44,Red,7419,1,0,Failure,8,0,Neither,No DC,they showed up,Loss,No,"missed one attempted speaker, pretty smooth cyclrs and good human player communication "
+3/2/2024 10:03:15,Quals-5,Red,670,0,0,Success,7,4,Park,No DC,they showed up,Loss,,
+3/2/2024 19:35:29,Quals-5,Red,670,0,0,Success,7,4,Park,No DC,they showed up,Loss,,
+3/2/2024 16:58:02,Quals 50,Blue,Blue holistic ,4,0,Success,7,1,Neither,No DC,they showed up,Loss,No,No hang at all but coopertition bonus
+3/2/2024 11:40:04,Quals - 19,Blue,581,2,0,Success,7,0,Hang,No DC,they showed up,Win,,"Very fast cycles under the stage, and consistent shooting. They tried trap at the end but couldn’t get it in, and they had to try to climb twice, but it worked in the end."
+3/2/2024 13:27:06,Qual-24,Blue,581,0,0,Success,7,0,Hang,No DC,they showed up,Win,,They could hang and trap also had very fast cycles 
+3/2/2024 15:36:35,Qual 40,Red,668,0,0,Success,7,0,Hang,No DC,they showed up,Loss,No,About 19 sec cycles
+3/2/2024 10:34:46,Quals-12,Blue,987,3,0,Success,7,0,Park,No DC,they showed up,Loss,,"Good, mostly accurate and consistent adjustable shooter, pretty good at cycling"
 3/2/2024 9:20:57,Quals-3,Blue,2073,1,0,Success,7,0,Neither,No DC,they showed up,Loss,,
-3/2/2024 10:08:38,qual9,Blue,2073,1,0,Success,0,0,Hang,No DC,they showed up,Win,Intake problem throughout the whole teleop. Defense aas great tho,
-3/2/2024 9:28:10,Quals-4,Red,2288,0,2,Success,1,2,Park,No DC,they showed up,Loss,"Their driving is really erratic, but they can score both amp and speaker.",
-3/2/2024 9:30:11,Quals-4,Red,2288,2,0,Success,1,3,Park,No DC,they showed up,Loss,"took a long time to align at amp, missed attempted speaker shot",
+3/2/2024 17:15:10,Quals-52,Red,2473,0,0,Failure,7,0,Hang,No DC,they showed up,Win,No,didnt miss a single shot :0 
+3/2/2024 14:48:02,qual34,Blue,4990,2,0,Success,7,0,Park,No DC,they showed up,Loss,No,We beat them
+3/2/2024 15:25:09,Qual 39,Blue,7419,1,0,Success,7,0,Neither,No DC,they showed up,Loss,No,Indecisive driver 
+3/2/2024 15:10:09,Qual 37,Red,987,1,0,Success,6,3,Neither,No DC,they showed up,Win,No,They were on fire this match fr
+3/2/2024 13:56:04,Quals-27,Blue,1351,1,0,Success,6,2,Hang,No DC,they showed up,Loss,,"Great, great amp and speaker scorer. 1351 really dominated the game on the blue alliance and has a great design."
+3/2/2024 9:30:05,Qual-4,Blue,581,3,0,Success,6,0,Hang,No DC,they showed up,Win,,"Scored 1 trap, scored higher than the other red team combined (33 - 31)"
+3/2/2024 14:17:47,Qual 30,Red,1967,1,0,Success,6,0,Hang,No DC,they showed up,Win,,
+3/2/2024 15:17:23,Quals 68,Red,1967,0,0,Failure,6,0,Park,No DC,they showed up,Loss,No,
+3/2/2024 16:01:49,Quals-43,Red,2288,1,0,Success,6,0,Park,No DC,they showed up,Loss,No,"Relatively fast cycles, consistent shooting (offset from subwoofer)"
+3/2/2024 10:46:27,Quals 13,Blue,9470,1,0,Success,6,0,Park,No DC,they showed up,Loss,,
+3/2/2024 14:47:06,34,Red,604,1,0,Success,5,6,Park,No DC,they showed up,Win,No,So good
+3/2/2024 10:26:43,Quals-11,Blue,670,1,0,Success,5,6,Park,No DC,they showed up,Win,,
+3/2/2024 9:57:56,Quals-8,Blue,668,1,0,Success,5,0,Park,No DC,they showed up,Loss,,"Rarely went source, slow to align and inconsistent slow shooting"
+3/2/2024 16:30:07,Quals-46,Red,670,0,0,Failure,5,0,Hang,No DC,they showed up,Win,No,
+3/2/2024 13:13:53,Qual 22,Red,841,0,0,Success,5,0,Neither,No DC,they showed up,Loss,,sort of consistent and medium fast cycle times they smash into other robots 
+3/2/2024 15:46:10,41,Blue,841,2,0,Success,5,0,Hang,No DC,they showed up,Win,No,"Aggressive and really aware driver - good intuition, speaker shooting not consistent, shot notes out of arena more than once"
+3/2/2024 13:34:33,Quals 25,Red,972,0,0,Success,5,0,Hang,No DC,they showed up,Win,,Very good at maneuvering around obstacles
+3/2/2024 9:44:56,Quals-6,Blue,987,3,0,Success,5,0,Neither,No DC,they showed up,Loss,,
+3/2/2024 15:25:39,Quals-39,Red,1868,1,0,Failure,5,0,Park,No DC,they showed up,Win,No,"Inconsistent intake, and shoots ok"
+3/2/2024 15:18:04,Qual 38,Red,1967,0,0,Failure,5,0,Park,No DC,they showed up,Loss,No,
+3/2/2024 9:20:56,Qual 3,Blue,2073,2,0,Success,5,0,Neither,No DC,they showed up,Loss,,
+3/2/2024 11:00:39,Qual 15,Red,2288,1,0,Success,5,0,Park,No DC,they showed up,Win,,"Little bit slow alignment, made half the shots it took"
+3/2/2024 10:27:16,Quals-11,Blue,2473,0,0,Success,5,0,Park,No DC,they showed up,Win,,"Can only intake directly from source, can only shoot speaker"
+3/2/2024 13:55:39,wuals-27,Red,2473,1,0,Success,5,0,Hang,No DC,they showed up,Win,,"basically kitbot plus a climb, definitelly could have scored one or two more cycles but were held back by defense, tall but not tippy, missed one shot into speaker, hangs very well (pretty far above ground)"
+3/2/2024 14:56:52,Quals-35,Red,2473,1,0,Success,5,0,Hang,No DC,they showed up,Win,No,"Only missed one speaker note, does not seem to be able to ground intake so they might be blocked by source defense"
+3/2/2024 9:45:11,Quals-7,Red,3859,1,0,Success,5,0,Hang,No DC,they showed up,Win,,Intake was a little inconsistent but their shooter was really consistent - however it was slow so they didn’t get they many cycles
+3/2/2024 11:22:35,Quals-17,Red,5026,0,0,Success,5,0,Park,No DC,they showed up,Loss,,"smooth shooting, intaking was a lil slow but worked well"
+3/2/2024 14:47:09,Quals-34,Blue,5026,1,0,Success,5,0,Neither,No DC,they showed up,Loss,No,
+3/2/2024 9:50:36,Quals-7,Red,6238,0,0,Failure,5,0,Park,No DC,they showed up,Win,,"attempted and missed two speaker shots, didnt do amp, crashed into both stages while maneuvering "
+3/2/2024 14:40:22,Quals-33,Blue,7413,0,0,Failure,5,0,Hang,No DC,they showed up,Win,No,
+3/2/2024 16:51:03,Quals-49,Red,7413,1,0,Failure,5,0,Park,No DC,they showed up,Loss,No,"They have a really cool intake. It can probably do amp, trap, and speaker."
+3/2/2024 11:10:37,Quals-16,Red,7419,0,0,Failure,5,0,Park,No DC,they showed up,Win,,missed 6 attempted speaker notes. intaking was smooth though.
+3/2/2024 14:10:17,quals 29,Red,7419,0,0,Success,5,0,Neither,No DC,they showed up,Win,,pretty consistent but slowish cycles 
+3/2/2024 17:15:09,52,Blue,8048,1,0,Success,5,0,Hang,No DC,they showed up,Loss,No,"Decently fast robot, better half of mid drivers, hangs fast"
+3/2/2024 16:30:33,Qual 36,Blue,9125,0,0,Failure,5,0,Neither,No DC,they showed up,Loss,No,3256 laptop died rip 2024
+3/2/2024 10:34:21,Quals 12,Red,1678,5,0,Success,4,6,Hang,No DC,they showed up,Win,,#1 most cracked team here. Cycles are like 7secs
+3/2/2024 11:39:20,Qual 19,Red,670,0,0,Success,4,5,Neither,No DC,they showed up,Loss,,Fast amp
+3/2/2024 15:02:50,Quals-36,Blue,670,0,0,Success,4,5,Park,No DC,they showed up,Loss,No,If they fix the auto(scored zero) pretty good team
+3/2/2024 14:28:53,Quals-31,Blue,987,3,0,Success,4,4,Park,No DC,they showed up,Win,,Great scorer in amp and shooter.
+3/2/2024 13:22:03,Quals-23,Red,2813,1,0,Success,4,4,Park,No DC,they showed up,Win,,Very versatile bot. Can score speaker and amp equally well and has a good driver too.
+3/2/2024 15:02:50,Quals-36,Blue,670,1,0,Success,4,3,Park,No DC,they showed up,Loss,No,
+3/2/2024 13:03:08,Qual 21,Blue,987,3,0,Success,4,2,Neither,No DC,they showed up,Win,,Missed 2 speaker. Driver not very decisive 
+3/2/2024 13:35:36,Qual-25,Blue,8404,4,0,Success,4,2,Neither,No DC,they showed up,Loss,,"had good autos, in tele op they started off slow  but could score both amp and speaker w/ a semi consistent shooter"
+3/2/2024 11:47:45,Qual 20,Red,604,5,0,Success,4,1,Park,No DC,they showed up,Loss,,They TIED
+3/2/2024 17:07:30,Qual-51,Red,987,0,0,Failure,4,1,Hang,No DC,they showed up,Win,attempted,missed one attempted speaker but picked it up and tried again. verryyyy smooth intaking
 3/2/2024 10:07:50,Quals-9,Blue,2288,1,0,Success,4,1,Hang,No DC,they showed up,Win,,
-3/2/2024 11:00:39,Qual 15,Red,2288,1,0,Success,5,0,Park,No DC,they showed up,Win,"Little bit slow alignment, made half the shots it took",
-3/2/2024 9:09:54,Quals-2,Red,2367,0,0,Success,2,2,Neither,No DC,they showed up,Win,,
-3/2/2024 11:00:03,Quals-15,Red,2367,0,0,Failure,0,2,Hang,No DC,they showed up,Win,"note got stuck twice while trying to score amp, recurring problem",
-3/2/2024 9:20:57,Quals 3,Red,2473,1,0,Success,2,0,Hang,Mid Match: somewhere middle of teleop,they showed up,Win,,
-3/2/2024 10:27:08,qual 11,Blue,2473,1,0,Success,4,0,Park,No DC,they showed up,Win,Good driver but inconsistent shooting,
-3/2/2024 10:27:16,Quals-11,Blue,2473,0,0,Success,5,0,Park,No DC,they showed up,Win,"Can only intake directly from source, can only shoot speaker",
-3/2/2024 11:22:10,Qual 17,Blue,2473,0,0,Success,2,0,DC,Late Match: last half of teleop,they showed up,Win,,
-3/2/2024 10:08:12,Quals-9,Red,2813,0,0,Success,2,1,Park,No DC,they showed up,Win,"struggled to intake notes from ground, missed one attempted amp shot, did some defense around speaker",
-3/2/2024 11:48:32,Qual 20,Blue,2813,0,0,Failure,1,0,Park,No DC,they showed up,Win,Got a note stuck in intake [also there was a tie ignore me selecting win],
-3/2/2024 10:27:17,Quals-11,Red,3008,1,0,Success,0,0,Hang,No DC,they showed up,Loss,They kept attempting to score speaker but the notes did not go high enough; maybe have potential as defense+hang,
-3/2/2024 9:45:14,Qual 6,Blue,3189,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,"Wonky intake, was wobbly, auto went backwards, inconsistent with shots",
-3/2/2024 10:51:38,Quals -14,Blue,3189,1,0,Failure,2,1,Park,No DC,they showed up,Win,"They are very inconsistent with scoring, missed multiple times before each shot, in speaker or amp. They were also very jerky and didn’t have very fast cycles- got clogged at the source.",
-3/2/2024 11:38:13,Quals-19,Red,3189,0,0,Success,1,0,Park,No DC,they showed up,Loss,"struggled to intake a little but good communication, robot is kinda tippy and movement wasnt super confident",
-3/2/2024 9:43:50,Quals-6,Red,3256,2,0,Success,0,0,Park,No DC,they showed up,Win,note stuck womp womp,
-3/2/2024 9:30:12,Quals-4,Blue,3309,0,0,Success,1,0,Park,No DC,they showed up,Win,Waste a lot of time intaking at source resulted only 2 cycles ,
-3/2/2024 10:34:02,Quals-12,Blue,3309,0,0,Failure,0,5,Park,No DC,they showed up,Loss,Main amp,
-3/2/2024 11:12:07,Quals -16,Blue,3309,0,0,Success,0,0,Park,No DC,they showed up,Loss,"They tried amp at first with their preload, but I don’t think their outtake was working, so they were stuck playing defense the rest of the time.they played defense around the other alliances stage, but they were very wobbly so it wasn’t too effective. At the end, they climbed but then fell to the floor so it didn’t count.",
-3/2/2024 9:45:05,Quals 6,Red,3859,0,0,Success,4,0,Park,No DC,they showed up,Win,"3256, WE THE BEST, IN THE MIX (we played in this match :)",
-3/2/2024 9:45:11,Quals-7,Red,3859,1,0,Success,5,0,Hang,No DC,they showed up,Win,Intake was a little inconsistent but their shooter was really consistent - however it was slow so they didn’t get they many cycles,
-3/2/2024 10:27:33,Quals-11,Red,3859,0,0,Success,2,2,Park,No DC,they showed up,Loss,attemted hang,
-3/2/2024 11:31:45,Quals - 18,Blue,3859,0,0,Failure,0,0,Neither,No DC,they showed up,Win,"They didn’t move. Kinda twitched every once in a while though lol. Weren’t disconnected, but weren’t moving.",
-3/2/2024 9:20:56,Quals-3,Blue,4990,0,0,Failure,0,1,Park,No DC,they showed up,Loss,,
-3/2/2024 10:20:13,Quals-10,Blue,4990,0,0,Success,0,1,Hang,No DC,they showed up,Win,,
-3/2/2024 11:01:11,Quals-15,Blue,4990,0,0,Success,0,2,Hang,No DC,they showed up,Loss,"They were only amp scoring, but they spent a long time trying to get an amp in (about 2-3 failed attempts). Their amp outtake also seemed to not work fully and the note went really slow, not sure if that was on purpose but it slowed them down substantially. Their climb is very fast though.",
-3/2/2024 9:09:33,Quals-2,Red,5026,1,0,Success,1,0,Park,No DC,they showed up,Win,,
-3/2/2024 10:51:03,Qual 14,Blue,5026,0,0,Success,2,0,Neither,No DC,they showed up,Win,,
-3/2/2024 11:22:35,Quals-17,Red,5026,0,0,Success,5,0,Park,No DC,they showed up,Loss,"smooth shooting, intaking was a lil slow but worked well",
-3/2/2024 9:37:17,Quals-5,Red,5027,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,shooter was not secured and didnt look to be functioning (wires in the air). spent match in blue zone in front of speaker,
-3/2/2024 9:57:18,qual8,Blue,5027,0,0,Failure,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Loss,Dc the whole match until last 10 sec,
-3/2/2024 11:10:42,Quals 16,Blue,5027,0,0,Failure,0,0,DC,Late Match: last half of teleop,they showed up,Loss,They only played defence,
-3/2/2024 10:08:46,Quals-9,Red,5104,0,0,Failure,4,0,Park,No DC,they showed up,Loss,"Attempted amp but switched to speaker, once shot in the opposite direction of the speaker and the note flew across the field",
-3/2/2024 9:50:36,Quals-7,Red,6238,0,0,Failure,5,0,Park,No DC,they showed up,Win,"attempted and missed two speaker shots, didnt do amp, crashed into both stages while maneuvering ",
+3/2/2024 16:36:06,Quals 47,Blue,Blue holistic ,1,0,Success,4,1,Hang,No DC,they showed up,Loss,No,Double hang but none scored a lot of points
+3/2/2024 10:42:59,Qual-13,Red,841,0,0,Failure,4,0,Park,No DC,they showed up,Win,,poor communication with human player - leaving without notes. 
+3/2/2024 14:56:47,Quals-35,Blue,841,0,0,Success,4,0,Hang,No DC,they showed up,Win,No,Pretty good cycle time
+3/2/2024 11:22:06,Quals 17,Blue,1868,0,0,Failure,4,0,Park,No DC,they showed up,Win,,The initially didn’t move but then regained control
+3/2/2024 10:27:08,qual 11,Blue,2473,1,0,Success,4,0,Park,No DC,they showed up,Win,,Good driver but inconsistent shooting
+3/2/2024 9:45:05,Quals 6,Red,3859,0,0,Success,4,0,Park,No DC,they showed up,Win,,"3256, WE THE BEST, IN THE MIX (we played in this match :)"
+3/2/2024 16:57:26,Qual 50,Blue,3859,2,0,Success,4,0,DC,Late Match: last half of teleop,they showed up,Loss,No,
+3/2/2024 16:45:46,Quals 48,Blue,5026,0,0,Failure,4,0,Park,No DC,they showed up,Win,No,
+3/2/2024 17:07:27,51,Blue,5026,1,0,Success,4,0,Neither,No DC,they showed up,Loss,No,Mid scorer
+3/2/2024 10:08:46,Quals-9,Red,5104,0,0,Failure,4,0,Park,No DC,they showed up,Loss,,"Attempted amp but switched to speaker, once shot in the opposite direction of the speaker and the note flew across the field"
+3/2/2024 14:40:39,qual 33,Blue,5104,1,0,Success,4,0,Hang,No DC,they showed up,Win,No,Missed at least half of their speaker shots.
 3/2/2024 10:51:02,Quals 14,Red,6238,1,0,Success,4,0,Park,No DC,they showed up,Win,,
 3/2/2024 13:05:31,Quals-21,Blue,6238,0,0,Failure,4,0,Neither,No DC,they showed up,Win,,
-3/2/2024 10:44:32,Quals-13,Blue,6348,0,0,Success,0,1,Neither,No DC,they showed up,Loss,"they went to amp and missed 3 notes and scored one, can only intake directly from human player at source, amp scoring is too low, slow speed, did not attempt speaker at all, the last note was halfway into the amp so im not sure if it counted as a score, but they scored one for sure",
+3/2/2024 13:27:28,Qual 24,Blue,6238,0,0,Failure,4,0,DC,Late Match: last half of teleop,they showed up,Win,,"pure scorers, missed a couple and then died after running into the stage"
+3/2/2024 13:13:27,Quals-22,Red,7413,0,0,Failure,4,0,Park,No DC,they showed up,Loss,,
+3/2/2024 16:51:13,qual 49,Red,7413,1,0,Failure,4,0,Park,No DC,they showed up,Loss,No,7413 - the team has a reliable intake and shooter but in the end the cycles just took way too long due to the other team playing defense 
+3/2/2024 17:31:28,Quals-54,Blue,7419,0,0,Failure,4,0,Neither,No DC,they showed up,Win,No,
+3/2/2024 10:34:44,Quals-12,Red,8048,0,0,Success,4,0,Hang,No DC,they showed up,Win,,"Their driving was slightly hesitant, both intaking and aligning to score"
+3/2/2024 15:53:23,42,Blue,9504,1,0,Success,4,0,Park,No DC,they showed up,Loss,No,"Kitbot, tank drive, not fast cycle time, 4/5 shots on speaker made"
+3/2/2024 13:27:09,Qual 24,Blue,604,4,0,Success,3,7,Park,No DC,they showed up,Win,,
+3/2/2024 16:23:19,Qual 45,Red,987,1,0,Success,3,5,Neither,No DC,they showed up,Win,No,987 is a really solid team that can cycle both amp and speaker very quickly - their speaker is inconsistent compared to their amp. they have the best amp cycle in all the robots I’ve seen here - their amp cycles helped them win
+3/2/2024 17:31:51,Quals-54,Blue,972,0,0,Success,3,4,Hang,No DC,they showed up,Win,No,"Cycled well even with source traffic, mostly went around the source, first amp pick please 🙏 "
+3/2/2024 14:09:59,Quals-29,Blue,2073,1,0,Success,3,4,Hang,No DC,they showed up,Loss,,Pretty good at scoring both amp and speaker.
+3/2/2024 13:20:55,Quals-23,Red,2813,0,0,Success,3,3,Park,No DC,they showed up,Win,,
+3/2/2024 11:23:55,Quals-17,Blue,972,1,0,Success,3,2,Park,No DC,they showed up,Win,,They had pretty good cycles and were able to do speaker and amp without missing shots. Pretty fast and kinda has the cg of our robot. They also didn’t try to hang. I think they were most of the reason the alliance won because the other robots were either not moving or enabled for only half the match.
+3/2/2024 15:18:22,Quals-38,Red,2073,1,0,Success,3,2,Hang,No DC,they showed up,Loss,No,"Nice team, can score from around the field."
+3/2/2024 14:32:56,qual 32,Red,9470,0,0,Failure,3,2,Neither,No DC,they showed up,Win,,"consistent robot that uses tank drive - can score both amp and speaker 
+"
+3/2/2024 13:12:40,Qual 22,Blue,670,0,0,Success,3,1,Park,No DC,they showed up,Win,,Slow position for shooting. Struggled with ground intake (can directly intake into speaker shooting mechanism)
+3/2/2024 17:10:27,Quals-51,Blue,670,0,0,Success,3,1,Park,No DC,they showed up,Loss,No,"They stopped toward beginning-middle for a while and I thought they dced but then they started moving again. Speaker accuracy was pretty bad, but amp was quick. Threw a note over the speaker in auto so idk. Might be an okay pick if we make it clear that they should stick to amp-only in both auto and tele-op"
+3/2/2024 13:13:37,Quals-22,Red,841,0,0,Success,3,1,Park,No DC,they showed up,Loss,,Disconnecting on and off. Good speaker scorer.
+3/2/2024 15:53:40,Qual 42,Blue,1351,1,0,Failure,3,1,Hang,No DC,they showed up,Loss,No,
+3/2/2024 14:11:03,Qual 29,Red,3859,1,0,Failure,3,1,Hang,No DC,they showed up,Win,,Slow shooting
+3/2/2024 14:25:51,qual 31,Red,192,1,0,Success,3,0,Hang,No DC,they showed up,Loss,,"refer to my notes for past 192 matches, more of the same"
+3/2/2024 14:55:19,qual35,Blue,841,0,0,Success,3,0,Hang,No DC,they showed up,Win,No,Good driverr. Very fast robot. Missed half their speaker shots. Note got stuck in shooter halfway through teleop.
+3/2/2024 10:00:08,Qual-4,Red,1967,0,0,Failure,3,0,Hang,No DC,they showed up,Win,,
+3/2/2024 16:44:26,48,Blue,1967,0,0,Success,3,0,Park,No DC,they showed up,Win,No,"Didnt see most of it, data could be inaccurate "
+3/2/2024 17:15:38,Quals-52,Blue,1967,0,0,Failure,3,0,Park,No DC,they showed up,Loss,No,Tried to climb at end (harmony) but fell because one hang arm was not on the chain
+3/2/2024 16:22:45,Quals-45,Red,2813,0,0,Failure,3,0,Neither,No DC,they showed up,Win,No,Speaker-focused team.
+3/2/2024 16:58:13,50,Blue,3189,1,0,Success,3,0,Park,No DC,they showed up,Loss,No,"Didnt see much of match, vision blocked "
+3/2/2024 16:23:05,Qual 45,Blue,3859,1,0,Success,3,0,Park,No DC,they showed up,Loss,No,
+3/2/2024 16:43:03,Qual-48,Blue,5026,0,0,Failure,3,0,Park,No DC,they showed up,Win,No,
+3/2/2024 14:40:54,Quals-33,Blue,7413,0,0,Success,3,0,Hang,No DC,they showed up,Win,No,"Wasted time at source, 5 cycles "
+3/2/2024 11:31:05,Qual 18,Blue,8048,0,0,Success,3,0,Hang,No DC,they showed up,Win,,Made 3/7 shots
+3/2/2024 9:09:39,Quals-2,Red,9125,2,0,Success,3,0,Park,No DC,they showed up,Win,,
+3/2/2024 15:44:58,Qual 41,Red,9125,1,0,Success,3,0,Park,No DC,they showed up,Loss,No,Tippy robot
+3/2/2024 11:32:18,Qual 18,Blue,9470,0,0,Failure,3,0,DC,Late Match: last half of teleop,they showed up,Win,,Their intaking was inconsistent
+3/2/2024 17:23:47,Quals-53,Red,9470,0,0,Failure,3,0,Park,No DC,they showed up,Win,No,"easily pushable drivetrain, missed speaker shot"
+3/2/2024 10:20:26,Quals-10,Blue,9504,1,0,Failure,3,0,Park,No DC,they showed up,Win,,Very slow at aligning to speaker and also cycling to source
+3/2/2024 19:33:32,Quals-4,Red,1967,0,0,Failure,3,0,Hang,No DC,they showed up,Loss,,
+3/2/2024 9:38:23,Qual 5,Blue,604,2,0,Success,2,7,Park,No DC,they showed up,Win,,"Really consistent and fast with amp, got like 7-8 cycles with amp, really fast intake, speaker alignment is kind of bad, about 3 cycles for speaker (including auto) but missed 2"
+3/2/2024 16:36:25,Quals 47,Red,581,3,0,Success,2,6,Hang,No DC,they showed up,Win,Success,"they cycled amp for a while and then they alternated between amp and speaker, they can do trap and speaker"
+3/2/2024 11:48:51,Quals-20,Blue,1678,4,0,Success,2,6,Hang,No DC,they showed up,Loss,,"It was a tie, but I put a loss because they had less RP than the other alliance. They had very very nice amp and speaker cycles, very fast. They tried climb but had to try again, AND GOT TRAP 🧑‍🍳."
+3/2/2024 15:45:03,Qual-41,Red,972,0,0,Success,2,5,Hang,No DC,they showed up,Loss,No,"intaking was smooth, auto attempted speaker but didnt make any"
+3/2/2024 14:40:26,Quals-33,Blue,100,3,0,Success,2,4,Park,No DC,they showed up,Win,No,"Both speaker and amp, mostly aligns well for amp"
+3/2/2024 9:21:15,Quals-3,Red,1351,0,0,Success,2,4,Park,No DC,they showed up,Win,,
+3/2/2024 14:25:10,Qual 31,Blue,987,2,0,Success,2,3,Park,No DC,they showed up,Win,,
+3/2/2024 16:22:56,Quals-45,Blue,1351,1,0,Success,2,2,Hang,No DC,they showed up,Loss,No,
+3/2/2024 9:09:54,Quals-2,Red,2367,0,0,Success,2,2,Neither,No DC,they showed up,Win,,
+3/2/2024 10:27:33,Quals-11,Red,3859,0,0,Success,2,2,Park,No DC,they showed up,Loss,,attemted hang
+3/2/2024 10:08:12,Quals-9,Red,2813,0,0,Success,2,1,Park,No DC,they showed up,Win,,"struggled to intake notes from ground, missed one attempted amp shot, did some defense around speaker"
+3/2/2024 10:51:38,Quals -14,Blue,3189,1,0,Failure,2,1,Park,No DC,they showed up,Win,,"They are very inconsistent with scoring, missed multiple times before each shot, in speaker or amp. They were also very jerky and didn’t have very fast cycles- got clogged at the source."
+3/2/2024 15:25:42,38,Blue,6348,1,0,Success,2,1,Park,No DC,they showed up,Loss,No,Not good
+3/2/2024 16:23:00,Quals-45,Red,668,0,0,Failure,2,0,Neither,No DC,they showed up,Win,No,"Bothered by a good defense, talks time to shoot speaker "
+3/2/2024 13:37:10,Quals-25,Red,987,2,0,Success,2,0,Park,No DC,they showed up,Win,,"This shooter is good, unfortunately there was a lot of hesitation with shooting into the speaker."
+3/2/2024 9:20:57,Quals 3,Red,2473,1,0,Success,2,0,Hang,Mid Match: somewhere middle of teleop,they showed up,Win,,
+3/2/2024 11:22:10,Qual 17,Blue,2473,0,0,Success,2,0,DC,Late Match: last half of teleop,they showed up,Win,,
+3/2/2024 15:17:23,Quals-38,Blue,3189,1,0,Failure,2,0,Neither,No DC,they showed up,Win,No,
+3/2/2024 15:03:09,Quals-36,Red,3859,1,0,Success,2,0,Park,No DC,they showed up,Win,No,
+3/2/2024 10:51:03,Qual 14,Blue,5026,0,0,Success,2,0,Neither,No DC,they showed up,Win,,
+3/2/2024 14:48:43,Quals-34,Blue,5026,1,0,Success,2,0,Neither,No DC,they showed up,Loss,No,"3-4 cycles, slow cycles "
+3/2/2024 15:10:30,Quals-37,Red,5026,0,0,Success,2,0,Park,No DC,they showed up,Win,No,Stuttering driving during the second half of match.
+3/2/2024 14:03:44,quals-28,Red,5104,1,0,Success,2,0,Hang,No DC,they showed up,Win,,"they shot speaker a ton of times without alignment and missed al of them but if they could aim properly theh can probably do a good 6-7 cycles into speaker. kind of slow, intakes from ground"
+3/2/2024 15:36:41,Quals-40,Red,6238,1,0,Failure,2,0,Park,No DC,they showed up,Loss,No,"Very inconsistent shooter, unreliable intake"
+3/2/2024 16:50:31,Qual-49,Blue,6348,0,0,Success,2,0,Park,No DC,they showed up,Win,No,
+3/2/2024 11:00:07,Qual 15,Blue,7413,0,0,Failure,2,0,Hang,No DC,they showed up,Loss,,
+3/2/2024 10:20:28,Quals-10,Red,9114,0,0,Success,2,0,Hang,No DC,they showed up,Loss,,"missed one attempted speaker shot, note got stuck mid teleop and hung early"
+3/2/2024 13:41:46,Quals-26,Red,9114,0,0,Success,2,0,Hang,No DC,they showed up,Loss,,
+3/2/2024 16:36:01,47,Blue,9114,1,0,Success,2,0,Hang,No DC,they showed up,Loss,No,Okay robot overall
+3/2/2024 17:14:57,Quals-52,Blue,9125,1,0,Success,2,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Loss,No,
+3/2/2024 14:25:48,Qual 31,Red,9504,0,0,Failure,2,0,Park,No DC,they showed up,Loss,,Basically just kitbot
+3/2/2024 19:39:10,Quals-15,Red,668,0,0,Failure,2,0,Park,No DC,they showed up,Win,,inconsistent shooter
+3/2/2024 11:42:35,Quals 19,Blue,1351,0,0,Failure,1,5,Hang,No DC,they showed up,Win,,"Not bad, primarily went for amp"
+3/2/2024 10:51:03,Qual 14,Red,100,0,0,Failure,1,4,Hang,No DC,they showed up,Loss,,"Little bit slow with alignment but pretty consistent amp and ok consistency with speaker, I think they were planning to do trap but had no time"
+3/2/2024 16:01:36,43,Blue,2073,1,0,Failure,1,3,Neither,No DC,they showed up,Win,No,"Handoff is shaky, not consistent shooter"
+3/2/2024 9:30:11,Quals-4,Red,2288,2,0,Success,1,3,Park,No DC,they showed up,Loss,,"took a long time to align at amp, missed attempted speaker shot"
+3/2/2024 14:32:46,Qual 32,Red,2288,2,0,Success,1,3,Park,No DC,they showed up,Win,,Last half of match played solid defense 
+3/2/2024 14:55:19,35,Red,2813,0,0,Success,1,3,Park,No DC,they showed up,Loss,No,"Amp is good, auto and speaker really inconsistent "
+3/2/2024 16:09:46,Quals-44,Red,5104,1,0,Success,1,3,Park,No DC,they showed up,Loss,No,"Note got stuck in feeder, can score both amp and shoot speaker but amp is slow and inconsistent"
+3/2/2024 13:03:47,Quals-21,Red,192,1,1,Success,1,2,Hang,No DC,they showed up,Loss,,192 had very rash driving and lots of amp note placement issues. Struggled with amp but it's their main scoring method.
+3/2/2024 13:54:40,Qual 27,Blue,192,1,0,Success,1,2,Hang,No DC,they showed up,Win,,can do both amp and shooter but slow cycles and sometimes is not accurate
+3/2/2024 13:12:44,Quals-22,Blue,670,0,0,Success,1,2,Park,No DC,they showed up,Win,,
+3/2/2024 9:28:10,Quals-4,Red,2288,0,2,Success,1,2,Park,No DC,they showed up,Loss,,"Their driving is really erratic, but they can score both amp and speaker."
+3/2/2024 14:33:16,Qual 32,Blue,2367,0,0,Failure,1,2,Neither,No DC,they showed up,Loss,,
+3/2/2024 13:30:50,Quals 24,Red,2367,1,0,Success,1,1,Park,No DC,they showed up,Loss,,Tried to hang but couldn’t lift itself off the ground
+3/2/2024 13:55:28,Qual 27,Blue,192,1,0,Success,1,0,Hang,No DC,they showed up,Loss,,
+3/2/2024 17:32:04,54,Blue,668,0,0,Success,1,0,Neither,No DC,they showed up,Loss,No,Played defense - was mid at it
+3/2/2024 11:11:15,Qual 16,Blue,841,1,0,Success,1,0,Park,No DC,they showed up,Loss,,Their speaker scoring was very incosistent (they tried for 5 and only scored 1).
+3/2/2024 9:30:17,Quals 4,Red,972,0,0,Success,1,0,Park,No DC,they showed up,Loss,,972 clearly had some trouble with their shooter it was either hit shooting at all or it was going way too short their cycles also were really long
+3/2/2024 16:02:44,Qual 43,Blue,1868,0,0,Failure,1,0,Neither,No DC,they showed up,Win,No,"Driver was very hesitant, spun around as if the sensitivity was high. "
+3/2/2024 10:44:28,Quals-13,Blue,1967,0,0,Failure,1,0,Park,No DC,they showed up,Loss,,"Intake broke early on, tried to hang but didn’t hold on"
+3/2/2024 11:31:42,Quals-18,Red,2035,0,0,Failure,1,0,Park,No DC,they showed up,Loss,,"attempted and missed a shot, i didnt see notes scored early in teleop and rhey might have had a note stuck? also poor human player communication"
+3/2/2024 14:03:42,Qual 28,Blue,2035,0,0,Failure,1,0,Park,No DC,they showed up,Loss,,
+3/2/2024 11:48:32,Qual 20,Blue,2813,0,0,Failure,1,0,Park,No DC,they showed up,Win,,Got a note stuck in intake [also there was a tie ignore me selecting win]
+3/2/2024 13:41:48,Qual 26,Blue,3008,DC,0,Success,1,0,Neither,No DC,they showed up,Win,,no dc and decent defense but that was about it
+3/2/2024 14:40:50,33,Red,3008,1,0,Failure,1,0,Park,No DC,no show,Loss,No,Not good (set shooter angle doesnt work)
+3/2/2024 11:38:13,Quals-19,Red,3189,0,0,Success,1,0,Park,No DC,they showed up,Loss,,"struggled to intake a little but good communication, robot is kinda tippy and movement wasnt super confident"
+3/2/2024 9:30:12,Quals-4,Blue,3309,0,0,Success,1,0,Park,No DC,they showed up,Win,,Waste a lot of time intaking at source resulted only 2 cycles 
+3/2/2024 9:09:33,Quals-2,Red,5026,1,0,Success,1,0,Park,No DC,they showed up,Win,,
+3/2/2024 15:03:20,36,Blue,5104,0,0,Success,1,0,Park,No DC,they showed up,Loss,No,Very good driving. However robot takes super long to shoot into speaker which blocks alliance teammates. They also miss
+3/2/2024 14:41:39,Quals-33,Red,6348,1,0,Success,1,0,Park,No DC,they showed up,Loss,No,Missed a lot of speaker shots.
+3/2/2024 16:51:37,Qual 49,Blue,6348,1,0,Success,1,0,Park,No DC,they showed up,Win,No,Invalidated two alliance team robots from receiving hang points. Also went 1/6 on speaker
+3/2/2024 10:27:33,Quals 11,Red,6884,0,0,Success,1,0,Park,No DC,they showed up,Loss,,
+3/2/2024 14:17:54,Qual 30,Blue,6884,0,0,Success,1,0,Park,No DC,they showed up,Loss,,
+3/2/2024 9:50:48,Quals 7,Red,7413,0,0,Failure,1,0,Park,No DC,they showed up,Win,,They took so long to set up shots and only attempted one of them (not very good)
+3/2/2024 10:34:16,qual12,Blue,7413,1,0,Failure,1,0,Park,No DC,they showed up,Loss,,Failed hang. Intake problem
+3/2/2024 9:37:31,Quals-5,Red,8048,0,0,Success,1,0,Hang,No DC,they showed up,Loss,,"8048 had an inconsistent shooter, they were maybe 1 of 10 on total shots, they also did hang with 1 hand
+"
+3/2/2024 14:10:18,Qual 29,Blue,8048,0,0,Success,1,0,Hang,No DC,they showed up,Loss,,
+3/2/2024 15:10:05,37,Red,9470,1,0,Success,1,0,Neither,No DC,they showed up,Win,No,"Aggressive driver, robot capability is bad, tank driver "
+3/2/2024 9:51:05,qual 7,Blue,9504,0,0,Failure,1,0,Park,No DC,they showed up,Loss,,Very slow team. Missed almost every shot. Ran into stage alot
+3/2/2024 10:20:16,qual10,Blue,9504,0,0,Failure,1,0,Park,No DC,they showed up,Win,,Very slow. Have trouble lining shots. Run into stage.
+3/2/2024 13:19:41,Quals-24,Blue,9504,0,0,Failure,1,0,Neither,No DC,they showed up,Loss,,
+3/2/2024 16:58:08,Quals-50,Red,9504,0,0,Failure,1,0,Park,No DC,they showed up,Win,No,"veeeeeery sloooow cycles. driver didnt seem experienced as movement wasnt great and poor human player communication. had trouble aligning to intake from
+soeaker"
+3/2/2024 9:37:14,Quals-5,Blue,604,3,0,Success,0,8,Park,No DC,they showed up,Win,,"Nice amp, about 8-9 cycles, not sure with speaker"
+3/2/2024 10:06:58,Quals-6,Red,100,1,0,Failure,0,6,Park,No DC,they showed up,Win,,
+3/2/2024 19:36:25,Quals-6,Red,100,1,0,Failure,0,6,Park,No DC,they showed up,Win,,
+3/2/2024 19:37:08,Quals-13,Red,1351,1,0,Failure,0,6,Park,No DC,they showed up,Win,,
+3/2/2024 13:02:45,Quals 21,Red,192,0,0,Success,0,5,Hang,No DC,they showed up,Loss,,really good team players they let us score and went for amp
+3/2/2024 10:34:02,Quals-12,Blue,3309,0,0,Failure,0,5,Park,No DC,they showed up,Loss,,Main amp
+3/2/2024 9:20:57,Quals-3,Red,1351,0,0,Success,0,4,Hang,No DC,they showed up,Win,,
+3/2/2024 14:33:41,Quals-32,Blue,2367,0,0,Failure,0,4,Park,No DC,they showed up,Loss,,Great amp scorer.
+3/2/2024 14:18:18,qual 30,Red,3309,0,0,Success,0,4,Neither,No DC,they showed up,Win,,"cycles amp and they have a fast driver, but are prone to banging into things so just be careful there"
+3/2/2024 11:31:02,Qual 18,Red,253,0,0,Success,0,3,DC,Late Match: last half of teleop,they showed up,Loss,,Consistent amp but slow
+3/2/2024 15:52:56,Qual 42,Red,2367,1,0,Failure,0,3,Hang,No DC,they showed up,Win,No,"Was doing amp so 581 could focus on speaker, little bit slow at aligning and I taking but fairly consistent with amp scoring "
+3/2/2024 15:10:15,Quals-37,Blue,3309,0,0,Success,0,3,Park,No DC,they showed up,Loss,No,Takes to long to intake from source and score amp
+3/2/2024 16:58:16,Quals-50,Red,3309,0,0,Success,0,3,Park,No DC,they showed up,Win,No,"Good driving, but also have a weird intake. The intake is very inconsistent."
+3/2/2024 16:59:08,qual 50 ,Red,3309,0,0,Failure,0,3,Neither,No DC,they showed up,Win,No,"3309, they didn’t have an auto, attempted 1 shot, and also attempted 3 amps. the intake is really jiggly and seems prone to being broken but they can cycle under the stage quick-ish(good driver)"
+3/2/2024 15:04:55,Qual 36,Red,8404,3,0,Success,0,3,Park,No DC,they showed up,Win,No,
+3/2/2024 15:33:22,Quals-40,Red,100,1,0,Success,0,2,Neither,No DC,they showed up,Loss,No,"movement was staggered and crashed into objects a lot. communication with human player was unclear- led to longer cycles, missed speaker once in auto and missed amp thrice in teleop"
+3/2/2024 9:31:35,Qual 4,Blue,192,1,0,Failure,0,2,Hang,No DC,they showed up,Win,,"Pretty good with amp, consistent with amp, can hang, can cycle under stage, played defense"
+3/2/2024 15:53:50,Quals-42,Red,253,0,0,Success,0,2,Hang,No DC,they showed up,Win,No,"Only amp bot, can hang"
+3/2/2024 11:00:03,Quals-15,Red,2367,0,0,Failure,0,2,Hang,No DC,they showed up,Win,,"note got stuck twice while trying to score amp, recurring problem"
+3/2/2024 15:09:40,qual37,Blue,3309,0,0,Success,0,2,Park,No DC,they showed up,Loss,No,Hit alliance members so many times. No driving control. Takes super long to align amp.
+3/2/2024 16:01:50,Quals-43,Red,3309,0,0,Failure,0,2,Hang,No DC,they showed up,Loss,No,intake is realllyyyyy wobbly and doesnt work well. takes long time to align for amp and is too tall when holding note up to go under stage
+3/2/2024 11:01:11,Quals-15,Blue,4990,0,0,Success,0,2,Hang,No DC,they showed up,Loss,,"They were only amp scoring, but they spent a long time trying to get an amp in (about 2-3 failed attempts). Their amp outtake also seemed to not work fully and the note went really slow, not sure if that was on purpose but it slowed them down substantially. Their climb is very fast though."
+3/2/2024 13:24:35,Quals 23,Red,4990,1,0,Success,0,2,Hang,No DC,they showed up,Win,,Were already hanged with 25 sec left of match
+3/2/2024 19:40:00,Quals-16,Red,2073,1,0,Failure,0,2,Hang,No DC,they showed up,Win,,Started playing defense mid match.
+3/2/2024 17:24:35,Quals-53,Blue,192,0,0,Failure,0,1,Hang,No DC,they showed up,Loss,No,"Outtake seemed broken/note got stuck so they shifted to defense after scoring one note in the amp, but their defense had little effect, if any, on the opposing alliance’s cycles (well it was 1678 so there’s that)"
+3/2/2024 13:34:10,Quals-25,Blue,253,0,0,Success,0,1,Neither,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,
+3/2/2024 16:37:16,Qual 47,Blue,253,0,0,Success,0,1,Hang,No DC,they showed up,Loss,No,
+3/2/2024 13:55:16,Qual 27,Red,3309,0,0,Success,0,1,Hang,No DC,they showed up,Win,,They played defense the entire match
+3/2/2024 9:20:56,Quals-3,Blue,4990,0,0,Failure,0,1,Park,No DC,they showed up,Loss,,
+3/2/2024 10:20:13,Quals-10,Blue,4990,0,0,Success,0,1,Hang,No DC,they showed up,Win,,
+3/2/2024 15:09:53,Quals-37,Blue,4990,0,0,Failure,0,1,Neither,No DC,they showed up,Loss,No,"Played defense entire match, not good at defense, slow"
+3/2/2024 10:44:32,Quals-13,Blue,6348,0,0,Success,0,1,Neither,No DC,they showed up,Loss,,"they went to amp and missed 3 notes and scored one, can only intake directly from human player at source, amp scoring is too low, slow speed, did not attempt speaker at all, the last note was halfway into the amp so im not sure if it counted as a score, but they scored one for sure"
+3/2/2024 11:47:36,Quals-20,Red,8404,2,0,Failure,0,1,Park,No DC,they showed up,Loss,,THEY TIED
+3/2/2024 11:50:38,Quals-20,Red,8404,2,0,Failure,0,1,Park,No DC,they showed up,Loss,,THEY TIED
+3/2/2024 10:20:48,Quals-10,Red,192,0,0,Success,0,0,Park,No DC,they showed up,Loss,,"They didn’t really do anything, not even defense"
+3/2/2024 9:57:32,Quals-8,Blue,253,0,0,Failure,0,0,Park,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,
+3/2/2024 10:08:14,Quals 9,Red,972,0,0,Failure,0,0,Hang,No DC,they showed up,Loss,,
+3/2/2024 9:44:07,Quals-6,Blue,1868,0,0,Failure,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,DC during the whole match 
+3/2/2024 10:20:14,Quals 10,Red,1868,0,0,DC,0,0,Park,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,They initially DCed but then came back with no functional shooter
+3/2/2024 13:28:12,Quals-24,Red,1868,0,0,Success,0,0,Park,No DC,they showed up,Loss,,This not wasn't really doing anything. I think it was probably something to do with the driver and not the bot in general.
+3/2/2024 11:38:42,Qual 19,Blue,1967,0,0,Failure,0,0,Hang,No DC,they showed up,Win,,Their driving was not smooth and was very jerky
+3/2/2024 9:09:22,Quals 2,Blue,2035,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,,
+3/2/2024 10:33:45,Quals-12,Red,2035,1,0,Failure,0,0,Park,No DC,they showed up,Win,,
+3/2/2024 14:26:29,Quals-31,Blue,2035,0,0,Failure,0,0,Park,No DC,they showed up,Win,,"Note got stuck in bumper for the majority of the first half, drew a penalty, fast driving"
+3/2/2024 15:36:34,Qual 40,Blue,2035,0,0,Failure,0,0,Park,No DC,they showed up,Win,No,Did not drive much. Did not attempt cycles. 
+3/2/2024 16:36:58,Quals-47,Red,2035,0,0,Failure,0,0,Neither,No DC,they showed up,Win,No,Didn't really do anything except for play defense.
+3/2/2024 10:08:38,qual9,Blue,2073,1,0,Success,0,0,Hang,No DC,they showed up,Win,,Intake problem throughout the whole teleop. Defense aas great tho
+3/2/2024 10:27:17,Quals-11,Red,3008,1,0,Success,0,0,Hang,No DC,they showed up,Loss,,They kept attempting to score speaker but the notes did not go high enough; maybe have potential as defense+hang
+3/2/2024 9:45:14,Qual 6,Blue,3189,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,,"Wonky intake, was wobbly, auto went backwards, inconsistent with shots"
+3/2/2024 14:03:41,Qual 28,Red,3189,1,0,Success,0,0,Park,No DC,they showed up,Win,,"Tippy intake/shooter, slow to shoot and align"
+3/2/2024 16:09:25,Qual 44,Blue,3189,0,0,Failure,0,0,Neither,No DC,no show,Win,No,
+3/2/2024 16:57:39,Quals-50,Blue,3189,1,0,Failure,0,0,Neither,No DC,they showed up,Loss,No,Part broke off and they started playing defense entire match
+3/2/2024 9:43:50,Quals-6,Red,3256,2,0,Success,0,0,Park,No DC,they showed up,Win,,note stuck womp womp
+3/2/2024 11:12:07,Quals -16,Blue,3309,0,0,Success,0,0,Park,No DC,they showed up,Loss,,"They tried amp at first with their preload, but I don’t think their outtake was working, so they were stuck playing defense the rest of the time.they played defense around the other alliances stage, but they were very wobbly so it wasn’t too effective. At the end, they climbed but then fell to the floor so it didn’t count."
+3/2/2024 11:31:45,Quals - 18,Blue,3859,0,0,Failure,0,0,Neither,No DC,they showed up,Win,,"They didn’t move. Kinda twitched every once in a while though lol. Weren’t disconnected, but weren’t moving."
+3/2/2024 16:36:40,Quals-47,Blue,4990,0,0,Failure,0,0,Hang,No DC,they showed up,Loss,No,"Struggled to shoot in amp, was not able to, slow and could not play defense "
+3/2/2024 9:37:17,Quals-5,Red,5027,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,,shooter was not secured and didnt look to be functioning (wires in the air). spent match in blue zone in front of speaker
+3/2/2024 9:57:18,qual8,Blue,5027,0,0,Failure,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,Dc the whole match until last 10 sec
+3/2/2024 11:10:42,Quals 16,Blue,5027,0,0,Failure,0,0,DC,Late Match: last half of teleop,they showed up,Loss,,They only played defence
+3/2/2024 14:03:42,Quals-28,Blue,5027,0,0,Failure,0,0,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,,Good speaker defense
+3/2/2024 14:03:45,A,Blue,5027,0,0,Success,0,0,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,,Disconnected and bad driving.
+3/2/2024 16:51:12,Quals-49,Red,5027,0,0,Success,0,0,Neither,No DC,they showed up,Loss,No,They did defense during the whole match
+3/2/2024 17:22:40,Quals-53,Blue,5027,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,"Defense only, just a  drivebase 💀"
+3/2/2024 14:58:49,Quals-35,Red,6238,0,0,Success,0,0,Neither,Mid Match: somewhere middle of teleop,they showed up,Loss,No,"DC, missed a lot of speaker shots."
+3/2/2024 16:44:57,Quals-48,Red,6238,0,0,Success,0,0,Park,No DC,they showed up,Loss,No,No scoring this match 
+3/2/2024 14:04:40,quals 28,Red,6348,1,0,Success,0,0,Neither,No DC,they showed up,Win,,Design is like our beta bots
 3/2/2024 9:01:51,Quals-1,Blue,6884,0,0,Failure,0,0,Park,No DC,they showed up,Loss,,
 3/2/2024 9:02:04,Quals-1,Blue,6884,1,0,Failure,0,0,Hang,No DC,they showed up,Win,,
-3/2/2024 10:27:33,Quals 11,Red,6884,0,0,Success,1,0,Park,No DC,they showed up,Loss,,
-3/2/2024 11:00:08,Quals 15,Blue,6884,1,0,Failure,0,0,Hang,No DC,they showed up,Win,Note got stuck in shooter,
-3/2/2024 11:47:27,Qual 20,Blue,6918,0,0,Success,0,0,Park,No DC,they showed up,Loss,Their range of scoring is very low so they aren’t able to shoot high into the speaker and amp. ,
-3/2/2024 9:50:48,Quals 7,Red,7413,0,0,Failure,1,0,Park,No DC,they showed up,Win,They took so long to set up shots and only attempted one of them (not very good),
-3/2/2024 10:34:16,qual12,Blue,7413,1,0,Failure,1,0,Park,No DC,they showed up,Loss,Failed hang. Intake problem,
-3/2/2024 11:00:07,Qual 15,Blue,7413,0,0,Failure,2,0,Hang,No DC,they showed up,Loss,,
-3/2/2024 11:10:37,Quals-16,Red,7419,0,0,Failure,5,0,Park,No DC,they showed up,Win,missed 6 attempted speaker notes. intaking was smooth though.,
-3/2/2024 9:37:31,Quals-5,Red,8048,0,0,Success,1,0,Hang,No DC,they showed up,Loss,"8048 had an inconsistent shooter, they were maybe 1 of 10 on total shots, they also did hang with 1 hand
-",
-3/2/2024 10:34:44,Quals-12,Red,8048,0,0,Success,4,0,Hang,No DC,they showed up,Win,"Their driving was slightly hesitant, both intaking and aligning to score",
-3/2/2024 11:31:05,Qual 18,Blue,8048,0,0,Success,3,0,Hang,No DC,they showed up,Win,Made 3/7 shots,
-3/2/2024 9:09:33,Quals-2,Blue,8404,0,0,DC,0,0,Park,No DC,they showed up,Loss,,
-3/2/2024 9:58:07,Quals 8,Red,8404,0,0,Failure,0,0,Park,No DC,they showed up,Win,Their shooter and climb both seemed to be broken (got carried by 581),
-3/2/2024 11:47:36,Quals-20,Red,8404,2,0,Failure,0,1,Park,No DC,they showed up,Loss,THEY TIED,
-3/2/2024 11:50:38,Quals-20,Red,8404,2,0,Failure,0,1,Park,No DC,they showed up,Loss,THEY TIED,
-3/2/2024 9:04:58,Quals-1,Red,8546,DC,DC,DC,DC,DC,DC,Early Match: Auto / opening seconds of teleop,they showed up,Win,,
-3/2/2024 10:51:03,Qual-14,Red,8546,0,0,Failure,0,0,Hang,No DC,they showed up,Loss,"note stuck early on, played defense the rest of the match",
-3/2/2024 11:22:08,Qual 17,Red,8546,0,0,Failure,DC,DC,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,"Structure completely broke, seems like a consistent amp scorer tho",
-3/2/2024 10:20:28,Quals-10,Red,9114,0,0,Success,2,0,Hang,No DC,they showed up,Loss,"missed one attempted speaker shot, note got stuck mid teleop and hung early",
-3/2/2024 11:11:12,Qual 16,Red,9114,1,0,Failure,0,0,Park,No DC,they showed up,Win,Shooter is inconsistent,
-3/2/2024 9:09:39,Quals-2,Red,9125,2,0,Success,3,0,Park,No DC,they showed up,Win,,
-3/2/2024 9:57:14,Quals-8,Red,9125,0,0,Failure,0,0,Hang,No DC,they showed up,Win,Drove around aimlessly when they could not score rather than playing effective defense,
-3/2/2024 9:50:47,Quals-7,Blue,9470,0,0,Success,0,0,Park,No DC,they showed up,Loss,"Could not shoot, were playing defense",
-3/2/2024 10:46:27,Quals 13,Blue,9470,1,0,Success,6,0,Park,No DC,they showed up,Loss,,
-3/2/2024 11:32:18,Qual 18,Blue,9470,0,0,Failure,3,0,DC,Late Match: last half of teleop,they showed up,Win,Their intaking was inconsistent,
-3/2/2024 9:51:05,qual 7,Blue,9504,0,0,Failure,1,0,Park,No DC,they showed up,Loss,Very slow team. Missed almost every shot. Ran into stage alot,
-3/2/2024 10:20:16,qual10,Blue,9504,0,0,Failure,1,0,Park,No DC,they showed up,Win,Very slow. Have trouble lining shots. Run into stage.,
-3/2/2024 10:20:26,Quals-10,Blue,9504,1,0,Failure,3,0,Park,No DC,they showed up,Win,Very slow at aligning to speaker and also cycling to source,
-3/2/2024 13:12:40,Qual 22,Blue,670,0,0,Success,3,1,Park,No DC,they showed up,Win,Slow position for shooting. Struggled with ground intake (can directly intake into speaker shooting mechanism),
-3/2/2024 13:12:44,Quals-22,Blue,670,0,0,Success,1,2,Park,No DC,they showed up,Win,,
-3/2/2024 13:13:27,Quals-22,Red,7413,0,0,Failure,4,0,Park,No DC,they showed up,Loss,,
-3/2/2024 13:13:37,Quals-22,Red,841,0,0,Success,3,1,Park,No DC,they showed up,Loss,Disconnecting on and off. Good speaker scorer.,
-3/2/2024 13:13:53,Qual 22,Red,841,0,0,Success,5,0,Neither,No DC,they showed up,Loss,sort of consistent and medium fast cycle times they smash into other robots ,
-3/2/2024 13:19:41,Quals-24,Blue,9504,0,0,Failure,1,0,Neither,No DC,they showed up,Loss,,
-3/2/2024 13:20:55,Quals-23,Red,2813,0,0,Success,3,3,Park,No DC,they showed up,Win,,
-3/2/2024 13:22:03,Quals-23,Red,2813,1,0,Success,4,4,Park,No DC,they showed up,Win,Very versatile bot. Can score speaker and amp equally well and has a good driver too.,
-3/2/2024 13:23:46,Qual 23,Blue,9504,1,0,Failure,0,0,Neither,No DC,they showed up,Loss,"Missed every single speaker. Not good with cooperating with source. Is a kitbot, shot notes very far off from the speaker. Many times got penalties, one time note landed on ref face",
-3/2/2024 13:24:35,Quals 23,Red,4990,1,0,Success,0,2,Hang,No DC,they showed up,Win,Were already hanged with 25 sec left of match,
-3/2/2024 13:27:06,Qual-24,Blue,581,0,0,Success,7,0,Hang,No DC,they showed up,Win,They could hang and trap also had very fast cycles ,
-3/2/2024 13:27:09,Qual 24,Blue,604,4,0,Success,3,7,Park,No DC,they showed up,Win,,
-3/2/2024 13:27:28,Qual 24,Blue,6238,0,0,Failure,4,0,DC,Late Match: last half of teleop,they showed up,Win,"pure scorers, missed a couple and then died after running into the stage",
-3/2/2024 13:28:12,Quals-24,Red,1868,0,0,Success,0,0,Park,No DC,they showed up,Loss,This not wasn't really doing anything. I think it was probably something to do with the driver and not the bot in general.,
-3/2/2024 13:30:50,Quals 24,Red,2367,1,0,Success,1,1,Park,No DC,they showed up,Loss,Tried to hang but couldn’t lift itself off the ground,
-3/2/2024 13:34:10,Quals-25,Blue,253,0,0,Success,0,1,Neither,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,
-3/2/2024 13:34:33,Quals 25,Red,972,0,0,Success,5,0,Hang,No DC,they showed up,Win,Very good at maneuvering around obstacles,
+3/2/2024 11:00:08,Quals 15,Blue,6884,1,0,Failure,0,0,Hang,No DC,they showed up,Win,,Note got stuck in shooter
 3/2/2024 13:34:36,Qual 25,Blue,6884,0,0,Failure,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Loss,,
-3/2/2024 13:35:36,Qual-25,Blue,8404,4,0,Success,4,2,Neither,No DC,they showed up,Loss,"had good autos, in tele op they started off slow  but could score both amp and speaker w/ a semi consistent shooter",
-3/2/2024 13:37:10,Quals-25,Red,987,2,0,Success,2,0,Park,No DC,they showed up,Win,"This shooter is good, unfortunately there was a lot of hesitation with shooting into the speaker.",
+3/2/2024 14:17:31,Quals-30,Blue,6884,0,0,Failure,0,0,Park,No DC,they showed up,Loss,,This bot did nothing at all. It was struggling with aiming shots.
+3/2/2024 15:17:28,38,Red,6884,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,"Not great, played defense though"
+3/2/2024 16:43:06,Qual 48,Red,6884,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,attempted,"for whatever reason 6884 did not intake a single note and instead pushed them down the field, they tried playing defense but it didn’t really work - they did not score a single point and only attempted a single shot in auto"
+3/2/2024 17:23:40,53,Blue,6884,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,No,Did nothing fr
+3/2/2024 11:47:27,Qual 20,Blue,6918,0,0,Success,0,0,Park,No DC,they showed up,Loss,,Their range of scoring is very low so they aren’t able to shoot high into the speaker and amp. 
+3/2/2024 13:55:22,Quals-27,Blue,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,,Mid speaker defense
+3/2/2024 14:35:36,Quals-32,Blue,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,,"6918 did not score themselves but dropped 3-4 notes in between amp and speaker for their alliance partners to grab, caused 2288 to drop a note through a little bit of defense/counter-defense"
+3/2/2024 15:02:46,36,Red,6918,0,0,Success,0,0,Neither,No DC,they showed up,Win,No,"Tank drive, only intake no shooter cant do anyhting"
+3/2/2024 16:01:42,Qual 43,Red,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,Plays good defense and feeds notes to teammates 
+3/2/2024 17:07:22,Quals-51,Blue,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,"Tank drive, intake only; climb doesnt have enough power to lift robot"
+3/2/2024 15:45:16,Qual 41,Blue,8048,1,0,Success,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Win,No,
+3/2/2024 16:45:36,Quals-48,Red,8048,0,0,Success,0,0,Park,No DC,they showed up,Loss,No,"The bot looks like a box, and the driver is not good. The shots are very random."
+3/2/2024 9:09:33,Quals-2,Blue,8404,0,0,DC,0,0,Park,No DC,they showed up,Loss,,
+3/2/2024 9:58:07,Quals 8,Red,8404,0,0,Failure,0,0,Park,No DC,they showed up,Win,,Their shooter and climb both seemed to be broken (got carried by 581)
+3/2/2024 14:11:57,Quals-29,Blue,8404,0,0,Success,0,0,Hang,No DC,they showed up,Loss,,Okay source defense
+3/2/2024 10:51:03,Qual-14,Red,8546,0,0,Failure,0,0,Hang,No DC,they showed up,Loss,,"note stuck early on, played defense the rest of the match"
 3/2/2024 13:41:41,Quals 26,Red,8546,0,0,Failure,0,0,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,,
-3/2/2024 13:41:46,Quals-26,Red,9114,0,0,Success,2,0,Hang,No DC,they showed up,Loss,,
-3/2/2024 13:41:48,Qual 26,Blue,3008,DC,0,Success,1,0,Neither,No DC,they showed up,Win,no dc and decent defense but that was about it,
-3/2/2024 13:42:10,Qual 26,Blue,1678,5,0,Success,8,2,Hang,No DC,they showed up,Win,,
-3/2/2024 13:54:40,Qual 27,Blue,192,1,0,Success,1,2,Hang,No DC,they showed up,Win,can do both amp and shooter but slow cycles and sometimes is not accurate,
-3/2/2024 13:55:16,Qual 27,Red,3309,0,0,Success,0,1,Hang,No DC,they showed up,Win,They played defense the entire match,
-3/2/2024 13:55:22,Quals-27,Blue,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,Mid speaker defense,
-3/2/2024 13:55:28,Qual 27,Blue,192,1,0,Success,1,0,Hang,No DC,they showed up,Loss,,
-3/2/2024 13:55:39,wuals-27,Red,2473,1,0,Success,5,0,Hang,No DC,they showed up,Win,"basically kitbot plus a climb, definitelly could have scored one or two more cycles but were held back by defense, tall but not tippy, missed one shot into speaker, hangs very well (pretty far above ground)",
-3/2/2024 13:56:04,Quals-27,Blue,1351,1,0,Success,6,2,Hang,No DC,they showed up,Loss,"Great, great amp and speaker scorer. 1351 really dominated the game on the blue alliance and has a great design.",
-3/2/2024 14:03:41,Qual 28,Red,3189,1,0,Success,0,0,Park,No DC,they showed up,Win,"Tippy intake/shooter, slow to shoot and align",
-3/2/2024 14:03:42,Qual 28,Blue,2035,0,0,Failure,1,0,Park,No DC,they showed up,Loss,,
-3/2/2024 14:03:42,Quals-28,Blue,5027,0,0,Failure,0,0,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,Good speaker defense,
-3/2/2024 14:03:44,quals-28,Red,5104,1,0,Success,2,0,Hang,No DC,they showed up,Win,"they shot speaker a ton of times without alignment and missed al of them but if they could aim properly theh can probably do a good 6-7 cycles into speaker. kind of slow, intakes from ground",
-3/2/2024 14:03:45,A,Blue,5027,0,0,Success,0,0,DC,Mid Match: somewhere middle of teleop,they showed up,Loss,Disconnected and bad driving.,
-3/2/2024 14:04:40,quals 28,Red,6348,1,0,Success,0,0,Neither,No DC,they showed up,Win,Design is like our beta bots,
-3/2/2024 14:09:59,Quals-29,Blue,2073,1,0,Success,3,4,Hang,No DC,they showed up,Loss,Pretty good at scoring both amp and speaker.,
-3/2/2024 14:10:17,quals 29,Red,7419,0,0,Success,5,0,Neither,No DC,they showed up,Win,pretty consistent but slowish cycles ,
-3/2/2024 14:10:18,Qual 29,Blue,8048,0,0,Success,1,0,Hang,No DC,they showed up,Loss,,
-3/2/2024 14:11:03,Qual 29,Red,3859,1,0,Failure,3,1,Hang,No DC,they showed up,Win,Slow shooting,
-3/2/2024 14:11:57,Quals-29,Blue,8404,0,0,Success,0,0,Hang,No DC,they showed up,Loss,Okay source defense,
-3/2/2024 14:17:31,Quals-30,Blue,6884,0,0,Failure,0,0,Park,No DC,they showed up,Loss,This bot did nothing at all. It was struggling with aiming shots.,
-3/2/2024 14:17:47,Qual 30,Red,1967,1,0,Success,6,0,Hang,No DC,they showed up,Win,,
-3/2/2024 14:17:51,Quals-30,Blue,668,0,0,Success,8,0,Hang,No DC,they showed up,Loss,"Lined up to speaker to shoot, fast cycles",
-3/2/2024 14:17:54,Qual 30,Blue,6884,0,0,Success,1,0,Park,No DC,they showed up,Loss,,
-3/2/2024 14:18:18,qual 30,Red,3309,0,0,Success,0,4,Neither,No DC,they showed up,Win,"cycles amp and they have a fast driver, but are prone to banging into things so just be careful there",
-3/2/2024 14:25:10,Qual 31,Blue,987,2,0,Success,2,3,Park,No DC,they showed up,Win,,
-3/2/2024 14:25:48,Qual 31,Red,9504,0,0,Failure,2,0,Park,No DC,they showed up,Loss,Basically just kitbot,
-3/2/2024 14:25:51,qual 31,Red,192,1,0,Success,3,0,Hang,No DC,they showed up,Loss,"refer to my notes for past 192 matches, more of the same",
-3/2/2024 14:26:29,Quals-31,Blue,2035,0,0,Failure,0,0,Park,No DC,they showed up,Win,"Note got stuck in bumper for the majority of the first half, drew a penalty, fast driving",
-3/2/2024 14:28:53,Quals-31,Blue,987,3,0,Success,4,4,Park,No DC,they showed up,Win,Great scorer in amp and shooter.,
-3/2/2024 14:32:46,Qual 32,Red,2288,2,0,Success,1,3,Park,No DC,they showed up,Win,Last half of match played solid defense ,
-3/2/2024 14:32:56,qual 32,Red,9470,0,0,Failure,3,2,Neither,No DC,they showed up,Win,"consistent robot that uses tank drive - can score both amp and speaker 
-",
-3/2/2024 14:33:16,Qual 32,Blue,2367,0,0,Failure,1,2,Neither,No DC,they showed up,Loss,,
-3/2/2024 14:33:41,Quals-32,Blue,2367,0,0,Failure,0,4,Park,No DC,they showed up,Loss,Great amp scorer.,
-3/2/2024 14:35:36,Quals-32,Blue,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,"6918 did not score themselves but dropped 3-4 notes in between amp and speaker for their alliance partners to grab, caused 2288 to drop a note through a little bit of defense/counter-defense",
-3/2/2024 14:40:22,Quals-33,Blue,7413,0,0,Failure,5,0,Hang,No DC,they showed up,Win,,No
-3/2/2024 14:40:26,Quals-33,Blue,100,3,0,Success,2,4,Park,No DC,they showed up,Win,"Both speaker and amp, mostly aligns well for amp",No
-3/2/2024 14:40:39,qual 33,Blue,5104,1,0,Success,4,0,Hang,No DC,they showed up,Win,Missed at least half of their speaker shots.,No
-3/2/2024 14:40:50,33,Red,3008,1,0,Failure,1,0,Park,No DC,no show,Loss,Not good (set shooter angle doesnt work),No
-3/2/2024 14:40:54,Quals-33,Blue,7413,0,0,Success,3,0,Hang,No DC,they showed up,Win,"Wasted time at source, 5 cycles ",No
-3/2/2024 14:41:39,Quals-33,Red,6348,1,0,Success,1,0,Park,No DC,they showed up,Loss,Missed a lot of speaker shots.,No
-3/2/2024 14:47:06,34,Red,604,1,0,Success,5,6,Park,No DC,they showed up,Win,So good,No
-3/2/2024 14:47:09,Quals-34,Blue,5026,1,0,Success,5,0,Neither,No DC,they showed up,Loss,,No
-3/2/2024 14:47:12,Quals-34,Red,5027,DC,DC,DC,DC,DC,DC,Early Match: Auto / opening seconds of teleop,they showed up,Win,DC.,No
-3/2/2024 14:47:42,Quals-34,Red,3256,1,0,Success,8,0,Hang,No DC,they showed up,Win,🔥,No
-3/2/2024 14:48:02,qual34,Blue,4990,2,0,Success,7,0,Park,No DC,they showed up,Loss,We beat them,No
-3/2/2024 14:48:43,Quals-34,Blue,5026,1,0,Success,2,0,Neither,No DC,they showed up,Loss,"3-4 cycles, slow cycles ",No
-3/2/2024 14:54:51,Quals-35,Blue,9125,1,0,Success,0,0,Hang,No DC,they showed up,Win,Played defense entire match,No
-3/2/2024 14:55:19,qual35,Blue,841,0,0,Success,3,0,Hang,No DC,they showed up,Win,Good driverr. Very fast robot. Missed half their speaker shots. Note got stuck in shooter halfway through teleop.,No
-3/2/2024 14:55:19,35,Red,2813,0,0,Success,1,3,Park,No DC,they showed up,Loss,"Amp is good, auto and speaker really inconsistent ",No
-3/2/2024 14:56:47,Quals-35,Blue,841,0,0,Success,4,0,Hang,No DC,they showed up,Win,Pretty good cycle time,No
-3/2/2024 14:56:52,Quals-35,Red,2473,1,0,Success,5,0,Hang,No DC,they showed up,Win,"Only missed one speaker note, does not seem to be able to ground intake so they might be blocked by source defense",No
-3/2/2024 14:58:49,Quals-35,Red,6238,0,0,Success,0,0,Neither,Mid Match: somewhere middle of teleop,they showed up,Loss,"DC, missed a lot of speaker shots.",No
-3/2/2024 15:02:46,36,Red,6918,0,0,Success,0,0,Neither,No DC,they showed up,Win,"Tank drive, only intake no shooter cant do anyhting",No
-3/2/2024 15:02:50,Quals-36,Blue,670,0,0,Success,4,5,Park,No DC,they showed up,Loss,If they fix the auto(scored zero) pretty good team,No
-3/2/2024 15:02:50,Quals-36,Blue,670,1,0,Success,4,3,Park,No DC,they showed up,Loss,,No
-3/2/2024 15:03:09,Quals-36,Red,3859,1,0,Success,2,0,Park,No DC,they showed up,Win,,No
-3/2/2024 15:03:20,36,Blue,5104,0,0,Success,1,0,Park,No DC,they showed up,Loss,Very good driving. However robot takes super long to shoot into speaker which blocks alliance teammates. They also miss,No
-3/2/2024 15:04:55,Qual 36,Red,8404,3,0,Success,0,3,Park,No DC,they showed up,Win,,No
-3/2/2024 15:09:40,qual37,Blue,3309,0,0,Success,0,2,Park,No DC,they showed up,Loss,Hit alliance members so many times. No driving control. Takes super long to align amp.,No
-3/2/2024 15:09:53,Quals-37,Blue,4990,0,0,Failure,0,1,Neither,No DC,they showed up,Loss,"Played defense entire match, not good at defense, slow",No
-3/2/2024 15:10:05,37,Red,9470,1,0,Success,1,0,Neither,No DC,they showed up,Win,"Aggressive driver, robot capability is bad, tank driver ",No
-3/2/2024 15:10:09,Qual 37,Red,987,1,0,Success,6,3,Neither,No DC,they showed up,Win,They were on fire this match fr,No
-3/2/2024 15:10:15,Quals-37,Blue,3309,0,0,Success,0,3,Park,No DC,they showed up,Loss,Takes to long to intake from source and score amp,No
-3/2/2024 15:10:30,Quals-37,Red,5026,0,0,Success,2,0,Park,No DC,they showed up,Win,Stuttering driving during the second half of match.,No
-3/2/2024 15:17:23,Quals-38,Blue,3189,1,0,Failure,2,0,Neither,No DC,they showed up,Win,,No
-3/2/2024 15:17:23,Quals 68,Red,1967,0,0,Failure,6,0,Park,No DC,they showed up,Loss,,No
-3/2/2024 15:17:28,38,Red,6884,0,0,Failure,0,0,Park,No DC,they showed up,Loss,"Not great, played defense though",No
-3/2/2024 15:18:04,Qual 38,Red,1967,0,0,Failure,5,0,Park,No DC,they showed up,Loss,,No
-3/2/2024 15:18:22,Quals-38,Red,2073,1,0,Success,3,2,Hang,No DC,they showed up,Loss,"Nice team, can score from around the field.",No
-3/2/2024 15:25:09,Qual 39,Blue,7419,1,0,Success,7,0,Neither,No DC,they showed up,Loss,Indecisive driver ,No
-3/2/2024 15:25:16,Qual 39,Red,2288,1,0,Success,DC,DC,DC,Mid Match: somewhere middle of teleop,they showed up,Win,,No
-3/2/2024 15:25:39,Quals-39,Red,1868,1,0,Failure,5,0,Park,No DC,they showed up,Win,"Inconsistent intake, and shoots ok",No
-3/2/2024 15:25:42,38,Blue,6348,1,0,Success,2,1,Park,No DC,they showed up,Loss,Not good,No
-3/2/2024 15:25:48,Quals-39,Red,1678,3,0,Success,8,3,Park,No DC,they showed up,Win,"missed one attempted speaker note, intakinf was SO SMOOTH ITS CRAZY and very very speedy cycles",No
-3/2/2024 15:33:11,604,Blue,604,5,0,Success,10,0,Neither,No DC,they showed up,Win,"8-13 cycle, speaker count might be wrong ",No
-3/2/2024 15:33:22,Quals-40,Red,100,1,0,Success,0,2,Neither,No DC,they showed up,Loss,"movement was staggered and crashed into objects a lot. communication with human player was unclear- led to longer cycles, missed speaker once in auto and missed amp thrice in teleop",No
-3/2/2024 15:36:34,Qual 40,Blue,2035,0,0,Failure,0,0,Park,No DC,they showed up,Win,Did not drive much. Did not attempt cycles. ,No
-3/2/2024 15:36:35,Qual 40,Red,668,0,0,Success,7,0,Hang,No DC,they showed up,Loss,About 19 sec cycles,No
-3/2/2024 15:36:41,Quals-40,Red,6238,1,0,Failure,2,0,Park,No DC,they showed up,Loss,"Very inconsistent shooter, unreliable intake",No
-3/2/2024 15:44:58,Qual 41,Red,9125,1,0,Success,3,0,Park,No DC,they showed up,Loss,Tippy robot,No
-3/2/2024 15:45:03,Qual-41,Red,972,0,0,Success,2,5,Hang,No DC,they showed up,Loss,"intaking was smooth, auto attempted speaker but didnt make any",No
-3/2/2024 15:45:05,Quals-41,Red,8546,0,0,Failure,0,0,Park,No DC,they showed up,Loss,"Elevator is broken which has the intake, didn’t really play defense either; High CG",No
-3/2/2024 15:45:16,Qual 41,Blue,8048,1,0,Success,0,0,DC,Early Match: Auto / opening seconds of teleop,they showed up,Win,,No
-3/2/2024 15:46:10,41,Blue,841,2,0,Success,5,0,Hang,No DC,they showed up,Win,"Aggressive and really aware driver - good intuition, speaker shooting not consistent, shot notes out of arena more than once",No
-3/2/2024 15:52:56,Qual 42,Red,2367,1,0,Failure,0,3,Hang,No DC,they showed up,Win,"Was doing amp so 581 could focus on speaker, little bit slow at aligning and I taking but fairly consistent with amp scoring ",No
-3/2/2024 15:53:19,Qual-42,Red,581,2,0,Success,9,0,Hang,No DC,they showed up,Win,intske any cycling was crazy smooth ! missed one speaker note total,Success
-3/2/2024 15:53:23,42,Blue,9504,1,0,Success,4,0,Park,No DC,they showed up,Loss,"Kitbot, tank drive, not fast cycle time, 4/5 shots on speaker made",No
-3/2/2024 15:53:40,Qual 42,Blue,1351,1,0,Failure,3,1,Hang,No DC,they showed up,Loss,,No
-3/2/2024 15:53:50,Quals-42,Red,253,0,0,Success,0,2,Hang,No DC,they showed up,Win,"Only amp bot, can hang",No
-3/2/2024 16:01:36,43,Blue,2073,1,0,Failure,1,3,Neither,No DC,they showed up,Win,"Handoff is shaky, not consistent shooter",No
-3/2/2024 16:01:42,Qual 43,Red,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,Plays good defense and feeds notes to teammates ,No
-3/2/2024 16:01:49,Quals-43,Red,2288,1,0,Success,6,0,Park,No DC,they showed up,Loss,"Relatively fast cycles, consistent shooting (offset from subwoofer)",No
-3/2/2024 16:01:50,Quals-43,Red,3309,0,0,Failure,0,2,Hang,No DC,they showed up,Loss,intake is realllyyyyy wobbly and doesnt work well. takes long time to align for amp and is too tall when holding note up to go under stage,No
-3/2/2024 16:02:44,Qual 43,Blue,1868,0,0,Failure,1,0,Neither,No DC,they showed up,Win,"Driver was very hesitant, spun around as if the sensitivity was high. ",No
-3/2/2024 16:09:25,Qual 44,Blue,3189,0,0,Failure,0,0,Neither,No DC,no show,Win,,No
-3/2/2024 16:09:41,Qual-44,Red,7419,1,0,Failure,8,0,Neither,No DC,they showed up,Loss,"missed one attempted speaker, pretty smooth cyclrs and good human player communication ",No
-3/2/2024 16:09:46,Quals-44,Red,5104,1,0,Success,1,3,Park,No DC,they showed up,Loss,"Note got stuck in feeder, can score both amp and shoot speaker but amp is slow and inconsistent",No
-3/2/2024 16:09:58,44,Blue,604,2,0,Success,10,0,Park,No DC,they showed up,Win,"Too good, grab and go is perfect, auto was not as consistent this match (scouted team previously)",No
-3/2/2024 16:10:32,Qual 44,Red,3008,0,0,Success,DC,DC,DC,Late Match: last half of teleop,they showed up,Loss,"Tippy, shooter is inconsistent ",No
-3/2/2024 16:22:45,Quals-45,Red,2813,0,0,Failure,3,0,Neither,No DC,they showed up,Win,Speaker-focused team.,No
-3/2/2024 16:22:56,Quals-45,Blue,1351,1,0,Success,2,2,Hang,No DC,they showed up,Loss,,No
-3/2/2024 16:23:00,Quals-45,Red,668,0,0,Failure,2,0,Neither,No DC,they showed up,Win,"Bothered by a good defense, talks time to shoot speaker ",No
-3/2/2024 16:23:05,Qual 45,Blue,3859,1,0,Success,3,0,Park,No DC,they showed up,Loss,,No
-3/2/2024 16:23:19,Qual 45,Red,987,1,0,Success,3,5,Neither,No DC,they showed up,Win,987 is a really solid team that can cycle both amp and speaker very quickly - their speaker is inconsistent compared to their amp. they have the best amp cycle in all the robots I’ve seen here - their amp cycles helped them win,No
-3/2/2024 16:23:38,Quals 45,Blue,Holistic blue,3,0,Success,13,0,Hang,No DC,they showed up,Loss,,No
-3/2/2024 16:29:02,Quals 46,Blue,Blue holistic,4,0,Success,10,1,Hang,Mid Match: somewhere middle of teleop,they showed up,Loss,3256 DC in the middle of match,No
-3/2/2024 16:30:07,Quals-46,Red,670,0,0,Failure,5,0,Hang,No DC,they showed up,Win,,No
-3/2/2024 16:30:32,45,Blue,8546,0,0,Failure,0,0,Park,No DC,they showed up,Loss,"Good defense, cant do anything else",No
-3/2/2024 16:30:33,Qual 36,Blue,9125,0,0,Failure,5,0,Neither,No DC,they showed up,Loss,3256 laptop died rip 2024,No
-3/2/2024 16:36:01,47,Blue,9114,1,0,Success,2,0,Hang,No DC,they showed up,Loss,Okay robot overall,No
-3/2/2024 16:36:06,Quals 47,Blue,Blue holistic ,1,0,Success,4,1,Hang,No DC,they showed up,Loss,Double hang but none scored a lot of points,No
-3/2/2024 16:36:18,Qualms-47,Red,841,0,0,Failure,10,0,Hang,No DC,they showed up,Win,"4-5 sec per cycle, good speaker shoot",No
-3/2/2024 16:36:25,Quals 47,Red,581,3,0,Success,2,6,Hang,No DC,they showed up,Win,"they cycled amp for a while and then they alternated between amp and speaker, they can do trap and speaker",Success
-3/2/2024 16:36:40,Quals-47,Blue,4990,0,0,Failure,0,0,Hang,No DC,they showed up,Loss,"Struggled to shoot in amp, was not able to, slow and could not play defense ",No
-3/2/2024 16:36:58,Quals-47,Red,2035,0,0,Failure,0,0,Neither,No DC,they showed up,Win,Didn't really do anything except for play defense.,No
-3/2/2024 16:37:16,Qual 47,Blue,253,0,0,Success,0,1,Hang,No DC,they showed up,Loss,,No
-3/2/2024 16:43:03,Qual-48,Blue,5026,0,0,Failure,3,0,Park,No DC,they showed up,Win,,No
-3/2/2024 16:43:06,Qual 48,Red,6884,0,0,Failure,0,0,Neither,No DC,they showed up,Loss,"for whatever reason 6884 did not intake a single note and instead pushed them down the field, they tried playing defense but it didn’t really work - they did not score a single point and only attempted a single shot in auto",attempted
-3/2/2024 16:43:25,Quals 48,Blue,Blue holistic,3,0,Success,13,0,Park,No DC,they showed up,Win,"8404 has 4 piece auto potential, 5026 is decent",No
-3/2/2024 16:44:26,48,Blue,1967,0,0,Success,3,0,Park,No DC,they showed up,Win,"Didnt see most of it, data could be inaccurate ",No
-3/2/2024 16:44:57,Quals-48,Red,6238,0,0,Success,0,0,Park,No DC,they showed up,Loss,No scoring this match ,No
-3/2/2024 16:45:36,Quals-48,Red,8048,0,0,Success,0,0,Park,No DC,they showed up,Loss,"The bot looks like a box, and the driver is not good. The shots are very random.",No
-3/2/2024 16:45:46,Quals 48,Blue,5026,0,0,Failure,4,0,Park,No DC,they showed up,Win,,No
+3/2/2024 15:45:05,Quals-41,Red,8546,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,"Elevator is broken which has the intake, didn’t really play defense either; High CG"
+3/2/2024 16:30:32,45,Blue,8546,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,"Good defense, cant do anything else"
+3/2/2024 11:11:12,Qual 16,Red,9114,1,0,Failure,0,0,Park,No DC,they showed up,Win,,Shooter is inconsistent
+3/2/2024 9:57:14,Quals-8,Red,9125,0,0,Failure,0,0,Hang,No DC,they showed up,Win,,Drove around aimlessly when they could not score rather than playing effective defense
+3/2/2024 14:54:51,Quals-35,Blue,9125,1,0,Success,0,0,Hang,No DC,they showed up,Win,No,Played defense entire match
+3/2/2024 9:50:47,Quals-7,Blue,9470,0,0,Success,0,0,Park,No DC,they showed up,Loss,,"Could not shoot, were playing defense"
+3/2/2024 13:23:46,Qual 23,Blue,9504,1,0,Failure,0,0,Neither,No DC,they showed up,Loss,,"Missed every single speaker. Not good with cooperating with source. Is a kitbot, shot notes very far off from the speaker. Many times got penalties, one time note landed on ref face"
+3/2/2024 16:57:48,Quals-50,Red,9504,0,0,Failure,0,0,Park,No DC,they showed up,Win,No,They wasted almost the whole tel at source
+3/2/2024 19:38:25,Quals-14,Red,6918,0,0,Failure,0,0,Park,No DC,they showed up,Loss,No,Was transporting notes to the middle of the field the entire match.
+3/2/2024 19:44:34,Quals-17,Red,9504,0,0,Success,2,0,Park,No DC,they showed up,Loss,,
