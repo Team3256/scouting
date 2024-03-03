@@ -41,6 +41,8 @@ TK.
 
 ## What to do before East Bay regional
 
+TODO: Clarify
+
 ### WarriorSad
 
 - refactor
