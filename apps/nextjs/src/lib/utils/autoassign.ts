@@ -1,13 +1,13 @@
-export function assignTasks(times, users) {
+export function assignTasks(times: string[], users: string[]) {
   // Sort the times for ordered assignment
   const sortedTimes = times.sort();
 
   // Initialize assignments, lastAssigned, and taskCount objects
-  const assignments = {};
-  const lastAssigned = {};
-  const taskCount = {};
+  const assignments: { [key: string]: string[] } = {};
+  const lastAssigned: { [key: string]: string | null } = {};
+  const taskCount: { [key: string]: number } = {};
   // biome-ignore lint/complexity/noForEach: <explanation>
-users.forEach(user => {
+  users.forEach((user) => {
     assignments[user] = [];
     lastAssigned[user] = null;
     taskCount[user] = 0;
