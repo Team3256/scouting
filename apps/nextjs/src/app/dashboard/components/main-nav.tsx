@@ -2,10 +2,10 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const NAV = {
-  Overview: "/examples/dashboard",
-  Customers: "/examples/dashboard",
-  Products: "/examples/dashboard",
-  Settings: "/examples/dashboard",
+  Assignments: "/dashboard",
+  Analytics: "/analytics",
+  "Game Creator": "/generator",
+  Settings: "/settings",
 };
 export function MainNav({
   className,
@@ -23,7 +23,7 @@ export function MainNav({
             key={name}
             href={link}
             className={
-              name == currentlySelected
+              name === currentlySelected
                 ? "hover:text-primary text-sm font-medium transition-colors"
                 : "text-muted-foreground hover:text-primary text-sm font-medium transition-colors"
             }
