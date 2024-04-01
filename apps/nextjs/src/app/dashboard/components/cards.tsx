@@ -128,7 +128,7 @@ export function AssignmentCard({ assignment }: { assignment: string }) {
       </CardHeader>
       <CardContent>
         {" "}
-        I HAVE NO GIRLS
+        Quantitative Scouting
         {/* </Button> */}
         {/* <form>
           <div className="grid w-full items-center gap-4">

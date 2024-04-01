@@ -36,7 +36,7 @@ export default function RootLayout({
             <div className="flex h-16 items-center px-4">
               {/* <TeamSwitcher /> */}
               {/* XXX: Dynamic MainNav */}
-              <MainNav className="mx-6" currentlySelected="Overview" />
+              <MainNav className="mx-6" currentlySelected="Assignments" />
               <div className="ml-auto flex items-center space-x-4">
                 <Search />
                 <UserNav />
