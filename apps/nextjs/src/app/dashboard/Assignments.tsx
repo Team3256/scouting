@@ -33,27 +33,6 @@ import { Search } from "./components/search";
 import TeamSwitcher from "./components/team-switcher";
 import { UserNav } from "./components/user-nav";
 
-const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`,
-);
-function autoAssign(
-  assignments: string[],
-  members: { [key: string]: string[] },
-  setMembers: (members: { [key: string]: string[] }) => void,
-  setAssignments: (assignments: string[]) => void,
-) {
-  // useEffect(() => {
-  const autoassign: { [key: string]: string[] } = assignTasks(
-    assignments,
-    Object.keys(members),
-  );
-  console.log(autoassign, typeof autoassign);
-  setMembers(autoassign);
-  // {[key: string]: string[];}
-  setAssignments([]);
-  // }, []);
-}
-
 type AssignmentsProps = {
   selectedEvent: string;
 };
@@ -87,7 +66,23 @@ type Alliance = {
   team_keys: string[];
 };
 
-function Assignments({ selectedEvent }: AssignmentsProps) {
+const tags = Array.from({ length: 50 }).map(
+  (_, i, a) => `v1.2.0-beta.${a.length - i}`,
+);
+function autoAssign(
+  assignments: string[],
+  members: { [key: string]: string[] },
+  setMembers: (members: { [key: string]: string[] }) => void,
+  setAssignments: (assignments: string[]) => void,
+) {
+  // useEffect(() => {
+  const autoassign = assignTasks(assignments, Object.keys(members));
+  console.log(autoassign, typeof autoassign);
+  setMembers(autoassign);
+  setAssignments([]);
+  // }, []);
+}
+function Assignments({ selectedEvent }) {
   // XXX: Use real data via tRPC
   // const [members, setMembers] = useState<{ [key: string]: string[] }>(
   //   Object.fromEntries(tags.map((x) => [`${x}M`, []])),
@@ -149,7 +144,7 @@ function Assignments({ selectedEvent }: AssignmentsProps) {
       // biome-ignore lint/complexity/noForEach: <explanation>
       matches.forEach((match: MatchSubset) => {
         // Extract match number and alliances
-        const { alliances } = match;
+        const { match_num, match_key, alliances } = match;
 
         // Iterate over each alliance (blue and red)
         // biome-ignore lint/complexity/noForEach: <explanation>
@@ -217,10 +212,7 @@ function Assignments({ selectedEvent }: AssignmentsProps) {
               }
               return false; // Return false if not found in either alliance
             });
-            if (!match) {
-              console.error("Match not found for the active team key.");
-              return; // Stop execution if match is not found
-            }
+
             // Check if the activeTeamKey is part of the blue alliance or the red alliance
             const allianceColor = match.alliances.blue.team_keys.includes(
               activeTeamKey,
