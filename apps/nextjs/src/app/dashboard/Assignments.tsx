@@ -33,39 +33,6 @@ import { Search } from "./components/search";
 import TeamSwitcher from "./components/team-switcher";
 import { UserNav } from "./components/user-nav";
 
-type AssignmentsProps = {
-  selectedEvent: string;
-};
-
-type Match = {
-  match_num: number;
-  match_key: string;
-  alliances: {
-    blue: {
-      team_keys: string[];
-    };
-    red: {
-      team_keys: string[];
-    };
-  };
-};
-
-type MatchSubset = {
-  match_num: number;
-  alliances: {
-    blue: {
-      team_keys: string[];
-    };
-    red: {
-      team_keys: string[];
-    };
-  };
-};
-
-type Alliance = {
-  team_keys: string[];
-};
-
 const tags = Array.from({ length: 50 }).map(
   (_, i, a) => `v1.2.0-beta.${a.length - i}`,
 );
@@ -97,7 +64,7 @@ function Assignments({ selectedEvent }) {
       console.log("HEEEEE: ", members);
     }
     fetchData();
-  }, [members]);
+  }, []);
   const [assignments, setAssignments] = useState<string[]>([]); // Updated t
   const [activeId, setActiveId] = useState<string | null>(null);
   // Inverted members
@@ -121,12 +88,12 @@ function Assignments({ selectedEvent }) {
   useEffect(() => {
     if (!isLoading && data) {
       // Extract relevant information from the data and generate assignments
-      const matches = data.map((match: Match) => ({
+      const matches = data.map((match: any) => ({
         match_num: match.match_num,
         // match_key: match.match_key,
         alliances: match.alliances,
       }));
-      const matchKeys = data.map((match: Match) => ({
+      const matchKeys = data.map((match: any) => ({
         match_key: match.match_key,
         event: selectedEvent,
       }));
@@ -137,18 +104,18 @@ function Assignments({ selectedEvent }) {
       for (let i = 0; i < matchKeys.length; i++) {
         addMatches({ match: matchKeys[i] });
       }
-      const newAssignments: string[] = [];
+      let newAssignments: string[] = [];
       // Iterate over each match object
       let count = 0;
       let c2 = 1;
       // biome-ignore lint/complexity/noForEach: <explanation>
-      matches.forEach((match: MatchSubset) => {
+      matches.forEach((match: any) => {
         // Extract match number and alliances
         const { match_num, match_key, alliances } = match;
 
         // Iterate over each alliance (blue and red)
         // biome-ignore lint/complexity/noForEach: <explanation>
-        Object.values(alliances).forEach((alliance: Alliance) => {
+        Object.values(alliances).forEach((alliance: any) => {
           // Extract team keys from the alliance
           const teamKeys = alliance.team_keys;
 
@@ -159,7 +126,7 @@ function Assignments({ selectedEvent }) {
             const assignment = `Match ${c2} - Team ${teamKey}`;
             // const assignment = `Match ${match_key} - Team ${teamKey}`;
             count++;
-            if (count % 6 === 0) {
+            if (count % 6 == 0) {
               count = 0;
               c2++;
             }
@@ -175,7 +142,7 @@ function Assignments({ selectedEvent }) {
       // Update the state with the newAssignments array
       setAssignments(newAssignments);
     }
-  }, [isLoading, data, selectedEvent]);
+  }, [isLoading, data]);
   return (
     <>
       {/* <ModalSelectComponent /> */}
@@ -224,7 +191,7 @@ function Assignments({ selectedEvent }) {
             // Find the index of the match object within the data array
             // const index = data.indexOf(match);
             // Find the index of the team key within the blue or red alliance array
-            let index: number;
+            let index;
             if (allianceColor === "blue") {
               index = match.alliances.blue.team_keys.indexOf(activeTeamKey);
             } else {
@@ -240,14 +207,12 @@ function Assignments({ selectedEvent }) {
             }
 
             const alliance = (allianceColor + (index + 1)) as string;
-            const matchNumber = Number.parseInt(activeId.split(" ")[1]);
+            const matchNumber = parseInt(activeId.split(" ")[1]);
 
             // Make sure index is within the valid range of data array
 
             const currentMatchKey = data[matchNumber - 1].match_key;
-            const currentTeam = Number.parseInt(
-              activeId.split(" ")[4].slice(-4),
-            );
+            const currentTeam = parseInt(activeId.split(" ")[4].slice(-4));
 
             addAssignment({
               match: currentMatchKey,
