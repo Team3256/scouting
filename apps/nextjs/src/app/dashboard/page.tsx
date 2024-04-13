@@ -21,6 +21,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { trpc } from "@/lib/utils/trpc";
 
 import Assignments from "./Assignments";
+import Attendance from "./Attendance";
 
 type Event = {
   name: string;
@@ -111,12 +112,16 @@ function DashboardPage() {
           />
         </div>
       </div>
-      <Tabs defaultValue="assignments" className="space-y-4">
+      <Tabs defaultValue="attendance" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="assignments">Scouting Assignments</TabsTrigger>
+          <TabsTrigger disabled={true} value="assignments">Scouting Assignments</TabsTrigger>
+          <TabsTrigger value="attendance">Attendance</TabsTrigger>
         </TabsList>
         <TabsContent value="assignments" className="h-[75vh] space-y-4">
-          <Assignments selectedEvent={selectedEvent} />
+          {/* <Assignments selectedEvent={selectedEvent} /> */}
+        </TabsContent>
+        <TabsContent value="attendance" className="h-[75vh] space-y-4">
+          <Attendance/>
         </TabsContent>
       </Tabs>
     </div>
