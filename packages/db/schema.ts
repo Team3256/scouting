@@ -184,21 +184,21 @@ export const qualitativeScouting = pgTable("qualitative_scouting", {
 
 // Attendance schema
 
-export const location = pgTable("location", {
-  id: varchar("id", {
-    length: 256,
-  }).primaryKey(),
-  name: varchar("name", { length: 256 }).notNull(),
-  latitude: doublePrecision("latitude").notNull(),
-  longitude: doublePrecision("longitude").notNull(),
-  radius: varchar("radius", { length: 256 }).notNull(),
-  createdAt: timestamp("created_at")
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  isActive: boolean("is_active").notNull(),
-  isSchool: boolean("is_school").notNull(), // basically a "primary" location. default location when we're not at regionals, etc.
-  author_id: varchar("author_id", { length: 256 }),
-});
+// export const location = pgTable("location", {
+//   id: varchar("id", {
+//     length: 256,
+//   }).primaryKey(),
+//   name: varchar("name", { length: 256 }).notNull(),
+//   latitude: doublePrecision("latitude").notNull(),
+//   longitude: doublePrecision("longitude").notNull(),
+//   radius: varchar("radius", { length: 256 }).notNull(),
+//   createdAt: timestamp("created_at")
+//     .default(sql`CURRENT_TIMESTAMP`)
+//     .notNull(),
+//   isActive: boolean("is_active").notNull(),
+//   isSchool: boolean("is_school").notNull(), // basically a "primary" location. default location when we're not at regionals, etc.
+//   author_id: varchar("author_id", { length: 256 }),
+// });
 
 // export const locationRelations = relations(location, ({ many, one }) => ({
 //   meetings: many(meeting),
@@ -280,5 +280,5 @@ export const attendanceSessions = pgTable("attendanceSessions", {
     .references(() => attendanceKeys.uid)
     .notNull(),
   startTime: timestamp("startTime").notNull(),
-  endTime: timestamp("startTime"),
+  endTime: timestamp("endTime"),
 });
