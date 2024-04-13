@@ -200,72 +200,85 @@ export const location = pgTable("location", {
   author_id: varchar("author_id", { length: 256 }),
 });
 
-export const locationRelations = relations(location, ({ many, one }) => ({
-  meetings: many(meeting),
-  creator: one(profile, {
-    fields: [location.author_id],
-    references: [profile.id],
-  }), // the person who created the location. not shown in the UI, but useful for debugging + analytics + etc.
-}));
+// export const locationRelations = relations(location, ({ many, one }) => ({
+//   meetings: many(meeting),
+//   creator: one(profile, {
+//     fields: [location.author_id],
+//     references: [profile.id],
+//   }), // the person who created the location. not shown in the UI, but useful for debugging + analytics + etc.
+// }));
 
-export const meeting = pgTable("meeting", {
-  id: varchar("id", {
-    length: 256,
-  }).primaryKey(),
-  name: varchar("name", { length: 256 }).notNull(),
-  date: timestamp("date").notNull(),
-  isLocationAtSchool: boolean("is_location_at_school").notNull(),
-  isCancelled: boolean("is_cancelled").notNull(),
-  attendanceCode: varchar("attendance_code", { length: 256 }).notNull(),
-  attendanceCodeExpiresAt: timestamp("attendance_code_expires_at").notNull(),
-  locationId: varchar("location_id", {
-    length: 256,
-  })
-    .notNull()
-    .references(() => location.id),
-  createdAt: timestamp("created_at")
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
+// export const meeting = pgTable("meeting", {
+//   id: varchar("id", {
+//     length: 256,
+//   }).primaryKey(),
+//   name: varchar("name", { length: 256 }).notNull(),
+//   date: timestamp("date").notNull(),
+//   isLocationAtSchool: boolean("is_location_at_school").notNull(),
+//   isCancelled: boolean("is_cancelled").notNull(),
+//   attendanceCode: varchar("attendance_code", { length: 256 }).notNull(),
+//   attendanceCodeExpiresAt: timestamp("attendance_code_expires_at").notNull(),
+//   locationId: varchar("location_id", {
+//     length: 256,
+//   })
+//     .notNull()
+//     .references(() => location.id),
+//   createdAt: timestamp("created_at")
+//     .default(sql`CURRENT_TIMESTAMP`)
+//     .notNull(),
+// });
+
+// export const meetingRelations = relations(meeting, ({ many, one }) => ({
+//   attendances: many(attendance),
+//   location: one(location, {
+//     fields: [meeting.locationId],
+//     references: [location.id],
+//   }),
+// }));
+
+// export const attendance = pgTable("attendance", {
+//   id: varchar("id", {
+//     length: 256,
+//   }).primaryKey(),
+//   meetingId: varchar("meeting_id", {
+//     length: 256,
+//   })
+//     .notNull()
+//     .references(() => meeting.id),
+//   studentId: varchar("student_id", {
+//     length: 256,
+//   })
+//     .notNull()
+//     .references(() => profile.id),
+//   isPresent: boolean("is_present").notNull(),
+//   createdAt: timestamp("created_at")
+//     .default(sql`CURRENT_TIMESTAMP`)
+//     .notNull(),
+//   location: json("location").notNull(), // this "location" is the location of the student when they checked in. it's not the location of the meeting. we store this as a JSON object because we're rarely going to query it, and it's easier to store it as a JSON object than to create a whole new table for it.
+// });
+
+// export const attendanceRelations = relations(attendance, ({ one }) => ({
+//   meeting: one(meeting, {
+//     fields: [attendance.meetingId],
+//     references: [meeting.id],
+//   }),
+//   student: one(profile, {
+//     fields: [attendance.studentId],
+//     references: [profile.id],
+//   }),
+// })); // This allows us to query an attendance record and get the meeting and student associated with it quickly
+
+// // End attendance schema
+
+export const attendanceKeys = pgTable("attendanceKeys", {
+  uid: varchar("uid", { length: 256 }).primaryKey(),
+  name: varchar("name", { length: 256 }),
+  currentlyAttending: boolean("currently_attending").notNull(),
 });
-
-export const meetingRelations = relations(meeting, ({ many, one }) => ({
-  attendances: many(attendance),
-  location: one(location, {
-    fields: [meeting.locationId],
-    references: [location.id],
-  }),
-}));
-
-export const attendance = pgTable("attendance", {
-  id: varchar("id", {
-    length: 256,
-  }).primaryKey(),
-  meetingId: varchar("meeting_id", {
-    length: 256,
-  })
-    .notNull()
-    .references(() => meeting.id),
-  studentId: varchar("student_id", {
-    length: 256,
-  })
-    .notNull()
-    .references(() => profile.id),
-  isPresent: boolean("is_present").notNull(),
-  createdAt: timestamp("created_at")
-    .default(sql`CURRENT_TIMESTAMP`)
+export const attendanceSessions = pgTable("attendanceSessions", {
+  uid: varchar("uid", { length: 256 })
+    .references(() => attendanceKeys.uid)
     .notNull(),
-  location: json("location").notNull(), // this "location" is the location of the student when they checked in. it's not the location of the meeting. we store this as a JSON object because we're rarely going to query it, and it's easier to store it as a JSON object than to create a whole new table for it.
+  startTime: timestamp("startTime").notNull(),
+  endTime: timestamp("startTime"),
 });
-
-export const attendanceRelations = relations(attendance, ({ one }) => ({
-  meeting: one(meeting, {
-    fields: [attendance.meetingId],
-    references: [meeting.id],
-  }),
-  student: one(profile, {
-    fields: [attendance.studentId],
-    references: [profile.id],
-  }),
-})); // This allows us to query an attendance record and get the meeting and student associated with it quickly
-
-// End attendance schema
