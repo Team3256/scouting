@@ -1,7 +1,9 @@
+import { installEmudhraDistrust } from "../security/emudhra-default-ca.mjs";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
+  installEmudhraDistrust();
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -60,6 +62,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
+  runtime: "nodejs",
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
