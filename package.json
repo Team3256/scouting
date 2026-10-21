@@ -19,8 +19,8 @@
     "build:ios:local:non-interactive": "pnpm -F expo build:ios:local:non-interactive",
     "format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "format:fix": "turbo format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
-    "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
-    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
+    "lint": "turbo lint --continue -- --cache-location node_modules/.cache/.eslintcache",
+    "lint:fix": "turbo lint --continue -- --fix --cache-location node_modules/.cache/.eslintcache",
     "lint:ws": "sherif",
     "typecheck": "turbo typecheck",
     "android": "expo run:android",
@@ -48,13 +48,13 @@
       "ws@8": "8.21.0",
       "ws@7": "7.5.11",
       "ws@6": "6.2.4",
-      "form-data@3": "3.0.4",
+      "form-data@3": "3.0.5",
       "form-data@4": "4.0.6",
       "@opentelemetry/api": "1.9.0",
-      "basic-ftp@5": "5.2.0",
+      "basic-ftp@5": "5.3.1",
       "fast-xml-parser@4": "4.5.7",
       "handlebars@4": "4.7.10",
-      "shell-quote@1": "1.8.4"
+      "shell-quote@1": "1.12.0"
     }
   }
 }
