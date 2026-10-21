@@ -27,6 +27,9 @@ jobs:
       - name: Setup
         uses: ./tooling/github/setup
 
+      - name: HTTP security contracts
+        run: pnpm test:security
+
       - name: Copy env
         shell: bash
         run: cp .env.example .env
@@ -54,4 +57,4 @@ jobs:
         uses: ./tooling/github/setup
 
       - name: Typecheck
-        run: turbo typecheck
+        run: pnpm exec turbo typecheck

@@ -2,7 +2,7 @@
   "name": "create-t3-turbo",
   "private": true,
   "engines": {
-    "node": ">=18.18.2"
+    "node": "^22.23.4 || ^24.22.1 || >=26.12.1"
   },
   "packageManager": "pnpm@8.11.0",
   "scripts": {
@@ -21,18 +21,40 @@
     "format:fix": "turbo format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
     "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
-    "lint:ws": "pnpm dlx sherif@latest",
+    "lint:ws": "sherif",
     "typecheck": "turbo typecheck",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "preinstall": "node scripts/check-node.mjs",
+    "test:security": "node scripts/test-http-security.mjs",
+    "verify:tls": "node scripts/test-http-security.mjs --network"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:^0.1.0",
-    "@turbo/gen": "^1.11.1",
-    "prettier": "^3.1.0",
+    "@turbo/gen": "^1.11.3",
+    "prettier": "^3.2.5",
+    "sherif": "1.13.0",
     "turbo": "^1.11.3",
     "typescript": "^5.3.3"
   },
   "prettier": "@acme/prettier-config",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "pnpm": {
+    "overrides": {
+      "axios@1": "1.20.0",
+      "express@4": "4.22.3",
+      "follow-redirects": "1.16.1",
+      "proxy-addr": "2.0.8",
+      "ws@8": "8.21.0",
+      "ws@7": "7.5.11",
+      "ws@6": "6.2.4",
+      "form-data@3": "3.0.4",
+      "form-data@4": "4.0.6",
+      "@opentelemetry/api": "1.9.0",
+      "basic-ftp@5": "5.2.0",
+      "fast-xml-parser@4": "4.5.7",
+      "handlebars@4": "4.7.10",
+      "shell-quote@1": "1.8.4"
+    }
+  }
 }
