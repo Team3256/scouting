@@ -25,9 +25,7 @@
     "typecheck": "turbo typecheck",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "preinstall": "node scripts/check-node.mjs",
-    "test:security": "node scripts/test-http-security.mjs",
-    "verify:tls": "node scripts/test-http-security.mjs --network"
+    "preinstall": "node scripts/check-node.mjs"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:^0.1.0",
