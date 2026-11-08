@@ -6,6 +6,6 @@ const supported =
   major > 26;
 if (!supported) {
   throw new Error(
-    "Use Node.js ^22.23.4 || ^24.22.1 || >=26.12.1 with the eMudhra trust update.",
+    "Use Node.js ^22.23.4 || ^24.22.1 || >=26.12.1.",
   );
 }
